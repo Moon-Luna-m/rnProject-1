@@ -1,0 +1,123 @@
+export default {
+  expo: {
+    name: "Echo",
+    slug: "Echo",
+    owner: "mac.zhao",
+    version: "1.0.0",
+    orientation: "portrait",
+    icon: "./assets/images/icon.png",
+    scheme: "echo",
+    userInterfaceStyle: "light",
+    newArchEnabled: true,
+    platforms: ["ios", "android", "web"],
+    updates: {
+      fallbackToCacheTimeout: 0,
+      url: "https://u.expo.dev/de0c84ec-d1cd-4234-8c87-dba484ca91a6",
+    },
+    runtimeVersion: "1.0.0",
+    ios: {
+      supportsTablet: true,
+      backgroundColor: "#ffffff",
+      bundleIdentifier: "com.mac.zhao.myapp",
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: true,
+      },
+    },
+    android: {
+      adaptiveIcon: {
+        foregroundImage: "./assets/images/icon.png",
+        backgroundColor: "#ffffff",
+      },
+      edgeToEdgeEnabled: true,
+      package: "com.mac.zhao.myapp",
+      usesCleartextTraffic: true,
+    },
+    web: {
+      bundler: "metro",
+      output: "static",
+      favicon: "./assets/images/logo.png",
+      backgroundColor: "#ffffff",
+    },
+    plugins: [
+      "expo-router",
+      "expo-updates",
+      [
+        "expo-splash-screen",
+        {
+          image: "./assets/images/logo.png",
+          backgroundColor: "#ffffff",
+          imageWidth: 200,
+        },
+      ],
+      "expo-localization",
+      [
+        "expo-secure-store",
+        {
+          configureAndroidBackup: true,
+          usesNonExemptEncryption: false,
+          faceIDPermission:
+            "Allow $(Echo) to access your Face ID biometric data.",
+        },
+      ],
+      "expo-web-browser",
+      [
+        "expo-camera",
+        {
+          cameraPermission: "Allow $(Echo) to access your camera",
+          microphonePermission: "Allow $(Echo) to access your microphone",
+          recordAudioAndroid: true,
+        },
+      ],
+      [
+        "expo-image-picker",
+        {
+          photosPermission: "Allow $(Echo) to access your photos",
+        },
+      ],
+      [
+        "expo-build-properties",
+        {
+          android: {
+            usesCleartextTraffic: true,
+          },
+          ios: {},
+        },
+      ],
+    ],
+    experiments: {
+      typedRoutes: true,
+    },
+    extra: {
+      router: {},
+      eas: {
+        projectId: "de0c84ec-d1cd-4234-8c87-dba484ca91a6",
+      },
+      apiUrl: {
+        dev: {
+          apiUrl: "http://192.168.5.68:3999/dev",
+          imgHost: "http://192.168.5.201:9000/echomind/",
+        },
+        prod: {
+          apiUrl: "https://mindsecho.com/h5",
+          imgHost: "http://assets.mindsecho.com/echomind/",
+        },
+      },
+      google: {
+        appClientId:
+          "yourGoogleClientId",
+        webClientId:
+          "yourGoogleClientId",
+        appClientSecret: "yourGoogleClientSecret",
+        webClientSecret: "yourGoogleClientSecret",
+        authCallback: "http://localhost:8081/oauth2/callback/google",
+        ngrokUrl: "https://f704-103-151-172-47.ngrok-free.app",
+      },
+      stripe: {
+        publidKey:
+          "pk_test_51RbJXwDFkjX6iOeluEQIiqWJJfjdocFOMiwzdbOul5tkDoa4ZLIGMCeoabi4phY9tA7XjFusDX65S2Oo0O3nHnqu00jMi4EQYK",
+      },
+      branchName: "preview",
+      channel: "preview",
+    },
+  },
+};
