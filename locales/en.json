@@ -1,0 +1,667 @@
+{
+  "common": {
+    "welcome": "Welcome to {{name}}",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "selectDate": "Select Date",
+    "dataEditing": "Data Editing",
+    "settings": "Settings",
+    "time": {
+      "minutes": "min",
+      "hours": "h"
+    },
+    "datePicker": {
+      "year": "Year",
+      "month": "Month",
+      "day": "Day"
+    },
+    "avatar": {
+      "title": "Select Avatar",
+      "camera": "Take Photo",
+      "gallery": "Choose from Gallery"
+    },
+    "allCategories": "All Categories",
+    "camera": {
+      "switchCamera": "Switch Camera",
+      "flash": {
+        "on": "Flash On",
+        "off": "Flash Off",
+        "auto": "Flash Auto"
+      },
+      "capture": "Capture",
+      "retake": "Retake",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "permissionDenied": "Camera Permission Required",
+      "permissionMessage": "Please allow camera access in settings",
+      "processing": "Processing...",
+      "guide": "Place your face in the circle",
+      "tips": "Tap to take photo, hold to record"
+    },
+    "gallery": {
+      "permissionDenied": "Gallery Permission Required",
+      "permissionMessage": "Please allow gallery access in settings"
+    },
+    "noMoreData": "No more data"
+  },
+  "profile": {
+    "edit": "Edit",
+    "changeName": "Change Name",
+    "genderSelection": "Gender Selection",
+    "selectGender": "Select Gender",
+    "birthday": "Your Birthday",
+    "selectBirthday": "Select Birthday",
+    "birthdayPlaceholder": "YYYY.MM.DD",
+    "testCard": {
+      "title": "My Test Questions",
+      "completed": "Completed",
+      "notCompleted": "Not Completed"
+    },
+    "popularServices": {
+      "title": "Popular Services",
+      "vip": {
+        "title": "VIP",
+        "expires": "Expires"
+      },
+      "wallet": "My Wallet",
+      "favorites": "My Favorites"
+    },
+    "otherServices": {
+      "title": "Other Services",
+      "faq": "FAQ",
+      "settings": "Settings"
+    }
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female",
+    "placeholder": "Select Gender"
+  },
+  "form": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Please enter your email address"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Please enter your password"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Please confirm your password",
+      "required": "Please confirm your password",
+      "match": "Passwords do not match"
+    },
+    "submit": {
+      "login": "Login",
+      "register": "Register"
+    },
+    "verify": {
+      "title": "Enter the verification code",
+      "subtitle": "Please enter the verification code sent to <0>{{email}}</0>",
+      "error": "The verification code is incorrect, please re-enter",
+      "success": "Registration Successful",
+      "successSubtitle": "Login Now",
+      "successButton": "Login Now",
+      "password": "Password Reset Successful"
+    },
+    "login": {
+      "tab": "Login",
+      "subtitle": "Start your journey of the mind",
+      "forgotPassword": "Forgot password?",
+      "agreement": "Agree to the <0>{{agreement}}</0>",
+      "agreementRequired": "Please agree to the login agreement",
+      "agreementLink": "login agreement",
+      "otherMethods": "Other login methods"
+    },
+    "register": {
+      "tab": "Register",
+      "subtitle": "Create your account"
+    },
+    "forgot": {
+      "title": "Forgot Password",
+      "subtitle": "Please enter your email to receive a verification code",
+      "button": "Send Verification Code"
+    },
+    "reset": {
+      "title": "Set New Password",
+      "subtitle": "Please re-set your password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "button": "Complete"
+    }
+  },
+  "auth": {
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "forgotPassword": "Forgot Password",
+    "loginSuccess": "Login Successful",
+    "loginFailed": "Login Failed",
+    "registerSuccess": "Registration Successful",
+    "registerFailed": "Registration Failed"
+  },
+  "error": {
+    "networkError": "Network Error",
+    "timeout": "Request Timeout",
+    "serverError": "Server Error",
+    "unauthorized": "Unauthorized Access"
+  },
+  "validation": {
+    "email": {
+      "invalid": "Please enter a valid email address, e.g. test@gmail.com",
+      "required": "Email is required"
+    },
+    "password": {
+      "minLength": "Password must be at least {{count}} characters",
+      "requireAll": "Password must be at least 8 characters and contain both letters and numbers"
+    }
+  },
+  "review": {
+    "title": "My Review",
+    "tabs": {
+      "completed": "Completed({{count}})",
+      "incomplete": "Incomplete({{count}})"
+    },
+    "card": {
+      "details": "Details",
+      "generateReport": "Generate Report",
+      "testAgain": "Test Again",
+      "progress": "Progress",
+      "continue": "Continue"
+    }
+  },
+  "favorites": {
+    "title": "Favorites",
+    "card": {
+      "questionCount": "Question Count",
+      "timeTaken": "Time Taken",
+      "deleteSuccess": "Unfavorites Successfully",
+      "addSuccess": "Favorites Successfully"
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "tabs": {
+      "reviews": "Related to Reviews",
+      "privacy": "Data Privacy",
+      "account": "Account and Security",
+      "payments": "Related to Payments",
+      "others": "Others",
+      "attachment": "Love Attachment Test"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "account": "Account Settings",
+    "customerService": "Contact Customer Service",
+    "userAgreement": "User Agreement",
+    "privacyPolicy": "Privacy Policy",
+    "disclaimer": "Disclaimer",
+    "language": "Language Switch",
+    "checkUpdate": "Check for Updates",
+    "clearCache": "Clear Cache",
+    "logout": {
+      "button": "Log Out",
+      "title": "Are you sure you want to log out?",
+      "description": "You will not be able to submit test proposals after logging out.",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "clearCacheSuccess": "Cache cleared successfully",
+    "clearCacheFailed": "Cache clearing failed",
+    "updateAvailable": "Update available, Updating...",
+    "noUpdate": "Already the latest version"
+  },
+  "privacy": {
+    "terms": {
+      "title": "Terms",
+      "content1": "We are committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our services.",
+      "content2": "We collect only necessary information to provide and improve our services. This may include basic profile information, usage data, and any additional information you choose to provide."
+    },
+    "changes": {
+      "title": "Changes to the Service and/or Terms",
+      "content1": "We reserve the right to modify or update our Privacy Policy at any time. Any significant changes will be notified to users through appropriate channels.",
+      "content2": "By continuing to use our services after such modifications, you agree to be bound by the updated Privacy Policy."
+    }
+  },
+  "home": {
+    "digitalAssistant": {
+      "greeting": "HI, I am an AI digital person",
+      "question": "How can I assist you?",
+      "askButton": "Ask a question"
+    },
+    "search": {
+      "placeholder": "Search for test questions",
+      "history": "Search History",
+      "button": "Search",
+      "noContent": "No Content Found",
+      "tryDifferentTerm": "Try a different search term"
+    },
+    "recommend": {
+      "title": "Today's Recommendations",
+      "free": "Free",
+      "test1": {
+        "title": "Jung's Eight Dimensions Test",
+        "subtitle": "Professionally assess"
+      },
+      "test2": {
+        "title": "The Secrets of Personality Codes",
+        "subtitle": "Discover the real you"
+      },
+      "test3": {
+        "title": "Psychological Resilience Assessment",
+        "subtitle": "Identify and heal trauma"
+      }
+    },
+    "popular": {
+      "title": "Popular Tests"
+    }
+  },
+  "wallet": {
+    "success": "Purchase successful",
+    "cancelPay": "Cancel Payment",
+    "title": "My Wallet",
+    "currentBalance": "Current Balance",
+    "coinDetails": "Coin Details",
+    "rechargeAmount": "Recharge Amount",
+    "rechargeMethod": "Recharge Method",
+    "paymentMethods": {
+      "mastercard": "Mastercard",
+      "paypal": "Paypal"
+    },
+    "tags": {
+      "firstCharge": "First Charge",
+      "limitedTime": "Limited Time"
+    },
+    "rechargeInstructions": "Recharge Instructions",
+    "instructions": {
+      "0": "Recharge is permanent",
+      "1": "Recharge rate: $1 = 1 Coin",
+      "2": "Recharge amount cannot be withdrawn or exchanged",
+      "3": "Recharge coins are only available within this app"
+    }
+  },
+  "coinDetail": {
+    "title": "Coin Details"
+  },
+  "vip": {
+    "success": "Purchase successful",
+    "quarterly": "{{n}}/quarter",
+    "monthly": "{{n}}/month",
+    "yearly": "{{n}}/year",
+    "lifetime": "One-time payment",
+    "title": "VIP",
+    "balance": "Balance",
+    "recharge": "Recharge",
+    "withdraw": "Withdraw",
+    "notActivated": "Not Activated",
+    "expires": "Expires on ",
+    "subscriptions": {
+      "monthly": {
+        "title": "Monthly Membership",
+        "price": "9.9",
+        "perMonth": "$9.9/month"
+      },
+      "quarterly": {
+        "title": "Quarterly Membership",
+        "price": "24.9",
+        "perMonth": "$9.5/month"
+      },
+      "annual": {
+        "title": "Annual Membership",
+        "price": "60.9",
+        "perMonth": "$8.5/month"
+      },
+      "lifetime": {
+        "title": "Lifetime Membership",
+        "price": "200",
+        "perMonth": "One-time payment"
+      }
+    },
+    "agreement": {
+      "autoRenewal": "Automatic renewal starts at ${{price}}/month, can be canceled anytime",
+      "oneTimePayment": "One-time payment, lifetime access",
+      "prefix": "Becoming a member indicates agreement",
+      "membershipAgreement": "Membership Agreement",
+      "and": "and",
+      "subscriptionAgreement": "Continuous Subscription Membership Service Agreement"
+    },
+    "benefits": {
+      "title": "Member Benefits",
+      "items": {
+        "unlimitedTests": {
+          "title": "Advanced Assessment Unlock",
+          "desc": "More Comprehensive Assessment Data"
+        },
+        "exclusiveContent": {
+          "title": "AI Companion Service",
+          "desc": "Large Model Accurately Identifies Pain Points"
+        },
+        "prioritySupport": {
+          "title": "Professional Report PDF Export",
+          "desc": "Report Shareable"
+        },
+        "noAds": {
+          "title": "Free Test Unlock",
+          "desc": "A Large Number of Member Exclusive Tests"
+        }
+      }
+    }
+  },
+  "chat": {
+    "hello": "Hello, I am your mental AI assistant. What would you like to explore? Feel free to ask me any questions!",
+    "error": "Sorry, I didn't understand. Could you rephrase that?",
+    "type_confirmation": "I understand your needs. Please confirm if this is the test type you want.",
+    "need_clarification": "To better understand your needs, I need to ask you a few questions.",
+    "test_ready": "I have prepared the '{{name}}' test with {{count}} questions. Shall we begin?",
+    "unknown_error": "Sorry, an unknown error occurred. Please try again later.",
+    "network_error": "Network connection issue. Please check your connection and try again.",
+    "retry": "Retry",
+    "input": {
+      "placeholder": "Enter your answer",
+      "send": "Submit"
+    },
+    "typing": "Typing",
+    "optional": "Optional",
+    "your_answer": "Your answer"
+  },
+  "test": {
+    "previous": "Previous",
+    "progress": "Question answering progress",
+    "saving": "Saving...",
+    "next": "Next",
+    "submit": "Submit",
+    "testDetail": "Test Detail",
+    "testReport": "Test Report",
+    "testAgain": "Test Again",
+    "advancedReport": "Advanced Report",
+    "total_questions": "{{count}} Questions",
+    "estimated_time": "About {{minutes}} minutes",
+    "start": "Start test",
+    "continue": "Continue test",
+    "viewResult": "View Result",
+    "result": {
+      "title": "Discover the Real You",
+      "subtitle": "Gain deeper insights into your inner traits through scientific personality assessments",
+      "advancedReport": "Advanced Report"
+    },
+    "exit": {
+      "title": "Are you sure you want to exit the test?",
+      "description": "You can save the current test progress so that you can continue answering questions next time.",
+      "confirmButton": "Confirm Exit",
+      "saveButton": "Save Progress",
+      "cancelButton": "Cancel"
+    },
+    "tags": {
+      "personalityAnalysis": "Personality Analysis",
+      "psychologicalAssessment": "Psychological Assessment",
+      "selfAwareness": "Self-Awareness"
+    },
+    "traits": {
+      "innovativeThinking": "Innovative Thinking",
+      "innovativeThinkingDesc": "Your innovative thinking ability",
+      "leadership": "Leadership",
+      "leadershipDesc": "You excel in leadership",
+      "teamBuilder": "Team Builder",
+      "teamBuilderDesc": "You are a great team builder"
+    },
+    "dimensions": {
+      "leadership": "Leadership",
+      "rolePerception": "Role Perception",
+      "values": "Values",
+      "positiveness": "Positiveness",
+      "emotionalManagement": "Emotional Management"
+    },
+    "radar": {
+      "logicalThinking": "Logical Thinking",
+      "executionAbility": "Execution Ability",
+      "decisionMaking": "Decision Making",
+      "emotionalManagement": "Emotional Management",
+      "learningAdaptability": "Learning & Adaptability",
+      "teamwork": "Teamwork",
+      "communication": "Communication",
+      "innovativeThinking": "Innovative Thinking"
+    },
+    "faqs": {
+      "scientific": {
+        "question": "Is the test scientifically based?",
+        "answer": "Our assessment is based on psychological research and expert advice and has a certain reference value."
+      },
+      "accuracy": {
+        "question": "Are the test results accurate?",
+        "answer": "The test results are for reference only. The real you is more complex and unique than any test."
+      },
+      "duration": {
+        "question": "How long does it take to complete?",
+        "answer": "It takes about 8 minutes. It is recommended to complete it in a quiet environment to obtain more accurate results."
+      }
+    },
+    "badges": {
+      "creativeThinking": {
+        "title": "Creative Thinking",
+        "description": "You excel in Innovative Thinking"
+      },
+      "adaptability": {
+        "title": "Adaptability",
+        "description": "You excel in Adaptability"
+      },
+      "leadership": {
+        "title": "Leadership",
+        "description": "You excel in Leadership"
+      },
+      "teamBuilder": {
+        "title": "Team Builder",
+        "description": "You excel in Team Building"
+      },
+      "communicator": {
+        "title": "Master Communicator",
+        "description": "You excel in Communication"
+      },
+      "learner": {
+        "title": "Student Learner",
+        "description": "You excel in Learning"
+      }
+    },
+    "textProgress": {
+      "title": "Summary of Psychological Analysis",
+      "subtitle": "Analysis and guidance from professional psychologists",
+      "items": {
+        "unique": "Everyone is unique, and your combination of personality traits makes you who you are today.",
+        "understanding": "Understanding your strengths and room for growth is an important starting point for personal development.",
+        "traits": "Remember, personality traits are neither good nor bad, the key is how to play to your strengths.",
+        "reflection": "Continuous self-reflection and learning will help you go further on the road of life.",
+        "potential": "Believe in yourself, embrace change, your potential is far greater than you think"
+      }
+    },
+    "growthPath": {
+      "selfAwareness": {
+        "title": "Self-awareness",
+        "description": "Understanding yourself and your unique traits"
+      },
+      "skillDevelopment": {
+        "title": "Skill Development",
+        "description": "Building and enhancing your core competencies"
+      },
+      "practicalApplication": {
+        "title": "Practical Application",
+        "description": "Applying your skills in real-world situations"
+      },
+      "optimization": {
+        "title": "Continuous Optimization",
+        "description": "Refining and improving your abilities"
+      },
+      "influence": {
+        "title": "Influencing Others",
+        "description": "Making a positive impact on those around you"
+      }
+    },
+    "visualDashboard": {
+      "title": "Comprehensive ability",
+      "subtitle": "Comprehensive indicators",
+      "info": {
+        "currentValue": "Current value",
+        "level": "Level",
+        "completionRate": "Completion rate"
+      }
+    },
+    "share": {
+      "message": "Check out this amazing personality test!",
+      "title": "Personality Test"
+    },
+    "card": {
+      "title": "Pathways of Personality: MBTI Snapshot",
+      "description": "A brief yet insightful assessment that reveals your core MBTI type by examining how you gain energy, process information, make decisions, and organize life."
+    },
+    "button": {
+      "buyTest": "Buy Test"
+    },
+    "components": {
+      "avatar": {
+        "title": "Your own image?",
+        "description": "Animal image that represents your personality"
+      },
+      "feature": {
+        "title": "What is your personality type?",
+        "subtitle": "Get your own personality tag and detailed analysis"
+      },
+      "personalAdvice": {
+        "title": "Personalized recommendations",
+        "items": {
+          "personal": "Personal growth advice",
+          "career": "Career development direction",
+          "relationship": "Interpersonal relationship guidance"
+        }
+      },
+      "spiritual": {
+        "title": "Spiritual Inspiration",
+        "inspirations": {
+          "leadership": "A true leader does not tell others what to do, but inspires them to want to do it. You possess this gift, being skilled at motivating and guiding others.",
+          "empathy": "Your empathy and emotional intelligence allow you to understand others deeply, making you a natural guide in both personal and professional relationships.",
+          "potential": "You have the rare ability to see potential in others and help them realize it. This makes you not just a leader, but a mentor who creates lasting positive impact."
+        }
+      },
+      "trait": {
+        "title": "What is your characteristic label?"
+      },
+      "radar": {
+        "title": "Multi-dimensional analysis",
+        "subtitle": "Comprehensively evaluate your performance and development potential in each dimension"
+      },
+      "badge": {
+        "title": "Your trait badges",
+        "subtitle": "Congratulations on earning the following achievement badges"
+      },
+      "growthPath": {
+        "title": "Growth path",
+        "subtitle": "Your psychological growth stage",
+        "currentStage": "Current stage: {{stage}}"
+      },
+      "visualDashboard": {
+        "title": "Comprehensive ability",
+        "subtitle": "Comprehensive indicators",
+        "level": "Level",
+        "info": {
+          "currentValue": "Current value",
+          "level": "Level",
+          "completionRate": "Completion rate"
+        }
+      },
+      "testInfo": {
+        "title": "Test Information",
+        "questions": {
+          "label": "Number of questions",
+          "value": "{{count}} questions"
+        },
+        "time": {
+          "label": "Estimated time",
+          "value": "{{time}}"
+        },
+        "source": {
+          "label": "Data source",
+          "value": "{{source}}"
+        }
+      },
+      "faq": {
+        "title": "Frequently asked questions"
+      }
+    },
+    "types": {
+      "personality": {
+        "name": "Personality",
+        "description": "Understand your personality traits comprehensively"
+      },
+      "emotion": {
+        "name": "Emotion",
+        "description": "Evaluate your emotional management ability"
+      },
+      "relationship": {
+        "name": "Relationship",
+        "description": "Explore your interpersonal relationship patterns"
+      },
+      "career": {
+        "name": "Career",
+        "description": "Discover your career development direction"
+      },
+      "youth": {
+        "name": "Youth",
+        "description": "Support healthy growth of young people"
+      },
+      "fun": {
+        "name": "Fun",
+        "description": "Fun and engaging personality exploration"
+      }
+    }
+  },
+  "purchase": {
+    "tabs": {
+      "payment": "Payment",
+      "coin": "Gold Coin Payment"
+    },
+    "coin": {
+      "balance": "Your coins",
+      "recharge": "Recharge",
+      "illustration": {
+        "title": "illustrate:",
+        "text": "Use virtual currency equivalent to real money"
+      }
+    },
+    "card": {
+      "title": "Discover the real you",
+      "badge": "Advanced Report"
+    },
+    "confirm": "CONFIRM"
+  },
+  "http": {
+    "errors": {
+      "network": {
+        "unavailable": "Network connection unavailable",
+        "requestFailed": "Network request failed",
+        "timeout": "Request timeout"
+      },
+      "business": {
+        "failed": "Business processing failed",
+        "invalidResponse": "Invalid response data format",
+        "serverError": "Server error"
+      },
+      "auth": {
+        "expired": "Login has expired, please login again"
+      },
+      "unknown": "Unknown error"
+    }
+  },
+  "payment": {
+    "success": "Purchase successful",
+    "error": "Payment failed, please try again.",
+    "paying": "Processing payment, please wait...",
+    "return": "Return",
+    "paySuccess": "Payment successful, please return to view"
+  }
+}

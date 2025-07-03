@@ -1,0 +1,665 @@
+{
+  "common": {
+    "welcome": "欢迎来到{{name}}",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "loading": "加载中...",
+    "noMoreData": "没有更多数据了",
+    "selectDate": "选择日期",
+    "dataEditing": "资料编辑",
+    "settings": "去设置",
+    "time": {
+      "minutes": "分钟",
+      "hours": "小时"
+    },
+    "datePicker": {
+      "year": "年",
+      "month": "月",
+      "day": "日"
+    },
+    "avatar": {
+      "title": "选择头像",
+      "camera": "拍照",
+      "gallery": "从相册选择"
+    },
+    "allCategories": "所有分类",
+    "camera": {
+      "switchCamera": "切换摄像头",
+      "flash": {
+        "on": "闪光灯开启",
+        "off": "闪光灯关闭",
+        "auto": "闪光灯自动"
+      },
+      "capture": "拍照",
+      "retake": "重拍",
+      "confirm": "确认",
+      "cancel": "取消",
+      "permissionDenied": "需要相机权限",
+      "permissionMessage": "请在设置中允许访问相机",
+      "processing": "处理中...",
+      "guide": "请将头像置于圆圈内",
+      "tips": "轻触拍照，长按录像"
+    },
+    "gallery": {
+      "permissionDenied": "需要图库权限",
+      "permissionMessage": "请在设置中允许访问图库"
+    }
+  },
+  "profile": {
+    "edit": "编辑",
+    "changeName": "修改昵称",
+    "genderSelection": "性别选择",
+    "selectGender": "选择性别",
+    "birthday": "你的生日",
+    "selectBirthday": "选择生日",
+    "birthdayPlaceholder": "YYYY.MM.DD",
+    "testCard": {
+      "title": "我的测试题",
+      "completed": "已完成",
+      "notCompleted": "未完成"
+    },
+    "popularServices": {
+      "title": "热门服务",
+      "vip": {
+        "title": "VIP会员",
+        "expires": "到期时间"
+      },
+      "wallet": "我的钱包",
+      "favorites": "我的收藏"
+    },
+    "otherServices": {
+      "title": "其他服务",
+      "faq": "常见问题",
+      "settings": "设置"
+    }
+  },
+  "gender": {
+    "male": "男",
+    "female": "女",
+    "placeholder": "请选择性别"
+  },
+  "form": {
+    "email": {
+      "label": "邮箱",
+      "placeholder": "请输入邮箱地址"
+    },
+    "password": {
+      "label": "密码",
+      "placeholder": "请输入密码"
+    },
+    "confirmPassword": {
+      "label": "确认密码",
+      "placeholder": "请确认密码",
+      "required": "请确认密码",
+      "match": "两次输入的密码不一致"
+    },
+    "submit": {
+      "login": "登 录",
+      "register": "注 册"
+    },
+    "verify": {
+      "title": "输入验证码",
+      "subtitle": "请输入发送至<0>{{email}}</0>的验证码",
+      "error": "验证码不正确，请重新输入",
+      "success": "注册成功",
+      "successSubtitle": "立即登录",
+      "successButton": "前往登录",
+      "password": "密码重置成功"
+    },
+    "login": {
+      "tab": "登录",
+      "subtitle": "开启你的心灵之旅",
+      "forgotPassword": "忘记密码？",
+      "agreement": "同意 <0>{{agreement}}</0>",
+      "agreementRequired": "请同意登录协议",
+      "agreementLink": "登录协议",
+      "otherMethods": "其他登录方式"
+    },
+    "register": {
+      "tab": "注册",
+      "subtitle": "创建你的账号"
+    },
+    "forgot": {
+      "title": "找回密码",
+      "subtitle": "请输入您的邮箱接收验证码",
+      "button": "获取验证码"
+    },
+    "reset": {
+      "title": "设置新密码",
+      "subtitle": "请重新设置您的密码",
+      "newPassword": "新密码",
+      "confirmPassword": "确认密码",
+      "button": "完成"
+    }
+  },
+  "auth": {
+    "username": "用户名",
+    "password": "密码",
+    "email": "邮箱",
+    "forgotPassword": "忘记密码",
+    "loginSuccess": "登录成功",
+    "loginFailed": "登录失败",
+    "registerSuccess": "注册成功",
+    "registerFailed": "注册失败"
+  },
+  "error": {
+    "networkError": "网络错误",
+    "timeout": "请求超时",
+    "serverError": "服务器错误",
+    "unauthorized": "未授权访问"
+  },
+  "validation": {
+    "email": {
+      "invalid": "请输入正确的邮箱格式，如：test@gmail.com",
+      "required": "邮箱不能为空"
+    },
+    "password": {
+      "minLength": "密码至少需要{{count}}个字符",
+      "requireAll": "密码至少需要8个字符，且必须包含字母和数字"
+    }
+  },
+  "review": {
+    "title": "我的测评",
+    "tabs": {
+      "completed": "已完成({{count}})",
+      "incomplete": "未完成({{count}})"
+    },
+    "card": {
+      "details": "详情",
+      "generateReport": "生成报告",
+      "testAgain": "再测一次",
+      "progress": "进度",
+      "continue": "继续"
+    }
+  },
+  "favorites": {
+    "title": "我的收藏",
+    "card": {
+      "questionCount": "题目数量",
+      "timeTaken": "测试时长",
+      "deleteSuccess": "取消收藏成功",
+      "addSuccess": "收藏成功"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "tabs": {
+      "reviews": "测评相关",
+      "privacy": "数据隐私",
+      "account": "账号安全",
+      "payments": "支付相关",
+      "others": "其他",
+      "attachment": "依恋测试"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "account": "账号设置",
+    "customerService": "联系客服",
+    "userAgreement": "用户协议",
+    "privacyPolicy": "隐私政策",
+    "disclaimer": "免责声明",
+    "language": "语言切换",
+    "checkUpdate": "检查更新",
+    "clearCache": "清除缓存",
+    "logout": {
+      "button": "退出登录",
+      "title": "确定要退出登录吗？",
+      "description": "退出登录后将无法提交测试提案。",
+      "cancel": "取消",
+      "confirm": "确认"
+    },
+    "clearCacheSuccess": "清除缓存成功",
+    "clearCacheFailed": "清除缓存失败",
+    "updateAvailable": "有更新，正在更新...",
+    "noUpdate": "已是最新版本"
+  },
+  "privacy": {
+    "terms": {
+      "title": "条款",
+      "content1": "我们致力于保护您的隐私和个人信息。本隐私政策说明了我们在您使用我们的服务时如何收集、使用和保护您的数据。",
+      "content2": "我们只收集提供和改进服务所必需的信息。这可能包括基本的个人资料、使用数据以及您选择提供的任何其他信息。"
+    },
+    "changes": {
+      "title": "服务和条款变更",
+      "content1": "我们保留随时修改或更新隐私政策的权利。任何重大变更都将通过适当的渠道通知用户。",
+      "content2": "在此类修改后继续使用我们的服务，即表示您同意受更新后的隐私政策约束。"
+    }
+  },
+  "wallet": {
+    "success": "充值成功",
+    "cancelPay": "取消支付",
+    "title": "我的钱包",
+    "currentBalance": "当前余额",
+    "coinDetails": "金币明细",
+    "rechargeAmount": "充值金额",
+    "rechargeMethod": "充值方式",
+    "paymentMethods": {
+      "mastercard": "Mastercard",
+      "paypal": "PayPal"
+    },
+    "tags": {
+      "firstCharge": "首充",
+      "limitedTime": "限时"
+    },
+    "rechargeInstructions": "充值说明",
+    "instructions": {
+      "0": "充值永久有效",
+      "1": "充值比例：$1 = 1金币",
+      "2": "充值金额不可提现或找零",
+      "3": "充值金币仅限本APP内使用"
+    }
+  },
+  "coinDetail": {
+    "title": "金币明细"
+  },
+  "vip": {
+    "noSk": "开通失败，请稍后重试",
+    "success": "开通成功",
+    "quarterly": "{{n}}/季度",
+    "monthly": "{{n}}/月",
+    "yearly": "{{n}}/年",
+    "lifetime": "一次性付费",
+    "title": "会员",
+    "notActivated": "未激活",
+    "expires": "到期时间 ",
+    "subscriptions": {
+      "monthly": {
+        "title": "月度会员",
+        "price": "9.9",
+        "perMonth": "¥9.9/月"
+      },
+      "quarterly": {
+        "title": "季度会员",
+        "price": "24.9",
+        "perMonth": "¥9.5/月"
+      },
+      "annual": {
+        "title": "年度会员",
+        "price": "60.9",
+        "perMonth": "¥8.5/月"
+      },
+      "lifetime": {
+        "title": "终身会员",
+        "price": "200",
+        "perMonth": "一次性付费"
+      }
+    },
+    "agreement": {
+      "autoRenewal": "自动续费，每月¥{{price}}，可随时取消",
+      "oneTimePayment": "一次性付费，终身使用",
+      "prefix": "成为会员即表示同意",
+      "membershipAgreement": "会员服务协议",
+      "and": "和",
+      "subscriptionAgreement": "连续订阅会员服务协议"
+    },
+    "benefits": {
+      "title": "会员权益",
+      "items": {
+        "unlimitedTests": {
+          "title": "高级测评解锁",
+          "desc": "更全面的测评数据"
+        },
+        "exclusiveContent": {
+          "title": "AI伴侣服务",
+          "desc": "大模型精准识别痛点"
+        },
+        "prioritySupport": {
+          "title": "专业报告PDF导出",
+          "desc": "报告可分享"
+        },
+        "noAds": {
+          "title": "免费测试解锁",
+          "desc": "大量会员专属测试"
+        }
+      }
+    }
+  },
+  "home": {
+    "digitalAssistant": {
+      "greeting": "你好，我是AI数字人",
+      "question": "有什么我能帮你的吗？",
+      "askButton": "提问"
+    },
+    "search": {
+      "placeholder": "搜索测试题",
+      "history": "搜索历史",
+      "button": "搜索",
+      "noContent": "暂无内容",
+      "tryDifferentTerm": "换个关键词试试"
+    },
+    "recommend": {
+      "title": "今日推荐",
+      "free": "免费",
+      "test1": {
+        "title": "荣格八维度测试",
+        "subtitle": "专业评估"
+      },
+      "test2": {
+        "title": "性格密码解析",
+        "subtitle": "发现真实的你"
+      },
+      "test3": {
+        "title": "心理韧性评估",
+        "subtitle": "识别和疗愈创伤"
+      }
+    },
+    "popular": {
+      "title": "热门测试"
+    }
+  },
+  "chat": {
+    "hello": "你好，我是你的心理AI助手。有什么我能帮你的吗？",
+    "error": "抱歉，我没有理解你的意思。你能换个方式描述吗？",
+    "type_confirmation": "我理解你的需求了。请确认这是你想要的测试类型。",
+    "need_clarification": "为了更好地了解你的需求，我需要问你几个问题。",
+    "test_ready": "我已准备好{{name}}测试，共有{{count}}道题目。是否开始？",
+    "unknown_error": "抱歉，出现了未知错误。请稍后再试。",
+    "network_error": "网络连接出现问题，请检查网络后重试。",
+    "retry": "重试",
+    "input": {
+      "placeholder": "请输入您的回答",
+      "send": "确定"
+    },
+    "typing": "正在输入中",
+    "optional": "可选",
+    "your_answer": "您的回答"
+  },
+  "test": {
+    "previous": "上一题",
+    "progress": "问答进度",
+    "saving": "保存中...",
+    "next": "下一题",
+    "submit": "提交",
+    "testDetail": "测试详情",
+    "testReport": "测试报告",
+    "testAgain": "重新测试",
+    "advancedReport": "高级报告",
+    "total_questions": "共{{count}}道题目",
+    "estimated_time": "预计需要{{minutes}}分钟",
+    "start": "开始测试",
+    "continue": "继续测试",
+    "viewResult": "查看结果",
+    "result": {
+      "title": "发现真实的你",
+      "subtitle": "一个简短而有见地的评估，通过考察你获取能量、处理信息、做出决策和组织生活的方式来揭示你的核心MBTI类型。",
+      "advancedReport": "高级报告"
+    },
+    "exit": {
+      "title": "确定要退出测试吗？",
+      "description": "你可以保存当前的测试进度，下次继续作答。",
+      "confirmButton": "确认退出",
+      "saveButton": "保存进度",
+      "cancelButton": "取消"
+    },
+    "tags": {
+      "personalityAnalysis": "性格分析",
+      "psychologicalAssessment": "心理评估",
+      "selfAwareness": "自我认知"
+    },
+    "traits": {
+      "innovativeThinking": "创新思维",
+      "innovativeThinkingDesc": "你的创新思维能力",
+      "leadership": "领导力",
+      "leadershipDesc": "你在领导方面表现出色",
+      "teamBuilder": "团队建设者",
+      "teamBuilderDesc": "你是一个优秀的团队建设者"
+    },
+    "dimensions": {
+      "leadership": "领导力",
+      "rolePerception": "角色认知",
+      "values": "价值观",
+      "positiveness": "积极性",
+      "emotionalManagement": "情绪管理"
+    },
+    "radar": {
+      "logicalThinking": "逻辑思维",
+      "executionAbility": "执行能力",
+      "decisionMaking": "决策判断",
+      "emotionalManagement": "情绪管理",
+      "learningAdaptability": "学习适应力",
+      "teamwork": "团队协作",
+      "communication": "沟通表达",
+      "innovativeThinking": "创新思维"
+    },
+    "faqs": {
+      "scientific": {
+        "question": "测试是否具有科学依据？",
+        "answer": "我们的评估基于心理学研究和专家建议，具有一定的参考价值。"
+      },
+      "accuracy": {
+        "question": "测试结果准确吗？",
+        "answer": "测试结果仅供参考。真实的你比任何测试都更复杂和独特。"
+      },
+      "duration": {
+        "question": "完成测试需要多长时间？",
+        "answer": "大约需要8分钟。建议在安静的环境中完成，以获得更准确的结果。"
+      }
+    },
+    "badges": {
+      "creativeThinking": {
+        "title": "创新思维",
+        "description": "你在创新思维方面表现出色"
+      },
+      "adaptability": {
+        "title": "适应能力",
+        "description": "你在适应能力方面表现出色"
+      },
+      "leadership": {
+        "title": "领导力",
+        "description": "你在领导力方面表现出色"
+      },
+      "teamBuilder": {
+        "title": "团队建设",
+        "description": "你在团队建设方面表现出色"
+      },
+      "communicator": {
+        "title": "沟通大师",
+        "description": "你在沟通方面表现出色"
+      },
+      "learner": {
+        "title": "学习者",
+        "description": "你在学习方面表现出色"
+      }
+    },
+    "textProgress": {
+      "title": "心理分析总结",
+      "subtitle": "来自专业心理学家的分析和指导",
+      "items": {
+        "unique": "每个人都是独特的，你的性格特征组合造就了今天的你。",
+        "understanding": "了解你的优势和成长空间是个人发展的重要起点。",
+        "traits": "记住，性格特征没有好坏之分，关键是如何发挥你的优势。",
+        "reflection": "持续的自我反思和学习将帮助你在人生道路上走得更远。",
+        "potential": "相信自己，拥抱变化，你的潜力远超你的想象"
+      }
+    },
+    "growthPath": {
+      "selfAwareness": {
+        "title": "自我认知",
+        "description": "了解自己和独特的特质"
+      },
+      "skillDevelopment": {
+        "title": "技能发展",
+        "description": "构建和提升核心能力"
+      },
+      "practicalApplication": {
+        "title": "实践应用",
+        "description": "在实际情况中应用技能"
+      },
+      "optimization": {
+        "title": "持续优化",
+        "description": "改进和提升能力"
+      },
+      "influence": {
+        "title": "影响他人",
+        "description": "对周围的人产生积极影响"
+      }
+    },
+    "visualDashboard": {
+      "title": "综合能力",
+      "subtitle": "综合指标",
+      "info": {
+        "currentValue": "当前值",
+        "level": "等级",
+        "completionRate": "完成率"
+      }
+    },
+    "share": {
+      "message": "来看看这个很棒的性格测试！",
+      "title": "性格测试"
+    },
+    "card": {
+      "title": "性格之路：MBTI快照",
+      "description": "一个简短而有见地的评估，通过考察你获取能量、处理信息、做出决策和组织生活的方式来揭示你的核心MBTI类型。"
+    },
+    "button": {
+      "buyTest": "购买测试"
+    },
+    "components": {
+      "avatar": {
+        "title": "你的专属形象？",
+        "description": "代表你性格的动物形象"
+      },
+      "feature": {
+        "title": "你是什么性格类型？",
+        "subtitle": "获取你的个性标签和详细分析"
+      },
+      "personalAdvice": {
+        "title": "个性化建议",
+        "items": {
+          "personal": "个人成长建议",
+          "career": "职业发展方向",
+          "relationship": "人际关系指导"
+        }
+      },
+      "spiritual": {
+        "title": "心灵启发",
+        "inspirations": {
+          "leadership": "真正的领导者不是告诉别人该做什么，而是激发他们想要去做。你拥有这种天赋，擅长激励和指导他人。",
+          "empathy": "你的同理心和情商让你能够深入理解他人，使你在个人和职业关系中都成为天然的引导者。",
+          "potential": "你有一种难得的能力，能看到他人的潜力并帮助他们实现它。这使你不仅是一个领导者，更是一个能创造持久积极影响的导师。"
+        }
+      },
+      "trait": {
+        "title": "你的特征标签是什么？"
+      },
+      "radar": {
+        "title": "多维度分析",
+        "subtitle": "全面评估你在各个维度的表现和发展潜力"
+      },
+      "badge": {
+        "title": "你的特质徽章",
+        "subtitle": "恭喜你获得以下成就徽章"
+      },
+      "growthPath": {
+        "title": "成长路径",
+        "subtitle": "你的心理成长阶段",
+        "currentStage": "当前阶段：{{stage}}"
+      },
+      "visualDashboard": {
+        "title": "综合能力",
+        "subtitle": "综合指标",
+        "level": "等级",
+        "info": {
+          "currentValue": "当前值",
+          "level": "等级",
+          "completionRate": "完成率"
+        }
+      },
+      "testInfo": {
+        "title": "测试信息",
+        "questions": {
+          "label": "题目数量",
+          "value": "{{count}}题"
+        },
+        "time": {
+          "label": "预计时间",
+          "value": "{{time}}"
+        },
+        "source": {
+          "label": "数据来源",
+          "value": "{{source}}"
+        }
+      },
+      "faq": {
+        "title": "常见问题"
+      }
+    },
+    "types": {
+      "personality": {
+        "name": "人格类",
+        "description": "全面了解你的性格特征"
+      },
+      "emotion": {
+        "name": "情绪类",
+        "description": "评估你的情绪管理能力"
+      },
+      "relationship": {
+        "name": "关系类",
+        "description": "探索你的人际关系模式"
+      },
+      "career": {
+        "name": "职业类",
+        "description": "发现你的职业发展方向"
+      },
+      "youth": {
+        "name": "青少年类",
+        "description": "助力青少年健康成长"
+      },
+      "fun": {
+        "name": "趣味类",
+        "description": "轻松有趣的性格探索"
+      }
+    }
+  },
+  "purchase": {
+    "tabs": {
+      "payment": "支付",
+      "coin": "金币支付"
+    },
+    "coin": {
+      "balance": "我的金币",
+      "recharge": "充值",
+      "illustration": {
+        "title": "说明：",
+        "text": "使用等值于真实货币的虚拟货币"
+      }
+    },
+    "card": {
+      "title": "探索真实的自己",
+      "badge": "高级报告"
+    },
+    "confirm": "确认"
+  },
+  "http": {
+    "errors": {
+      "network": {
+        "unavailable": "网络连接不可用",
+        "requestFailed": "网络请求失败",
+        "timeout": "请求超时"
+      },
+      "business": {
+        "failed": "业务处理失败",
+        "invalidResponse": "无效的响应数据格式",
+        "serverError": "服务器错误"
+      },
+      "auth": {
+        "expired": "登录已过期，请重新登录"
+      },
+      "unknown": "未知错误"
+    }
+  },
+  "payment": {
+    "success": "购买成功",
+    "error": "购买失败，请稍后再试。",
+    "paying": "支付中，请稍候...",
+    "return": "返回",
+    "paySuccess": "支付成功，请返回查看"
+  }
+}
