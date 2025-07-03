@@ -642,6 +642,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     ...createFontStyle("500"),
     color: "#72818F",
+    textAlign: "center",
   },
   benefitDesc: {
     fontSize: 10,
