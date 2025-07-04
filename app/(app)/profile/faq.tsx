@@ -1,17 +1,15 @@
-
 import { createFontStyle } from "@/utils/typography";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  LayoutChangeEvent,
-  LayoutRectangle,
-  ScrollView,
+  Image, LayoutChangeEvent,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  useWindowDimensions
 } from "react-native";
 import Animated, {
   Extrapolation,
@@ -21,6 +19,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 
 type TabKey =
   | "reviews"
@@ -128,72 +127,54 @@ function AccordionItem({ item }: { item: FaqItem }) {
   );
 }
 
+const TabContent = ({ items }: { items: FaqItem[] }) => {
+  return (
+    <View style={styles.content}>
+      {items.map((item) => (
+        <AccordionItem key={item.id} item={item} />
+      ))}
+    </View>
+  );
+};
+
 export default function Faq() {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
-  const scrollViewRef = useRef<ScrollView>(null);
-  const contentScrollViewRef = useRef<ScrollView>(null);
-  const [activeTab, setActiveTab] = useState<TabKey>("reviews");
-  const [tabLayouts, setTabLayouts] = useState<Record<TabKey, LayoutRectangle>>(
-    {} as Record<TabKey, LayoutRectangle>
-  );
-  const [scrollViewLayout, setScrollViewLayout] =
-    useState<LayoutRectangle | null>(null);
+  const layout = useWindowDimensions();
 
-  const tabs = [
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
     { key: "reviews", title: t("faq.tabs.reviews") },
     { key: "privacy", title: t("faq.tabs.privacy") },
     { key: "account", title: t("faq.tabs.account") },
     { key: "payments", title: t("faq.tabs.payments") },
     { key: "others", title: t("faq.tabs.others") },
     { key: "attachment", title: t("faq.tabs.attachment") },
-  ] as const;
+  ]);
 
-  const handleTabPress = useCallback(
-    (key: TabKey) => {
-      setActiveTab(key);
-      // 内容区域直接滚动到顶部
-      contentScrollViewRef.current?.scrollTo({ y: 0, animated: false });
+  const renderScene = SceneMap({
+    reviews: () => <TabContent items={mockFaqData.reviews} />,
+    privacy: () => <TabContent items={mockFaqData.privacy} />,
+    account: () => <TabContent items={mockFaqData.account} />,
+    payments: () => <TabContent items={mockFaqData.payments} />,
+    others: () => <TabContent items={mockFaqData.others} />,
+    attachment: () => <TabContent items={mockFaqData.attachment} />,
+  });
 
-      // 如果没有布局信息，不执行滚动
-      if (!scrollViewLayout || !tabLayouts[key]) return;
-
-      // 计算目标滚动位置
-      const tabLayout = tabLayouts[key];
-      const scrollViewWidth = scrollViewLayout.width;
-      const targetX = tabLayout.x + tabLayout.width / 2 - scrollViewWidth / 2;
-
-      // 确保不会滚动出边界
-      const maxScrollX =
-        Object.values(tabLayouts).reduce(
-          (max, layout) => Math.max(max, layout.x + layout.width),
-          0
-        ) - scrollViewWidth;
-      const finalX = Math.max(0, Math.min(targetX, maxScrollX));
-
-      // 执行滚动
-      scrollViewRef.current?.scrollTo({
-        x: finalX,
-        animated: true,
-      });
-    },
-    [scrollViewLayout, tabLayouts]
+  const renderTabBar = (props: any) => (
+    <TabBar
+      {...props}
+      scrollEnabled
+      style={styles.tabBar}
+      tabStyle={styles.tab}
+      indicatorStyle={styles.indicator}
+      labelStyle={styles.label}
+      activeColor="#0C0A09"
+      inactiveColor="#72818F"
+      pressColor="transparent"
+      pressOpacity={0.7}
+    />
   );
-
-  const handleTabLayout = useCallback(
-    (key: TabKey, event: LayoutChangeEvent) => {
-      const layout = event.nativeEvent.layout;
-      setTabLayouts((prev) => ({
-        ...prev,
-        [key]: layout,
-      }));
-    },
-    []
-  );
-
-  const handleScrollViewLayout = useCallback((event: LayoutChangeEvent) => {
-    setScrollViewLayout(event.nativeEvent.layout);
-  }, []);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -203,47 +184,21 @@ export default function Faq() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("faq.title")}</Text>
       </TouchableOpacity>
-      <ScrollView
-        ref={scrollViewRef}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.tabsContainer}
-        contentContainerStyle={styles.tabsContent}
-        onLayout={handleScrollViewLayout}
-      >
-        {tabs.map((tab) => (
-          <TouchableOpacity
-            key={tab.key}
-            style={styles.tabButton}
-            onPress={() => handleTabPress(tab.key)}
-            onLayout={(event) => handleTabLayout(tab.key, event)}
-            activeOpacity={0.5}
-          >
-            <Text
-              style={[
-                styles.tabText,
-                activeTab === tab.key && styles.activeTabText,
-              ]}
-            >
-              {tab.title}
-            </Text>
-            {activeTab === tab.key && <View style={styles.activeIndicator} />}
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-      <ScrollView
-        ref={contentScrollViewRef}
-        style={styles.content}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainer}
-      >
-        {mockFaqData[activeTab].map((item) => (
-          <AccordionItem key={item.id} item={item} />
-        ))}
-      </ScrollView>
+
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        renderTabBar={renderTabBar}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+        style={styles.tabView}
+      />
     </View>
   );
 }
@@ -255,74 +210,63 @@ const styles = StyleSheet.create({
   },
   backContainer: {
     position: "relative",
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   backText: {
     position: "absolute",
     inset: 0,
     textAlign: "center",
-    paddingVertical: (10),
+    paddingVertical: 10,
     fontSize: 18,
     color: "#0C0A09",
     ...createFontStyle("700"),
   },
-  tabsContainer: {
-    flexGrow: 0,
-    height: (44),
+  tabView: {
+    flex: 1,
   },
-  tabsContent: {
-    paddingHorizontal: (16),
-    gap: (16),
-    alignItems: "center",
+  tabBar: {
+    height: 44,
+    backgroundColor: "#F5F7FA",
+    shadowOpacity: 0,
+    marginHorizontal: 16,
   },
-  tabButton: {
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
+  tab: {
+    width: "auto",
+    padding: 0,
+    marginHorizontal: 8,
   },
-  tabText: {
+  indicator: {
+    bottom: 10,
+    backgroundColor: "#19DBF2",
+  },
+  label: {
+    textTransform: "none",
     fontSize: 16,
     lineHeight: 20,
-    color: "#72818F",
-    ...createFontStyle("400"),
-  },
-  activeTabText: {
-    color: "#0C0A09",
     ...createFontStyle("600"),
-  },
-  activeIndicator: {
-    position: "absolute",
-    bottom: 10,
-    width: (24),
-    height: (2),
-    backgroundColor: "#19DBF2",
-    borderRadius: (26),
   },
   content: {
     flex: 1,
-    marginHorizontal: (16),
-    marginTop: (12),
-  },
-  contentContainer: {
-    paddingVertical: (12),
+    paddingVertical: 20,
+    paddingHorizontal: 16,
   },
   accordionItem: {
     backgroundColor: "#FFFFFF",
-    borderRadius: (12),
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: "#F3F4F6",
-    marginBottom: (10),
+    marginBottom: 10,
     overflow: "hidden",
   },
   accordionHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: (12),
-    gap: (12),
+    padding: 12,
+    gap: 12,
   },
   accordionTitle: {
     flex: 1,
@@ -330,15 +274,15 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     ...createFontStyle("600"),
     color: "#0C0A09",
-    marginRight: (12),
+    marginRight: 12,
   },
   accordionContent: {
     overflow: "hidden",
   },
   accordionContentInner: {
-    padding: (12),
+    padding: 12,
     paddingTop: 0,
-    paddingRight: (36),
+    paddingRight: 36,
   },
   accordionText: {
     fontSize: 12,

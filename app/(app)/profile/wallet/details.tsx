@@ -2,7 +2,6 @@ import { icons } from "@/assets/static";
 import { TabItem, Tabs } from "@/components/ui/Tabs";
 import { createFontStyle } from "@/utils/typography";
 
-import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -364,7 +363,10 @@ export default function Details() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("coinDetail.title")}</Text>
       </TouchableOpacity>
 
@@ -394,32 +396,32 @@ const styles = StyleSheet.create({
   },
   backContainer: {
     position: "relative",
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   backText: {
     position: "absolute",
     inset: 0,
     textAlign: "center",
-    paddingVertical: (10),
+    paddingVertical: 10,
     fontSize: 18,
     color: "#0C0A09",
     ...createFontStyle("700"),
   },
   content: {
     flex: 1,
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     paddingTop: 12,
   },
   tabsContainer: {
     width: "100%",
-    height: (44),
+    height: 44,
     marginBottom: 12,
   },
   tab: {
-    height: (40),
+    height: 40,
   },
   tabText: {
     fontSize: 12,
@@ -428,7 +430,7 @@ const styles = StyleSheet.create({
   listContent: {
     paddingTop: 10,
     paddingBottom: 20,
-    minHeight: Dimensions.get("window").height - (200),
+    minHeight: Dimensions.get("window").height - 200,
   },
   list: {
     flex: 1,

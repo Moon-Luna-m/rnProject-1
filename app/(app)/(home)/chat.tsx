@@ -5,13 +5,13 @@ import TestCard from "@/components/chat/TestCard";
 import DigitalAssistant from "@/components/home/DigitalAssistant";
 import { chatServices } from "@/services/chatServices";
 import { formatDate } from "@/utils/common";
-import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
+  Image,
   Keyboard,
   Platform,
   ScrollView,
@@ -64,7 +64,10 @@ const Background = React.memo(({ insets }: { insets: { top: number } }) => (
       }}
       style={[styles.backButton, { top: insets.top }]}
     >
-      <Ionicons name="arrow-back-outline" size={24} color="black" />
+      <Image
+        source={require("@/assets/images/common/icon-back.png")}
+        style={{ width: 24, height: 24 }}
+      />
     </TouchableOpacity>
     <LinearGradient
       colors={["#75E8FF", "#75E8FF", "#F5F7FA"]}

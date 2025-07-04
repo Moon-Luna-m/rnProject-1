@@ -66,7 +66,7 @@ export const Tabs: React.FC<TabsProps> = ({
     const diff = targetIndex.value - activeIndex.value;
     const progress = Math.abs(diff);
     const direction = Math.sign(diff);
-    
+
     if (progress <= 0.51 && direction !== 0) {
       isAnimating.value = false;
       runOnJS(setDelayedActiveKey)(activeKey);
@@ -89,7 +89,7 @@ export const Tabs: React.FC<TabsProps> = ({
   // 计算指示器的动画样式
   const indicatorStyle = useAnimatedStyle(() => {
     if (tabWidth === 0) return {};
-    
+
     return {
       transform: [
         {
@@ -100,7 +100,7 @@ export const Tabs: React.FC<TabsProps> = ({
           ),
         },
       ],
-      width: tabWidth - (gap * 2),
+      width: tabWidth - gap * 2,
     };
   });
 
@@ -113,10 +113,7 @@ export const Tabs: React.FC<TabsProps> = ({
   );
 
   return (
-    <View 
-      style={[styles.container, containerStyle]}
-      onLayout={handleLayout}
-    >
+    <View style={[styles.container, containerStyle]} onLayout={handleLayout}>
       {containerWidth > 0 && (
         <>
           <Animated.View style={[styles.indicator, indicatorStyle]} />
@@ -158,19 +155,19 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     backgroundColor: "#FFFFFF",
-    borderRadius: (50),
+    borderRadius: 50,
     paddingHorizontal: 2,
-    height: (44),
+    height: 44,
     position: "relative",
     overflow: "hidden",
   },
   indicator: {
     position: "absolute",
-    height: (40),
-    top: (2),
+    height: 40,
+    top: 2,
     left: 0,
     backgroundColor: "#0C0A09",
-    borderRadius: (20),
+    borderRadius: 20,
     zIndex: 0,
   },
   tab: {

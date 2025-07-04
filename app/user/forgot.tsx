@@ -3,20 +3,19 @@ import { userService } from "@/services/userService";
 import { encrypt, setLocalCache } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import { getValidationSchemas } from "@/utils/validation";
-import { Ionicons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { router } from "expo-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import {
-  ImageBackground,
+  Image, ImageBackground,
   Keyboard,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { Button } from "react-native-paper";
 import { z } from "zod";
@@ -86,7 +85,10 @@ export default function ForgotScreen() {
             router.back();
           }}
         >
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
+          <Image
+            source={require("@/assets/images/common/icon-back.png")}
+            style={{ width: 24, height: 24 }}
+          />
         </TouchableOpacity>
         <View style={styles.mainContainer}>
           <View style={styles.titleContainer}>
@@ -142,20 +144,20 @@ const styles = StyleSheet.create({
     left: 0,
   },
   backContainer: {
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   content: {
     flex: 1,
   },
   mainContainer: {
-    paddingTop: (48),
-    paddingHorizontal: (24),
+    paddingTop: 48,
+    paddingHorizontal: 24,
   },
   titleContainer: {
-    gap: (16),
+    gap: 16,
   },
   title: {
     fontSize: 28,
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   inputGroup: {
-    marginTop: (12),
+    marginTop: 12,
   },
   inputLabel: {
     fontSize: 16,
@@ -179,8 +181,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: (12),
-    paddingVertical: (10),
+    paddingHorizontal: 12,
+    paddingVertical: 10,
   },
   input: {
     flex: 1,
@@ -189,12 +191,12 @@ const styles = StyleSheet.create({
     color: "#0C0A09",
   },
   submitButton: {
-    marginTop: (32),
-    borderRadius: (78),
+    marginTop: 32,
+    borderRadius: 78,
     backgroundColor: "#19DBF2",
   },
   submitButtonContent: {
-    height: (48),
+    height: 48,
   },
   submitButtonText: {
     fontSize: 16,

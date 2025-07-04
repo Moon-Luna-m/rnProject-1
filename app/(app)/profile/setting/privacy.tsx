@@ -1,14 +1,12 @@
-
 import { createFontStyle } from "@/utils/typography";
-import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import {
-  ScrollView,
+  Image, ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -23,7 +21,10 @@ export default function Privacy() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("settings.privacyPolicy")}</Text>
       </TouchableOpacity>
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -51,16 +52,16 @@ const styles = StyleSheet.create({
   },
   backContainer: {
     position: "relative",
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   backText: {
     position: "absolute",
     inset: 0,
     textAlign: "center",
-    paddingVertical: (10),  
+    paddingVertical: 10,
     fontSize: 18,
     color: "#0C0A09",
     ...createFontStyle("700"),
@@ -69,11 +70,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   termsContainer: {
-    paddingHorizontal: (16),
-    paddingVertical: (20),
+    paddingHorizontal: 16,
+    paddingVertical: 20,
   },
   termSection: {
-    marginBottom: (24),
+    marginBottom: 24,
   },
   termTitle: {
     fontSize: 16,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.08,
     color: "#101010",
     ...createFontStyle("700"),
-    marginBottom: (12),
+    marginBottom: 12,
   },
   termText: {
     fontSize: 14,
@@ -89,6 +90,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.07,
     color: "#72818F",
     ...createFontStyle("600"),
-    marginBottom: (30),
+    marginBottom: 30,
   },
 });

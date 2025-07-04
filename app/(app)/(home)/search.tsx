@@ -6,7 +6,6 @@ import {
   testService,
 } from "@/services/testServices";
 import { createFontStyle } from "@/utils/typography";
-import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
@@ -271,7 +270,10 @@ export default function Search() {
               router.back();
             }}
           >
-            <Ionicons name="arrow-back-outline" size={24} color="black" />
+            <Image
+              source={require("@/assets/images/common/icon-back.png")}
+              style={{ width: 24, height: 24 }}
+            />
           </TouchableOpacity>
           <View style={styles.searchContainer}>
             <SearchBar

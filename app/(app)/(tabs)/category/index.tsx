@@ -18,15 +18,9 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Animated, {
-  Extrapolation,
-  interpolate,
-  useAnimatedStyle,
-  useSharedValue,
-} from "react-native-reanimated";
+import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Route, TabBar, TabView } from "react-native-tab-view";
 import { useCategoryModal } from "../../../../components/providers/CategoryModalProvider";
@@ -163,11 +157,13 @@ const renderScene = ({ route }: { route: TabRoute }) => (
 export default function Category() {
   const [index, setIndex] = useState(0);
   const [routes, setRoutes] = useState<TabRoute[]>([]);
-  const progress = useSharedValue(0);
-  const { showModal, hideModal, setOnSelect } = useCategoryModal();
+  const [isLoading, setIsLoading] = useState(false);
+  const { showModal, setOnSelect } = useCategoryModal();
   const insets = useSafeAreaInsets();
 
   const getTestTypeList = async () => {
+    setIsLoading(true);
+    setIndex(0);
     const res = await testService.getTestTypeList({
       page: 1,
       size: 20,
@@ -180,27 +176,18 @@ export default function Category() {
         }))
       );
     }
+    setIsLoading(false);
   };
 
   useFocusEffect(
     useCallback(() => {
       getTestTypeList();
-      return () => {
-        // 重置分类页的状态
-        setIndex(0);
-        progress.value = 0;
-      };
     }, [])
   );
   const arrowStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        rotate: `${interpolate(
-          progress.value,
-          [0, 1],
-          [180, 0],
-          Extrapolation.CLAMP
-        )}deg`,
+        rotate: `${180}deg`,
       },
     ],
   }));
@@ -284,22 +271,25 @@ export default function Category() {
   );
 
   return (
-    <GestureHandlerRootView style={styles.container}>
+    <View style={styles.container}>
       <View style={[styles.container, { paddingTop: insets.top }]}>
         <View style={styles.tabViewContainer}>
-          {routes.length > 0 && (
-            <TabView
-              navigationState={{ index, routes }}
-              renderScene={renderScene}
-              renderTabBar={renderTabBar}
-              onIndexChange={setIndex}
-              initialLayout={initialLayout}
-              swipeEnabled={false}
-            />
+          {isLoading ? (
+            <ActivityIndicator color="#0C0A09" style={{ marginTop: "20%" }} />
+          ) : (
+            routes.length > 0 && (
+              <TabView
+                navigationState={{ index, routes }}
+                renderScene={renderScene}
+                renderTabBar={renderTabBar}
+                onIndexChange={setIndex}
+                initialLayout={initialLayout}
+              />
+            )
           )}
         </View>
       </View>
-    </GestureHandlerRootView>
+    </View>
   );
 }
 
@@ -310,7 +300,6 @@ const styles = StyleSheet.create({
   },
   tabViewContainer: {
     flex: 1,
-    paddingHorizontal: 16,
   },
   scene: {
     flex: 1,
@@ -322,6 +311,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     zIndex: 1,
+    paddingHorizontal: 16,
   },
   tabBar: {
     elevation: 0,
@@ -440,7 +430,7 @@ const styles = StyleSheet.create({
   },
   resultList: {
     // paddingTop: (12),
-    // paddingHorizontal: (8),
+    paddingHorizontal: 16,
   },
   row: {
     justifyContent: "space-between",

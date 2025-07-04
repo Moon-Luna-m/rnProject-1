@@ -8,18 +8,17 @@ import {
   setLocalCache,
 } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import {
-  ImageBackground,
+  Image, ImageBackground,
   Keyboard,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -236,7 +235,10 @@ export default function VerifyScreen() {
             router.back();
           }}
         >
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
+          <Image
+            source={require("@/assets/images/common/icon-back.png")}
+            style={{ width: 24, height: 24 }}
+          />
         </TouchableOpacity>
         <View style={styles.mainContainer}>
           <View style={styles.titleContainer}>

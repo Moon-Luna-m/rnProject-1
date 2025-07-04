@@ -6,13 +6,12 @@ import {
 import { showNotification } from "@/store/slices/notificationSlice";
 import { formatCurrency, formatDuration } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  ActivityIndicator,
-  NativeScrollEvent,
+  ActivityIndicator, Image, NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
   RefreshControl,
@@ -20,7 +19,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
@@ -218,7 +217,10 @@ export default function Favorites() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("favorites.title")}</Text>
       </TouchableOpacity>
       <View style={styles.content}>

@@ -7,11 +7,12 @@ import {
   formatCurrency,
   formatDate,
   formatDecimal,
+  generateBlurhash,
   imgProxy,
 } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
-import { Ionicons } from "@expo/vector-icons";
 import { useStripe } from "@stripe/stripe-react-native";
+import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
@@ -213,7 +214,10 @@ export default function Vip() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("vip.title")}</Text>
       </TouchableOpacity>
 
@@ -227,9 +231,11 @@ export default function Vip() {
           >
             <View style={styles.cardContent}>
               <View style={styles.userInfo}>
-                <Image
+                <ExpoImage
                   source={{ uri: imgProxy(userInfo?.avatar) }}
                   style={styles.avatar}
+                  placeholder={{ blurhash: generateBlurhash() }}
+                  contentFit="cover"
                 />
                 <Text style={styles.username}>{userInfo?.username}</Text>
               </View>

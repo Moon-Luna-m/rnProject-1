@@ -4,20 +4,13 @@ import { logout } from "@/store/slices/userSlice";
 import { clearCache, getCacheSize } from "@/utils/common";
 import i18n, { LANGUAGES } from "@/utils/i18n";
 import { createFontStyle } from "@/utils/typography";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import * as Updates from "expo-updates";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Button } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
@@ -41,7 +34,10 @@ const SettingItem = ({ title, hint, onPress }: SettingItemProps) => {
       </View>
       <View style={styles.settingRight}>
         {hint && <Text style={styles.settingHint}>{hint}</Text>}
-        <AntDesign name="right" size={12} color="#333333" />
+        <Image
+          source={require("@/assets/images/profile/icon-arrow-right.png")}
+          style={{ width: 24, height: 24 }}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -195,7 +191,10 @@ export default function Setting() {
           onPress={() => router.back()}
           activeOpacity={0.5}
         >
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
+          <Image
+            source={require("@/assets/images/common/icon-back.png")}
+            style={{ width: 24, height: 24 }}
+          />
           <Text style={styles.backText}>{t("settings.title")}</Text>
         </TouchableOpacity>
 
@@ -262,7 +261,7 @@ const styles = StyleSheet.create({
   gradient: {
     position: "absolute",
     width: "100%",
-    height: (375),
+    height: 375,
     left: 0,
     top: 0,
   },
@@ -271,16 +270,16 @@ const styles = StyleSheet.create({
   },
   backContainer: {
     position: "relative",
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   backText: {
     position: "absolute",
     inset: 0,
     textAlign: "center",
-    paddingVertical: (10),    
+    paddingVertical: 10,
     fontSize: 18,
     color: "#0C0A09",
     ...createFontStyle("700"),
@@ -288,19 +287,19 @@ const styles = StyleSheet.create({
   logoContainer: {
     width: "100%",
     alignItems: "center",
-    marginTop: (40),
+    marginTop: 40,
   },
   logoWrapper: {
     alignItems: "center",
-    gap: (8),
+    gap: 8,
   },
   logoImage: {
-    width: (80),
-    height: (80),
+    width: 80,
+    height: 80,
   },
   logoTextContainer: {
     alignItems: "center",
-    gap: (4),
+    gap: 4,
   },
   logoText: {
     fontSize: 16,
@@ -314,18 +313,18 @@ const styles = StyleSheet.create({
     color: "#72818F",
   },
   settingsContainer: {
-    paddingHorizontal: (16),
-    marginTop: (20),
-    gap: (20),
+    paddingHorizontal: 16,
+    marginTop: 20,
+    gap: 20,
   },
   settingsCard: {
     backgroundColor: "#FFFFFF",
-    borderRadius: (20),
-    padding: (16),
-    gap: (16),
+    borderRadius: 20,
+    padding: 16,
+    gap: 16,
   },
   settingItem: {
-    height: (24),
+    height: 24,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -333,7 +332,7 @@ const styles = StyleSheet.create({
   settingLeft: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (12),
+    gap: 12,
   },
   settingText: {
     fontSize: 14,
@@ -344,7 +343,7 @@ const styles = StyleSheet.create({
   settingRight: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (4),
+    gap: 4,
   },
   settingHint: {
     fontSize: 12,
@@ -353,10 +352,10 @@ const styles = StyleSheet.create({
     ...createFontStyle("500"),
   },
   logoutButton: {
-    borderRadius: (78),
+    borderRadius: 78,
   },
   logoutButtonContent: {
-    height: (52),
+    height: 52,
   },
   logoutText: {
     fontSize: 16,

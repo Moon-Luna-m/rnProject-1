@@ -1,14 +1,9 @@
 import ErrorMessage from "@/components/ErrorMessage";
 import InputField from "@/components/InputField";
 import { userService } from "@/services/userService";
-import {
-  clearLocalCache,
-  decrypt,
-  getLocalCache,
-} from "@/utils/common";
+import { clearLocalCache, decrypt, getLocalCache } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import { getValidationSchemas } from "@/utils/validation";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
@@ -45,7 +40,10 @@ export default function VerifySuccessScreen() {
             router.back();
           }}
         >
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
+          <Image
+            source={require("@/assets/images/common/icon-back.png")}
+            style={{ width: 24, height: 24 }}
+          />
         </TouchableOpacity>
         <View style={styles.mainContainer}>
           {params !== "reset" ? (
@@ -232,43 +230,43 @@ const styles = StyleSheet.create({
     left: 0,
   },
   backContainer: {
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   content: {
     flex: 1,
   },
   mainContainer: {
-    paddingTop: (24),
-    paddingHorizontal: (24),
+    paddingTop: 24,
+    paddingHorizontal: 24,
     alignItems: "center",
   },
   title: {
-    marginTop: (20),
+    marginTop: 20,
     fontSize: 24,
     ...createFontStyle("600"),
     color: "#282828",
   },
   subtitle: {
-    marginTop: (8),
+    marginTop: 8,
     fontSize: 12,
     ...createFontStyle("400"),
     color: "#B7B7B7",
   },
   successImage: {
-    width: (100),
-    height: (100),
+    width: 100,
+    height: 100,
   },
   submitButton: {
-    marginTop: (24),
-    borderRadius: (78),
+    marginTop: 24,
+    borderRadius: 78,
     backgroundColor: "#19DBF2",
     width: "100%",
   },
   submitButtonContent: {
-    height: (48),
+    height: 48,
   },
   submitButtonText: {
     fontSize: 16,
@@ -280,7 +278,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   resetTitleContainer: {
-    gap: (16),
+    gap: 16,
   },
   resetTitle: {
     fontSize: 28,
@@ -288,14 +286,14 @@ const styles = StyleSheet.create({
     color: "#0C0A09",
   },
   resetSubtitle: {
-    marginBottom: (48),
+    marginBottom: 48,
     fontSize: 14,
     ...createFontStyle("500"),
     color: "#72818F",
     lineHeight: 20,
   },
   inputGroup: {
-    gap: (8),
+    gap: 8,
   },
   inputLabel: {
     fontSize: 16,
@@ -305,9 +303,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: (12),
-    paddingVertical: (10),
-    borderRadius: (40),
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderRadius: 40,
     borderWidth: 1,
     borderColor: "transparent",
     backgroundColor: "#FFFFFF",
@@ -319,12 +317,12 @@ const styles = StyleSheet.create({
     color: "#0C0A09",
   },
   resetSubmitButton: {
-    marginTop: (32),
-    borderRadius: (78),
+    marginTop: 32,
+    borderRadius: 78,
     backgroundColor: "#19DBF2",
   },
   resetSubmitButtonContent: {
-    height: (48),
+    height: 48,
   },
   resetSubmitButtonText: {
     fontSize: 16,

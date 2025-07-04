@@ -1,8 +1,8 @@
 import { createFontStyle } from "@/utils/typography";
-import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -22,7 +22,10 @@ export default function LoginProtocol() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("settings.privacyPolicy")}</Text>
       </TouchableOpacity>
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>

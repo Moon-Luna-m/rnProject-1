@@ -1,14 +1,9 @@
 import { testService } from "@/services/testServices";
 import { userService } from "@/services/userService";
 import { selectUserInfo, setUserInfo } from "@/store/slices/userSlice";
-import {
-  formatDate,
-  generateBlurhash,
-  imgProxy,
-} from "@/utils/common";
+import { formatDate, generateBlurhash, imgProxy } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import { Ionicons } from "@expo/vector-icons";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -81,7 +76,10 @@ const ServiceItemComponent = memo(
         <View style={styles.serviceExtra}>
           {service.extra}
           <View style={styles.serviceArrow}>
-            <AntDesign name="arrowright" size={16} color="#333333" />
+            <Image
+              source={require("@/assets/images/profile/icon-arrow-right.png")}
+              style={{ width: 24, height: 24 }}
+            />
           </View>
         </View>
       </View>
@@ -133,7 +131,7 @@ export default function Profile() {
       setUnCompletedCount(res2.data.count);
     }
   };
-  
+
   const getUserInfo = async () => {
     const res = await userService.getUserInfo();
     if (res.code === 200) {
@@ -328,7 +326,10 @@ export default function Profile() {
 
               {/* 右侧箭头 */}
               <View style={styles.arrowContainer}>
-                <AntDesign name="arrowright" size={16} color="#0C0A09" />
+                <Image
+                  source={require("@/assets/images/profile/arrow-right.png")}
+                  style={{ width: 16, height: 16 }}
+                />
               </View>
             </View>
           </TouchableHighlight>
@@ -360,7 +361,7 @@ const styles = StyleSheet.create({
   gradient: {
     position: "absolute",
     width: "100%",
-    height: (375),
+    height: 375,
     left: 0,
     top: 0,
   },
@@ -368,54 +369,54 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingHorizontal: (16),
-    paddingTop: (16),
+    paddingHorizontal: 16,
+    paddingTop: 16,
   },
   editProfileButton: {
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "flex-end",
     backgroundColor: "#FFFFFF",
-    borderRadius: (45),
-    paddingVertical: (6),
-    paddingHorizontal: (12),
-    gap: (2),
+    borderRadius: 45,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    gap: 2,
   },
   editButtonContent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (2),
+    gap: 2,
   },
   editIcon: {
-    width: (16),
-    height: (16),
+    width: 16,
+    height: 16,
     alignItems: "center",
     justifyContent: "center",
   },
   editText: {
-    fontSize: (14),
-    lineHeight: (17.64),
+    fontSize: 14,
+    lineHeight: 17.64,
     ...createFontStyle("500"),
     color: "#0C0A09",
   },
   editIconImage: {
-    width: (16),
-    height: (16),
+    width: 16,
+    height: 16,
   },
   avatarContainer: {
     alignItems: "center",
-    marginTop: (8),
+    marginTop: 8,
   },
   avatarWrapper: {
-    width: (72),
-    height: (72),
-    borderRadius: (36),
+    width: 72,
+    height: 72,
+    borderRadius: 36,
     position: "relative",
   },
   avatar: {
     width: "100%",
     height: "100%",
-    borderRadius: (36),
+    borderRadius: 36,
     borderWidth: 2.25,
     borderColor: "#FFFFFF",
   },
@@ -423,56 +424,56 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 0,
     bottom: 0,
-    width: (20),
-    height: (20),
+    width: 20,
+    height: 20,
   },
   editButtonImage: {
-    width: (20),
-    height: (20),
+    width: 20,
+    height: 20,
   },
   editButtonGradient: {
     width: "100%",
     height: "100%",
-    borderRadius: (10),
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   userInfo: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: (6),
-    gap: (4),
+    marginTop: 6,
+    gap: 4,
   },
   username: {
-    fontSize: (20),
+    fontSize: 20,
     ...createFontStyle("600"),
     color: "#0C0A09",
-    maxWidth: (200),
+    maxWidth: 200,
   } as TextStyle,
   genderTag: {
-    width: (20),
-    height: (20),
-    borderRadius: (10),
+    width: 20,
+    height: 20,
+    borderRadius: 10,
     backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },
   // 测试题卡片样式
   testCard: {
-    marginTop: (20),
+    marginTop: 20,
     backgroundColor: "#FFFFFF",
-    borderRadius: (20),
-    padding: (12),
+    borderRadius: 20,
+    padding: 12,
   },
   testCardContent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (12),
+    gap: 12,
   },
   testIconContainer: {
-    width: (52),
-    height: (52),
-    borderRadius: (29.71),
+    width: 52,
+    height: 52,
+    borderRadius: 29.71,
     overflow: "hidden",
   },
   testIcon: {
@@ -482,16 +483,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   testIconImage: {
-    width: (40.86),
-    height: (40.86),
+    width: 40.86,
+    height: 40.86,
   },
   testInfo: {
     flex: 1,
-    gap: (8),
+    gap: 8,
   },
   testTitle: {
-    fontSize: (16),
-    lineHeight: (20.16),
+    fontSize: 16,
+    lineHeight: 20.16,
     ...createFontStyle("600"),
     color: "#0C0A09",
   } as TextStyle,
@@ -499,56 +500,56 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: (12),
+    gap: 12,
   },
   statItem: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (4),
+    gap: 4,
   },
   statLabel: {
-    fontSize: (12),
-    lineHeight: (15.12),
+    fontSize: 12,
+    lineHeight: 15.12,
     ...createFontStyle("500"),
     color: "#72818F",
   } as TextStyle,
   statValue: {
-    fontSize: (14),
-    lineHeight: (17.64),
+    fontSize: 14,
+    lineHeight: 17.64,
     ...createFontStyle("600"),
     color: "#0C0A09",
   } as TextStyle,
   divider: {
-    width: (1),
-    height: (16),
+    width: 1,
+    height: 16,
     backgroundColor: "#F5F7FA",
   },
   arrowContainer: {
-    width: (24),
-    height: (24),
-    borderRadius: (12),
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     backgroundColor: "#F5F7FA",
     alignItems: "center",
     justifyContent: "center",
   },
   serviceSection: {
-    marginTop: (20),
+    marginTop: 20,
   },
   sectionTitle: {
-    fontSize: (14),
-    lineHeight: (17.64),
+    fontSize: 14,
+    lineHeight: 17.64,
     ...createFontStyle("700"),
     color: "#0C0A09",
-    marginBottom: (12),
+    marginBottom: 12,
   },
   servicesCard: {
     backgroundColor: "#FFFFFF",
-    borderRadius: (20),
+    borderRadius: 20,
   },
   serviceItem: {
-    height: (48),
+    height: 48,
     justifyContent: "center",
-    paddingHorizontal: (12),
+    paddingHorizontal: 12,
   },
   serviceItemBorder: {
     // borderBottomWidth: 1,
@@ -558,30 +559,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: (6),
+    gap: 6,
   },
   serviceMain: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (12),
+    gap: 12,
     flex: 1,
-    marginRight: (8),
+    marginRight: 8,
   },
   serviceIconContainer: {
-    width: (40),
-    height: (40),
-    borderRadius: (48.33),
+    width: 40,
+    height: 40,
+    borderRadius: 48.33,
     backgroundColor: "#F5F7FA",
     alignItems: "center",
     justifyContent: "center",
   },
   serviceIcon: {
-    width: (24),
-    height: (24),
+    width: 24,
+    height: 24,
   },
   serviceTitle: {
-    fontSize: (14),
-    lineHeight: (17.64),
+    fontSize: 14,
+    lineHeight: 17.64,
     ...createFontStyle("500"),
     color: "#0C0A09",
     flex: 1,
@@ -589,27 +590,27 @@ const styles = StyleSheet.create({
   serviceExtra: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (4),
+    gap: 4,
   },
   serviceArrow: {
-    width: (24),
-    height: (24),
+    width: 24,
+    height: 24,
     alignItems: "center",
     justifyContent: "center",
   },
   vipExtra: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (4),
+    gap: 4,
   },
   vipDate: {
-    borderRadius: (23),
-    paddingVertical: (4),
-    paddingHorizontal: (8),
+    borderRadius: 23,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
   vipDateText: {
-    fontSize: (10),
-    lineHeight: (12.6),
+    fontSize: 10,
+    lineHeight: 12.6,
     ...createFontStyle("500"),
     color: "#FFFFFF",
   } as TextStyle,

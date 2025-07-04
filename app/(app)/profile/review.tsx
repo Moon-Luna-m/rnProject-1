@@ -5,7 +5,7 @@ import {
 } from "@/services/testServices";
 import { formatDate, formatDateTime, setLocalCache } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
-import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -232,7 +232,10 @@ export default function Review() {
             router.back();
           }}
         >
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
+          <Image
+            source={require("@/assets/images/common/icon-back.png")}
+            style={{ width: 24, height: 24 }}
+          />
           <Text style={styles.backText}>{t("review.title")}</Text>
         </TouchableOpacity>
         <Tabs

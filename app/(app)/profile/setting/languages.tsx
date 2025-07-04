@@ -2,7 +2,6 @@ import CustomCheckbox from "@/components/CustomCheckbox";
 
 import i18n, { LANGUAGES, setLanguage } from "@/utils/i18n";
 import { createFontStyle } from "@/utils/typography";
-import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import {
@@ -28,7 +27,10 @@ export default function Languages() {
           router.back();
         }}
       >
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
+        <Image
+          source={require("@/assets/images/common/icon-back.png")}
+          style={{ width: 24, height: 24 }}
+        />
         <Text style={styles.backText}>{t("settings.language")}</Text>
       </TouchableOpacity>
       <View style={styles.content}>
@@ -82,18 +84,18 @@ const styles = StyleSheet.create({
   },
   backContainer: {
     position: "relative",
-    height: (44),
+    height: 44,
     width: "100%",
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
     justifyContent: "center",
   },
   backText: {
     position: "absolute",
     inset: 0,
     textAlign: "center",
-    paddingVertical: (10),
+    paddingVertical: 10,
     fontSize: 18,
-    color: "#0C0A09", 
+    color: "#0C0A09",
     ...createFontStyle("700"),
   },
   content: {
@@ -101,23 +103,23 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   langItemWrapper: {
-    paddingHorizontal: (16),
+    paddingHorizontal: 16,
   },
   langItem: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: (4),
-    paddingBottom: (12),
+    paddingVertical: 4,
+    paddingBottom: 12,
   },
   langInfo: {
     flexDirection: "row",
     alignItems: "center",
-    gap: (8),
+    gap: 8,
   },
   flagIcon: {
-    width: (32),
-    height: (24),
+    width: 32,
+    height: 24,
   },
   langText: {
     fontSize: 14,
@@ -127,6 +129,6 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: "#F0EFEF",
-    marginBottom: (4),
+    marginBottom: 4,
   },
 });
