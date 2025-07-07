@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     ...createFontStyle("500"),
-    color: "#A9AEB8",
+    color: "#72818F",
   },
   activeText: {
     color: "#FFFFFF",

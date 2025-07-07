@@ -39,23 +39,10 @@ interface ServiceSectionProps {
 
 // 缓存服务项组件
 const ServiceItemComponent = memo(
-  ({
-    service,
-    index,
-    itemsLength,
-    onPress,
-  }: {
-    service: ServiceItem;
-    index: number;
-    itemsLength: number;
-    onPress: () => void;
-  }) => (
+  ({ service, onPress }: { service: ServiceItem; onPress: () => void }) => (
     <TouchableHighlight
       key={service.id}
-      style={[
-        styles.serviceItem,
-        index < itemsLength - 1 && styles.serviceItemBorder,
-      ]}
+      style={[styles.serviceItem]}
       onPress={onPress}
       underlayColor="#F5F7FA"
     >
@@ -96,9 +83,7 @@ const ServiceSection = memo(({ title, items }: ServiceSectionProps) => (
         <ServiceItemComponent
           key={service.id}
           service={service}
-          index={index}
           onPress={service.onPress}
-          itemsLength={items.length}
         />
       ))}
     </View>
@@ -136,6 +121,8 @@ export default function Profile() {
     const res = await userService.getUserInfo();
     if (res.code === 200) {
       dispatch(setUserInfo(res.data));
+      console.log(res.data);
+      
     }
   };
 
@@ -543,17 +530,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   servicesCard: {
+    padding: 12,
+    gap: 16,
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
   },
   serviceItem: {
-    height: 48,
+    height: 40,
     justifyContent: "center",
-    paddingHorizontal: 12,
-  },
-  serviceItemBorder: {
-    // borderBottomWidth: 1,
-    // borderBottomColor: "#F5F7FA",
+    borderRadius: 20,
   },
   serviceContent: {
     flexDirection: "row",

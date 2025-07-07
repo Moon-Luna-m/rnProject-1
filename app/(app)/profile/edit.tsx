@@ -393,7 +393,7 @@ export default function Edit() {
         <BottomSheet
           visible={showAvatarModal}
           onClose={() => setShowAvatarModal(false)}
-          containerStyle={{ height: 220 }}
+          containerStyle={{ height: 288 }}
           initialY={500}
         >
           <View style={styles.sheetContainer}>
@@ -406,25 +406,41 @@ export default function Edit() {
 
               <View style={styles.avatarOptionsContainer}>
                 <TouchableOpacity
-                  activeOpacity={0.6}
+                  activeOpacity={0.8}
                   style={styles.avatarOption}
                   onPress={handleOpenCamera}
                 >
-                  <Ionicons name="camera-outline" size={24} color="#0C0A09" />
                   <Text style={styles.avatarOptionText}>
                     {t("common.avatar.camera")}
                   </Text>
+                  <Image
+                    source={require("@/assets/images/profile/icon-arrow-right.png")}
+                    style={{
+                      width: 24,
+                      height: 24,
+                      position: "absolute",
+                      right: 12,
+                    }}
+                  />
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  activeOpacity={0.6}
+                  activeOpacity={0.8}
                   style={styles.avatarOption}
                   onPress={handleOpenGallery}
                 >
-                  <Ionicons name="images-outline" size={24} color="#0C0A09" />
                   <Text style={styles.avatarOptionText}>
                     {t("common.avatar.gallery")}
                   </Text>
+                  <Image
+                    source={require("@/assets/images/profile/icon-arrow-right.png")}
+                    style={{
+                      width: 24,
+                      height: 24,
+                      position: "absolute",
+                      right: 12,
+                    }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -802,17 +818,14 @@ const styles = StyleSheet.create({
     color: "#A9AEB8",
   },
   avatarOptionsContainer: {
-    flexDirection: "row",
-    gap: 24,
+    gap: 12,
     width: "100%",
   },
   avatarOption: {
-    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 9,
-    paddingVertical: 8,
+    paddingVertical: 15,
     paddingHorizontal: 20,
     backgroundColor: "#F5F7FA",
     borderRadius: 40,

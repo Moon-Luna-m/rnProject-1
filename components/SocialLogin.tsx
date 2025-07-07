@@ -129,17 +129,17 @@ export default function SocialLogin() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: (32),
-    gap: (32),
+    marginTop: 32,
+    gap: 32,
   },
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: (10),
+    gap: 10,
   },
   divider: {
-    width: (24),
+    width: 24,
     height: 1,
     backgroundColor: "#A9AEB8",
   },
@@ -152,13 +152,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: (24),
-    paddingHorizontal: (24),
+    gap: 24,
+    paddingHorizontal: 24,
   },
   socialButton: {
-    width: (52),
-    height: (52),
-    borderRadius: (75.64),
+    width: 52,
+    height: 52,
+    borderRadius: 75.64,
     backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   socialIcon: {
-    width: (28.36),
-    height: (28.36),
+    width: 28,
+    height: 28,
   },
 });

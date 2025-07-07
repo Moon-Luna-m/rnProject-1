@@ -1,8 +1,7 @@
 import { createFontStyle } from "@/utils/typography";
-import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import DeleteIcon from "./DeleteIcon";
 
 interface SearchHistoryProps {
@@ -27,7 +26,13 @@ export default function SearchHistory({
       <View style={styles.header}>
         <Text style={styles.title}>{t("home.search.history")}</Text>
         <TouchableOpacity onPress={onClear}>
-          <Ionicons name="trash-outline" size={24} color="#0C0A09" />
+          <Image
+            source={require("@/assets/images/common/del.png")}
+            style={{
+              width: 20,
+              height: 20,
+            }}
+          />
         </TouchableOpacity>
       </View>
       <View style={styles.historyList}>

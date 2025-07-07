@@ -59,7 +59,7 @@ export default function TestDetailsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
+      // scrollY.value = event.contentOffset.y;
     },
   });
 
@@ -240,9 +240,13 @@ export default function TestDetailsPage() {
             headerColorAnimatedStyle={headerColorAnimatedStyle}
             isCollect={testData?.is_favorited}
             title={t("test.testDetail")}
+            style={{
+              position: "relative",
+            }}
           />
           <Animated.ScrollView
-            style={[styles.scrollView, { marginTop: insets.top + 44 }]}
+            // style={[styles.scrollView, { marginTop: insets.top + 44 }]}
+            style={[styles.scrollView, { marginTop: -16 }]}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={[
               styles.content,
@@ -339,7 +343,7 @@ export default function TestDetailsPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F5F7FA",
   },
   loadingContainer: {
     flex: 1,
@@ -349,7 +353,7 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingTop: Platform.OS !== "web" ? 120 : 180,
+    // paddingTop: Platform.OS !== "web" ? 120 : 180,
   },
   content: {
     gap: 20,
@@ -376,7 +380,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: "#19DBF2", 
+    borderColor: "#19DBF2",
   },
   shareButtonText: {
     color: "#19DBF2",

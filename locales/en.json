@@ -23,9 +23,9 @@
       "day": "Day"
     },
     "avatar": {
-      "title": "Select Avatar",
+      "title": "Avatar Settings",
       "camera": "Take Photo",
-      "gallery": "Choose from Gallery"
+      "gallery": "Mobile photo album"
     },
     "allCategories": "All Categories",
     "camera": {
@@ -293,11 +293,16 @@
     "title": "Coin Details"
   },
   "vip": {
+    "monthlyMemberShip": "Monthly Membership",
+    "quarterlyMemberShip": "Quarterly Membership",
+    "yearlyMemberShip": "Annual Membership",
+    "lifetimeMemberShip": "Lifetime Membership",
+    "memberCenter": "Member Center",
     "success": "Purchase successful",
     "quarterly": "{{n}}/quarter",
     "monthly": "{{n}}/month",
     "yearly": "{{n}}/year",
-    "lifetime": "One-time payment",
+    "lifetime": "One-time",
     "title": "VIP",
     "balance": "Balance",
     "recharge": "Recharge",

@@ -24,9 +24,9 @@
       "day": "日"
     },
     "avatar": {
-      "title": "选择头像",
+      "title": "头像设置",
       "camera": "拍照",
-      "gallery": "从相册选择"
+      "gallery": "相册选择"
     },
     "allCategories": "所有分类",
     "camera": {
@@ -260,12 +260,17 @@
     "title": "金币明细"
   },
   "vip": {
+    "monthlyMemberShip": "月度会员",
+    "quarterlyMemberShip": "季度会员",
+    "yearlyMemberShip": "年度会员",
+    "lifetimeMemberShip": "终身会员",
+    "memberCenter": "会员中心",
     "noSk": "开通失败，请稍后重试",
     "success": "开通成功",
     "quarterly": "{{n}}/季度",
     "monthly": "{{n}}/月",
     "yearly": "{{n}}/年",
-    "lifetime": "一次性付费",
+    "lifetime": "一次性",
     "title": "会员",
     "notActivated": "未激活",
     "expires": "到期时间 ",

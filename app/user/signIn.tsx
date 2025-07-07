@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: "#A9AEB8",
+    color: "#72818F",
     ...createFontStyle("500"),
   },
   loginTypeSwitch: {

@@ -47,6 +47,7 @@ export interface UserInfo {
   is_vip_active: boolean;
   vip_expire_at: string;
   vip: number;
+  subscription_type: string;
 }
 
 // 谷歌登录返回信息
@@ -175,7 +176,9 @@ export const userService = {
     return httpClient.get<GetAvatarListResponse>(path.GET_AVATAR_LIST, params);
   },
 
-  async uploadAvatar(file: FormData): Promise<ApiResponse<UploadAvatarResponse>> {
+  async uploadAvatar(
+    file: FormData
+  ): Promise<ApiResponse<UploadAvatarResponse>> {
     return httpClient.post<UploadAvatarResponse>(path.UPLOAD_AVATAR, file);
   },
 };

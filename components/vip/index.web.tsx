@@ -43,42 +43,51 @@ export default function Vip() {
   const dispatch = useDispatch();
   const [paymentLoading, setPaymentLoading] = useState(false);
 
-  const vipInfo = useMemo<
-    {
+  const vipInfo = useMemo<{
+    [key: string]: {
       bg: readonly [ColorValue, ColorValue, ...ColorValue[]];
       icon: any;
       color: ColorValue;
-    }[]
-  >(
-    () => [
-      {
+      tipsIcon?: any;
+      tips?: string;
+    };
+  }>(() => {
+    return {
+      "": {
         icon: require("@/assets/images/vip/0.png"),
         bg: ["#EEEFF8", "#9EA6D0"],
-        color: "#72818F",
+        color: "#515C66",
       },
-      {
+      monthly: {
         icon: require("@/assets/images/vip/1.png"),
         bg: ["#FCFFC7", "#FF7B00"],
         color: "#FF7B00",
+        tipsIcon: require("@/assets/images/vip/monthly.png"),
+        tips: t("vip.monthlyMemberShip"),
       },
-      {
+      quarterly: {
         icon: require("@/assets/images/vip/2.png"),
         bg: ["#FDDAE9", "#FF506A"],
         color: "#FF506A",
+        tipsIcon: require("@/assets/images/vip/quarterly.png"),
+        tips: t("vip.quarterlyMemberShip"),
       },
-      {
+      yearly: {
         icon: require("@/assets/images/vip/3.png"),
         bg: ["#FFFCAB", "#5E00FF"],
         color: "#5E00FF",
+        tipsIcon: require("@/assets/images/vip/yearly.png"),
+        tips: t("vip.yearlyMemberShip"),
       },
-      {
+      lifetime: {
         icon: require("@/assets/images/vip/4.png"),
         bg: ["#A1F2FF", "#F4FF60", "#FF60E7"],
         color: "#FF60E7",
+        tipsIcon: require("@/assets/images/vip/lifetime.png"),
+        tips: t("vip.lifetimeMemberShip"),
       },
-    ],
-    []
-  );
+    };
+  }, []);
 
   useEffect(() => {
     const getPlans = async () => {
@@ -107,7 +116,7 @@ export default function Vip() {
     }
     return {
       gradient: ["#FFFFFF", "#FFFFFF"] as readonly [ColorValue, ColorValue],
-      borderColor: "#F3F4F6",
+      borderColor: "transparent",
       borderWidth: 2,
       priceColor: "#0C0A09",
     };
@@ -174,7 +183,7 @@ export default function Vip() {
           source={require("@/assets/images/common/icon-back.png")}
           style={{ width: 24, height: 24 }}
         />
-        <Text style={styles.backText}>{t("vip.title")}</Text>
+        <Text style={styles.backText}>{t("vip.memberCenter")}</Text>
       </TouchableOpacity>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -193,7 +202,30 @@ export default function Vip() {
                   placeholder={{ blurhash: generateBlurhash() }}
                   contentFit="cover"
                 />
-                <Text style={styles.username}>{userInfo?.username}</Text>
+                <View style={styles.userInfoContent}>
+                  <Text style={styles.username}>{userInfo?.username}</Text>
+                  {userInfo?.is_vip_active ? (
+                    <View style={styles.tipsContainer}>
+                      <Image
+                        source={
+                          vipInfo[userInfo?.subscription_type || ""].tipsIcon
+                        }
+                        style={styles.tipsIcon}
+                      />
+                      <Text
+                        style={[
+                          styles.tips,
+                          {
+                            color:
+                              vipInfo[userInfo?.subscription_type || ""].color,
+                          },
+                        ]}
+                      >
+                        {vipInfo[userInfo?.subscription_type || ""].tips}
+                      </Text>
+                    </View>
+                  ) : null}
+                </View>
               </View>
               <Text
                 style={[
@@ -335,9 +367,19 @@ export default function Vip() {
         ) : null}
         <View style={styles.benefitsContainer}>
           <View style={styles.benefitsHeader}>
-            <View style={styles.benefitsLine} />
+            <LinearGradient
+              colors={["rgba(12, 10, 9, 0.00)", "#0C0A09"]}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.benefitsLine}
+            />
             <Text style={styles.benefitsTitle}>{t("vip.benefits.title")}</Text>
-            <View style={styles.benefitsLine} />
+            <LinearGradient
+              colors={["rgba(12, 10, 9, 0.00)", "#0C0A09"]}
+              start={{ x: 1, y: 1 }}
+              end={{ x: 0, y: 1 }}
+              style={styles.benefitsLine}
+            />
           </View>
           <View style={styles.benefitsList}>
             <View style={styles.benefitRow}>
@@ -515,12 +557,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   subscriptionTitle: {
-    height: 40,
+    minHeight: 36,
     fontSize: 14,
     ...createFontStyle("600"),
     textAlign: "center",
+    lineHeight: 18,
   },
   priceContainer: {
+    height: 30,
     flexDirection: "row",
     alignItems: "flex-end",
     gap: 2,
@@ -537,7 +581,7 @@ const styles = StyleSheet.create({
   perMonth: {
     fontSize: 12,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
   },
   agreementContainer: {
     paddingBottom: 24,
@@ -553,8 +597,8 @@ const styles = StyleSheet.create({
   autoRenewal: {
     fontSize: 14,
     ...createFontStyle("400"),
-    color: "#72818F",
-    lineHeight: 14,
+    color: "#515C66",
+    lineHeight: 18,
   },
   agreementRow: {
     flexDirection: "row",
@@ -579,6 +623,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     ...createFontStyle("400"),
     color: "#19DBF2",
+    textDecorationLine: "underline",
   },
   submitButton: {
     marginBottom: 24,
@@ -609,8 +654,6 @@ const styles = StyleSheet.create({
   benefitsLine: {
     width: 40,
     height: 1,
-    backgroundColor: "#19DBF2",
-    opacity: 0.5,
   },
   benefitsTitle: {
     fontSize: 18,
@@ -647,14 +690,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 18,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
     textAlign: "center",
   },
   benefitDesc: {
     fontSize: 10,
     lineHeight: 13,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
   },
   footer: {
     position: "fixed",
@@ -665,5 +708,25 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 24,
     backgroundColor: "#FFFFFF",
+  },
+  userInfoContent: {
+    gap: 4,
+  },
+  tipsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 2,
+    paddingLeft: 4,
+    paddingRight: 6,
+    borderRadius: 16,
+    backgroundColor: "rgba(255, 255, 255, 0.50)",
+  },
+  tipsIcon: {
+    width: 14,
+    height: 14,
+  },
+  tips: {
+    fontSize: 10,
+    ...createFontStyle("500"),
   },
 });

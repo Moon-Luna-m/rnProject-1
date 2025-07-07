@@ -312,6 +312,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     zIndex: 1,
     paddingHorizontal: 16,
+    marginBottom: 12,
   },
   tabBar: {
     elevation: 0,

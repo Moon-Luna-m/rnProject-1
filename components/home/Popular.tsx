@@ -83,7 +83,7 @@ export default function Popular({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 8,
   },
   header: {
     flexDirection: "row",

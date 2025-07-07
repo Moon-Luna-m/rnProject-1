@@ -15,6 +15,7 @@ interface UserInfo {
   is_vip_active: boolean;
   vip_expire_at: string | null;
   vip: number;
+  subscription_type: string;
 }
 
 interface UserState {

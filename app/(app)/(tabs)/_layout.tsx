@@ -26,8 +26,6 @@ export default function AppLayout() {
             borderTopColor: "#F3F4F6",
             borderTopWidth: 1,
             marginBottom: insets.bottom,
-            elevation: 0,
-            shadowOpacity: 0,
           },
           tabBarButton: (props) => <CustomTab {...props} />,
           tabBarItemStyle: {

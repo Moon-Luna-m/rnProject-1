@@ -6,7 +6,7 @@ export const mockDataFn = (t: TFunction) => {
   return {
     header: {
       bg: require("@/assets/images/test/bg-1.png"),
-      color: ["#8257E5", "#271A45"] as any,
+      color: ["#FFA7D4", "#F5F7FA"] as any,
     },
     testInfo: {
       questionCount: 60,

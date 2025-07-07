@@ -1,4 +1,3 @@
-
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -36,7 +35,12 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
     >
       {!visible || !message ? null : (
         <>
-          <MaterialIcons name="error-outline" size={16} color="#EB5735" />
+          <MaterialIcons
+            name="error-outline"
+            size={16}
+            color="#EB5735"
+            style={styles.icon}
+          />
           <Text style={styles.text}>{message}</Text>
         </>
       )}
@@ -47,14 +51,17 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center",
-    minHeight: (40),
+    minHeight: 45,
+    paddingVertical: 8,
     overflow: "hidden",
+  },
+  icon: {
+    marginTop: 1,
   },
   text: {
     color: "#EB5735",
     fontSize: 14,
-    marginLeft: (4),
+    marginLeft: 4,
     fontFamily: "Outfit",
   },
 });
