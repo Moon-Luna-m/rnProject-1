@@ -379,6 +379,12 @@
     "your_answer": "Your answer"
   },
   "test": {
+    "answerTips": {
+      "tips1": "Please slide to select the level that best describes you",
+      "tips2": "Drag the options below to rank (most important to least important)",
+      "tips3": "Please allocate 100% to the following options (the total must be 100%)",
+      "tips4": "Click the area below to indicate the strength of your preference"
+    },
     "previous": "Previous",
     "progress": "Question answering progress",
     "saving": "Saving...",

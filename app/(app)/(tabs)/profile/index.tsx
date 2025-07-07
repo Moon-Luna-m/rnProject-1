@@ -121,8 +121,6 @@ export default function Profile() {
     const res = await userService.getUserInfo();
     if (res.code === 200) {
       dispatch(setUserInfo(res.data));
-      console.log(res.data);
-      
     }
   };
 

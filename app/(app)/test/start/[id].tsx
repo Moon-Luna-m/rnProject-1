@@ -15,7 +15,8 @@ import { Option, Question, testService } from "@/services/testServices";
 import { getLocalCache, imgProxy, padZero } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import { Ionicons } from "@expo/vector-icons";
-import { useLocalSearchParams, usePathname, useRouter } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -134,7 +135,6 @@ const mapOptionsToImageText2Format = (
 
 export default function StartTest() {
   const { t } = useTranslation();
-  const pathname = usePathname();
   const router = useRouter();
   const params = useLocalSearchParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -239,19 +239,19 @@ export default function StartTest() {
           return router.replace("/");
         }
         if (res2.code === 200) {
-          setQuestions(res2.data.questions as Question[]);
-          if (res3) {
-            setAnswers(
-              convertSubmissionToAnswers(
-                {
-                  user_test_id: res1.data.user_test_id,
-                  answers: res3.data.answers,
-                },
-                res2.data.questions as Question[]
-              )
-            );
-          }
-          // setQuestions(mockQuestions);
+          // setQuestions(res2.data.questions as Question[]);
+          // if (res3) {
+          //   setAnswers(
+          //     convertSubmissionToAnswers(
+          //       {
+          //         user_test_id: res1.data.user_test_id,
+          //         answers: res3.data.answers,
+          //       },
+          //       res2.data.questions as Question[]
+          //     )
+          //   );
+          // }
+          setQuestions(mockQuestions);
           // TODO: 如果有已保存的进度，转换格式并设置
         }
         setIsLoading(false);
@@ -346,8 +346,11 @@ export default function StartTest() {
     return (
       <>
         <View style={styles.testTitleContainer}>
+          <Text style={styles.progressText}>{t("test.progress")}</Text>
           <View style={styles.testTitleTextContainer}>
-            <Text style={[styles.testTitleText, { color: "#0C0A09" }]}>
+            <Text
+              style={[styles.testTitleText, { color: "#0C0A09", fontSize: 20 }]}
+            >
               {padZero(currentQuestion + 1)}
             </Text>
             <Text style={styles.testTitleText}>/</Text>
@@ -356,7 +359,7 @@ export default function StartTest() {
             </Text>
           </View>
         </View>
-        <Text style={styles.progressText}>{t("test.progress")}</Text>
+        {renderProgressBar()}
       </>
     );
   };
@@ -435,21 +438,34 @@ export default function StartTest() {
           showsVerticalScrollIndicator={false}
         >
           {renderProgressTitle()}
-          <PercentageSlider
-            question={currentQuestionData.content}
-            description=""
-            options={mapOptionsToPercentageFormat(currentQuestionData.options)}
-            values={Object.fromEntries(
-              currentAnswer.map((id, index) => [
-                currentQuestionData.options[index].id,
-                id,
-              ])
-            )}
-            onValuesChange={(values) => {
-              const optionIds = Object.values(values).map((v) => Math.round(v));
-              updateAnswer(7, questionId, optionIds, currentQuestionData.id);
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <PercentageSlider
+                question={currentQuestionData.content}
+                description={t("test.answerTips.tips3")}
+                options={mapOptionsToPercentageFormat(
+                  currentQuestionData.options
+                )}
+                values={Object.fromEntries(
+                  currentAnswer.map((id, index) => [
+                    currentQuestionData.options[index].id,
+                    id,
+                  ])
+                )}
+                onValuesChange={(values) => {
+                  const optionIds = Object.values(values).map((v) =>
+                    Math.round(v)
+                  );
+                  updateAnswer(
+                    7,
+                    questionId,
+                    optionIds,
+                    currentQuestionData.id
+                  );
+                }}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </ScrollView>
       );
@@ -683,19 +699,17 @@ export default function StartTest() {
   );
 
   const renderProgressBar = () => (
-    <View style={styles.progressBarContainer}>
-      <View style={styles.progressBarWrapper}>
-        {Array.from({ length: questions.length }).map((_, index) => (
-          <View
-            key={index}
-            style={[
-              styles.progressBarItem,
-              index <= currentQuestion
-                ? styles.progressBarItemActive
-                : styles.progressBarItemInactive,
-            ]}
-          />
-        ))}
+    <View style={{ paddingHorizontal: 16, marginTop: 4, marginBottom: 20 }}>
+      <View style={styles.progressContainer}>
+        <View
+          style={[
+            styles.progressBar,
+            {
+              width: `${((currentQuestion + 1) * 100) / questions.length}%`,
+              backgroundColor: "#19DBF2",
+            },
+          ]}
+        />
       </View>
     </View>
   );
@@ -858,12 +872,16 @@ export default function StartTest() {
   return (
     <View style={styles.container}>
       <NotificationToast />
+      <LinearGradient
+        colors={["#92F4FF", "#fff"]}
+        style={{ position: "absolute", inset: 0 }}
+      />
       {questions.length ? (
         <>
           <View style={[styles.header, { marginTop: insets.top }]}>
             <TouchableOpacity activeOpacity={0.8} onPress={handleExit}>
               <Image
-                source={require("@/assets/images/test/close.png")}
+                source={require("@/assets/images/common/icon-back.png")}
                 style={{ width: 24, height: 24 }}
               />
             </TouchableOpacity>
@@ -873,12 +891,8 @@ export default function StartTest() {
               </Text>
             </View>
           </View>
-          <View style={[styles.container, { backgroundColor: "#F5F7FA" }]}>
-            <View style={styles.container}>
-              <View style={styles.scrollViewContainer}>
-                <View style={{ flex: 1 }}>{renderQuestion()}</View>
-              </View>
-            </View>
+          <View style={[styles.container]}>
+            <View style={styles.container}>{renderQuestion()}</View>
             {renderBottomBar()}
           </View>
         </>
@@ -914,27 +928,24 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     height: 44,
-    paddingHorizontal: 16,
     alignItems: "center",
-    gap: 12,
+    paddingHorizontal: 16,
+    gap: 8,
   },
   scrollViewContainer: {
     flex: 1,
   },
   scrollViewTitle: {
-    textAlign: "center",
     fontSize: 16,
-    ...createFontStyle("500"),
+    ...createFontStyle("700"),
     color: "#0C0A09",
     textTransform: "capitalize",
   },
   progressText: {
-    fontSize: 14,
-    color: "#19DBF2",
-    ...createFontStyle("500"),
+    fontSize: 12,
+    color: "#515C66",
+    ...createFontStyle("400"),
     textAlign: "center",
-    marginBottom: 20,
-    marginTop: 8,
   },
   scrollView: {
     flex: 1,
@@ -942,18 +953,20 @@ const styles = StyleSheet.create({
   testTitleContainer: {
     marginTop: 20,
     width: "100%",
+    height: 25,
+    paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
-  testTitleTextContainer: { 
+  testTitleTextContainer: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-end",
     gap: 8,
   },
   testTitleText: {
-    color: "#A9AEB8",
-    fontSize: 18,
+    color: "#515C66",
+    fontSize: 14,
     ...createFontStyle("700"),
   },
   iconContainer: {
@@ -961,23 +974,22 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
   },
-  progressBarContainer: {
-    marginBottom: 32,
-    paddingHorizontal: 24,
+  progressContainer: {
+    height: 12,
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    overflow: "hidden",
   },
-  progressBarWrapper: {
-    flexDirection: "row",
-    gap: 8,
+  progressBar: {
+    height: "100%",
+    borderRadius: 20,
   },
-  progressBarItem: {
-    flex: 1,
-    height: 6,
-  },
-  progressBarItemActive: {
-    backgroundColor: "#19DBF2",
-  },
-  progressBarItemInactive: {
-    backgroundColor: "rgba(25, 219, 242, 0.23)",
+  answerContainer: {
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    boxShadow: "0px 2px 8px 0px rgba(18, 99, 107, 0.12)",
   },
   bottomSpace: {
     height: 150,
