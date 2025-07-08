@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   subtitle: {
     ...createFontStyle("400"),
     fontSize: 12,
-    color: "#72818F",
+    color: "#515C66",
   },
   dashboardContainer: {
     width: "100%",
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     ...createFontStyle("600"),
     fontSize: 12,
     letterSpacing: 0.125,
-    color: "#72818F",
+    color: "#515C66",
     lineHeight: 16,
   },
   stageInfo: {

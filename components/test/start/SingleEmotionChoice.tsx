@@ -24,7 +24,7 @@ export const SingleEmotionChoice: React.FC<SingleEmotionChoiceProps> = ({
   onSelect,
 }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.content}>
         <Text style={styles.question}>{question}</Text>
       </View>
@@ -44,8 +44,7 @@ export const SingleEmotionChoice: React.FC<SingleEmotionChoiceProps> = ({
                 style={[
                   styles.emotionImageContainer,
                   {
-                    backgroundColor:
-                      selectedEmotion === emotion.id ? "#fff" : "#E4EBF0",
+                    backgroundColor: "#E4EBF0",
                   },
                 ]}
               >
@@ -72,10 +71,6 @@ export const SingleEmotionChoice: React.FC<SingleEmotionChoiceProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
   question: {
     fontSize: 18,
     ...createFontStyle("700"),
@@ -84,7 +79,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
     marginBottom: 24,
     ...createFontStyle("400"),
   },
@@ -97,21 +92,24 @@ const styles = StyleSheet.create({
   },
   emotionButtonContainer: {
     width: `${100 / 3}%`,
-    aspectRatio: 1,
+    aspectRatio: 0.96,
     padding: 6,
   },
   emotionButton: {
     width: "100%",
     height: "100%",
     gap: 12,
-    backgroundColor: "#fff",
+    backgroundColor: "#F3F4F6",
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    padding: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 12,
   },
   selectedEmotion: {
-    backgroundColor: "#19DBF2",
+    backgroundColor: "rgba(25, 219, 242, 0.12)",
+    borderWidth: 2,
+    borderColor: "#19DBF2",
   },
   emotionImageContainer: {
     width: 48,
@@ -122,16 +120,16 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   emotionImage: {
-    width: "100%",
-    height: "100%",
+    width: 36,
+    height: 36,
   },
   emotionText: {
     fontSize: 14,
     ...createFontStyle("600"),
-    color: "#72818F",
+    color: "#0C0A09",
     textAlign: "center",
   },
   selectedEmotionText: {
-    color: "#FFFFFF",
+    color: "#0C0A09",
   },
 });

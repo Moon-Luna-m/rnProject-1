@@ -1,11 +1,10 @@
+import BackBar from "@/components/ui/BackBar";
 import { createFontStyle } from "@/utils/typography";
-import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import {
-  Image, ScrollView,
+  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -15,18 +14,7 @@ export default function Privacy() {
   const { t } = useTranslation();
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("settings.privacyPolicy")}</Text>
-      </TouchableOpacity>
+      <BackBar title={t("settings.privacyPolicy")} />
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.termsContainer}>
           <View style={styles.termSection}>
@@ -50,22 +38,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F5F7FA",
   },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
-  },
   content: {
     flex: 1,
   },
@@ -88,7 +60,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 22,
     letterSpacing: 0.07,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("600"),
     marginBottom: 30,
   },

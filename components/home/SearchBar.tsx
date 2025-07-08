@@ -2,14 +2,14 @@ import { createFontStyle } from "@/utils/typography";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Keyboard,
-  NativeSyntheticEvent,
-  Platform,
-  StyleSheet,
-  TextInput,
-  TextInputSubmitEditingEventData,
-  TouchableWithoutFeedback,
-  View,
+    Keyboard,
+    NativeSyntheticEvent,
+    Platform,
+    StyleSheet,
+    TextInput,
+    TextInputSubmitEditingEventData,
+    TouchableWithoutFeedback,
+    View,
 } from "react-native";
 import SearchIcon from "./SearchIcon";
 
@@ -75,7 +75,7 @@ export default function SearchBar({
         ]}
       >
         <View style={styles.iconContainer}>
-          <SearchIcon fill={isFocused ? "#19DBF2" : "#72818F"} />
+          <SearchIcon fill={isFocused ? "#19DBF2" : "#515C66"} />
         </View>
         <TextInput
           ref={inputRef}

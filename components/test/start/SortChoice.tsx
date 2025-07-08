@@ -46,7 +46,7 @@ const MobileSortChoice: React.FC<SortChoiceProps> = ({
   const [data, setData] = useState<SortOption[]>(sortedOptions || options);
 
   useEffect(() => {
-    setData(sortedOptions || options);
+    // setData(sortedOptions || options);
   }, [sortedOptions, options]);
 
   const renderItem = ({
@@ -56,7 +56,7 @@ const MobileSortChoice: React.FC<SortChoiceProps> = ({
     getIndex,
   }: RenderItemParams<SortOption>) => {
     return (
-      <ScaleDecorator>
+      <ScaleDecorator activeScale={1}>
         <TouchableOpacity
           activeOpacity={1}
           onLongPress={drag}
@@ -65,11 +65,14 @@ const MobileSortChoice: React.FC<SortChoiceProps> = ({
             styles.sortItem,
             { marginVertical: 12 },
             {
-              backgroundColor: isActive ? "#FFFFFF" : "transparent",
-              boxShadow: isActive
-                ? "0px 4px 11px 0px rgba(36, 164, 179, 0.12)"
-                : "none",
+              backgroundColor: isActive
+                ? "rgba(25, 219, 242, 0.12)"
+                : "#F3F4F6",
+              boxShadow: isActive ? "0px 1px 8px 0px #B4C7DF" : "none",
               marginTop: getIndex() === 0 ? 12 : 0,
+              borderRadius: 12,
+              borderWidth: 2,
+              borderColor: isActive ? "#19DBF2" : "transparent",
             },
           ]}
         >
@@ -79,8 +82,6 @@ const MobileSortChoice: React.FC<SortChoiceProps> = ({
               flexDirection: "row",
               alignItems: "center",
               paddingVertical: 12,
-              borderBottomWidth: getIndex() === data.length - 1 ? 0 : 1,
-              borderBottomColor: "#E4EBF0",
             }}
           >
             <View style={styles.indexContainer}>
@@ -99,6 +100,7 @@ const MobileSortChoice: React.FC<SortChoiceProps> = ({
   const handleDragEnd = ({ data: newData }: DragEndParams<SortOption>) => {
     setData(newData);
     onSort(newData);
+    // console.log(newData);
   };
 
   return (
@@ -107,17 +109,12 @@ const MobileSortChoice: React.FC<SortChoiceProps> = ({
         <Text style={styles.question}>{question}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
-
       <View style={styles.sortContainer}>
         <DraggableFlatList
           data={data}
           onDragEnd={handleDragEnd}
-          keyExtractor={(item: SortOption) => item.id}
+          keyExtractor={(item: SortOption) => String(item.id)}
           renderItem={renderItem}
-          style={{
-            borderRadius: 12,
-            backgroundColor: "rgba(228, 235, 240, 0.2)",
-          }}
         />
       </View>
     </View>
@@ -158,14 +155,7 @@ const WebSortChoice: React.FC<SortChoiceProps> = ({
         <DragDropContext onDragEnd={handleDragEnd}>
           <Droppable droppableId="droppable">
             {(provided: DroppableProvided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                style={{
-                  borderRadius: 12,
-                  backgroundColor: "rgba(228, 235, 240, 0.2)",
-                }}
-              >
+              <div {...provided.droppableProps} ref={provided.innerRef}>
                 {data.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(
@@ -186,11 +176,16 @@ const WebSortChoice: React.FC<SortChoiceProps> = ({
                           style={{
                             ...styles.sortItem,
                             backgroundColor: snapshot.isDragging
-                              ? "#FFFFFF"
-                              : "transparent",
+                              ? "rgba(25, 219, 242, 0.12)"
+                              : "#F3F4F6",
                             boxShadow: snapshot.isDragging
-                              ? "0px 4px 11px 0px rgba(36, 164, 179, 0.12)"
+                              ? "0px 1px 8px 0px #B4C7DF"
                               : "none",
+                            borderRadius: 12,
+                            borderWidth: 2,
+                            borderColor: snapshot.isDragging
+                              ? "#19DBF2"
+                              : "transparent",
                           }}
                         >
                           <View
@@ -237,10 +232,10 @@ export const SortChoice: React.FC<SortChoiceProps> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   content: {
-    paddingHorizontal: 24,
+    // paddingHorizontal: 24,
   },
   question: {
     ...createFontStyle("600"),
@@ -253,12 +248,11 @@ const styles = StyleSheet.create({
     ...createFontStyle("400"),
     fontSize: 14,
     lineHeight: 17.64,
-    color: "#72818F",
-    marginBottom: 24,
+    color: "#515C66",
+    marginBottom: 16,
   },
   sortContainer: {
-    marginTop: 44,
-    paddingHorizontal: 24,
+    // paddingHorizontal: 24,
   },
   sortItem: {
     flexDirection: "row",

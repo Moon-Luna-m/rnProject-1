@@ -1,10 +1,10 @@
+import BackBar from "@/components/ui/BackBar";
 import { createFontStyle } from "@/utils/typography";
 import { AntDesign } from "@expo/vector-icons";
-import { router } from "expo-router";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Image, LayoutChangeEvent,
+  LayoutChangeEvent,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -170,7 +170,7 @@ export default function Faq() {
       indicatorStyle={styles.indicator}
       labelStyle={styles.label}
       activeColor="#0C0A09"
-      inactiveColor="#72818F"
+      inactiveColor="#515C66"
       pressColor="transparent"
       pressOpacity={0.7}
     />
@@ -178,19 +178,7 @@ export default function Faq() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("faq.title")}</Text>
-      </TouchableOpacity>
-
+      <BackBar title={t("faq.title")} />
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
@@ -207,22 +195,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FA",
-  },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
   },
   tabView: {
     flex: 1,
@@ -287,7 +259,7 @@ const styles = StyleSheet.create({
   accordionText: {
     fontSize: 12,
     lineHeight: 15,
-    color: "#72818F",
+    color: "#515C66",
   },
   measureContainer: {
     position: "absolute",

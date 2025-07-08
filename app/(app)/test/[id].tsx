@@ -310,8 +310,8 @@ export default function TestDetailsPage() {
                 }
                 if (testData?.test_status === 1) {
                   await setLocalCache("user_test_way", "user");
-                  await setLocalCache("user_test_id", String(testData?.id));
-                  router.push(`/test/start/${testData.user_test_id}`);
+                  await setLocalCache("user_test_id", String(testData?.user_test_id));
+                  router.push(`/test/start/${testData.id}`);
                   return;
                 }
                 if (testData?.test_status === 2) {

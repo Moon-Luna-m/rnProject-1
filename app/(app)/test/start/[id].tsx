@@ -137,6 +137,7 @@ export default function StartTest() {
   const { t } = useTranslation();
   const router = useRouter();
   const params = useLocalSearchParams();
+  const [title, setTitle] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<{
     [questionId: string]: {
@@ -226,11 +227,11 @@ export default function StartTest() {
                 },
               },
           await testService.getTestList({
-            id: Number(userTestWay === "user" ? userTestId : params.id),
+            id: Number(params.id),
           }),
           // TODO: 从服务器获取测试进度
           userTestWay === "user"
-            ? await testService.getUserTestDetail({ id: Number(params.id) })
+            ? await testService.getUserTestDetail({ id: Number(userTestId) })
             : null,
         ]);
         if (res1.code === 200) {
@@ -239,19 +240,20 @@ export default function StartTest() {
           return router.replace("/");
         }
         if (res2.code === 200) {
-          // setQuestions(res2.data.questions as Question[]);
-          // if (res3) {
-          //   setAnswers(
-          //     convertSubmissionToAnswers(
-          //       {
-          //         user_test_id: res1.data.user_test_id,
-          //         answers: res3.data.answers,
-          //       },
-          //       res2.data.questions as Question[]
-          //     )
-          //   );
-          // }
-          setQuestions(mockQuestions);
+          setTitle(res2.data.name);
+          setQuestions(res2.data.questions as Question[]);
+          if (res3) {
+            setAnswers(
+              convertSubmissionToAnswers(
+                {
+                  user_test_id: res1.data.user_test_id,
+                  answers: res3.data.answers,
+                },
+                res2.data.questions as Question[]
+              )
+            );
+          }
+          // setQuestions(mockQuestions);
           // TODO: 如果有已保存的进度，转换格式并设置
         }
         setIsLoading(false);
@@ -375,26 +377,31 @@ export default function StartTest() {
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          {renderProgressTitle()}
-          <SingleChoice
-            question={currentQuestionData.content}
-            options={mapOptionsToComponentFormat(currentQuestionData.options)}
-            selectedOption={currentAnswer[0]?.toString()}
-            onSelect={(value) => {
-              const selectedOption = currentQuestionData.options.find(
-                (opt) => String(opt.id) === value
-              );
-              if (selectedOption) {
-                updateAnswer(
-                  1,
-                  questionId,
-                  [selectedOption.id],
-                  currentQuestionData.id
-                );
-              }
-            }}
-            multiple={false}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <SingleChoice
+                question={currentQuestionData.content}
+                options={mapOptionsToComponentFormat(
+                  currentQuestionData.options
+                )}
+                selectedOption={currentAnswer[0]?.toString()}
+                onSelect={(value) => {
+                  const selectedOption = currentQuestionData.options.find(
+                    (opt) => String(opt.id) === value
+                  );
+                  if (selectedOption) {
+                    updateAnswer(
+                      1,
+                      questionId,
+                      [selectedOption.id],
+                      currentQuestionData.id
+                    );
+                  }
+                }}
+                multiple={false}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </ScrollView>
       );
@@ -404,30 +411,37 @@ export default function StartTest() {
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          {renderProgressTitle()}
-          <SingleChoice
-            question={currentQuestionData.content}
-            options={mapOptionsToComponentFormat(currentQuestionData.options)}
-            selectedOptions={currentAnswer.map(String)}
-            onSelect={(value) => {
-              const selectedOption = currentQuestionData.options.find(
-                (opt) => String(opt.id) === value
-              );
-              if (selectedOption) {
-                const newSelected = currentAnswer.includes(selectedOption.id)
-                  ? currentAnswer.filter((v) => v !== selectedOption.id)
-                  : [...currentAnswer, selectedOption.id];
-                updateAnswer(
-                  2,
-                  questionId,
-                  newSelected,
-                  currentQuestionData.id
-                );
-              }
-            }}
-            multiple={true}
-            maxSelect={currentQuestionData.maxSelect}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <SingleChoice
+                question={currentQuestionData.content}
+                options={mapOptionsToComponentFormat(
+                  currentQuestionData.options
+                )}
+                selectedOptions={currentAnswer.map(String)}
+                onSelect={(value) => {
+                  const selectedOption = currentQuestionData.options.find(
+                    (opt) => String(opt.id) === value
+                  );
+                  if (selectedOption) {
+                    const newSelected = currentAnswer.includes(
+                      selectedOption.id
+                    )
+                      ? currentAnswer.filter((v) => v !== selectedOption.id)
+                      : [...currentAnswer, selectedOption.id];
+                    updateAnswer(
+                      2,
+                      questionId,
+                      newSelected,
+                      currentQuestionData.id
+                    );
+                  }
+                }}
+                multiple={true}
+                maxSelect={currentQuestionData.maxSelect}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </ScrollView>
       );
@@ -437,7 +451,6 @@ export default function StartTest() {
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          {renderProgressTitle()}
           <View style={{ paddingHorizontal: 16 }}>
             <View style={styles.answerContainer}>
               <PercentageSlider
@@ -472,29 +485,32 @@ export default function StartTest() {
     } else if (currentQuestionData.type === 6) {
       return (
         <>
-          {renderProgressTitle()}
-          <EmotionChoice
-            question={currentQuestionData.content}
-            description=""
-            options={currentQuestionData.options.map((opt) => ({
-              id: String(opt.id),
-              content: opt.content,
-            }))}
-            selectedEmotion={currentAnswer[0]?.toString()}
-            onSelect={(value) => {
-              const selectedOption = currentQuestionData.options.find(
-                (opt) => String(opt.id) === value
-              );
-              if (selectedOption) {
-                updateAnswer(
-                  6,
-                  questionId,
-                  [selectedOption.id],
-                  currentQuestionData.id
-                );
-              }
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={[styles.answerContainer]}>
+              <EmotionChoice
+                question={currentQuestionData.content}
+                description=""
+                options={currentQuestionData.options.map((opt) => ({
+                  id: String(opt.id),
+                  content: opt.content,
+                }))}
+                selectedEmotion={currentAnswer[0]?.toString()}
+                onSelect={(value) => {
+                  const selectedOption = currentQuestionData.options.find(
+                    (opt) => String(opt.id) === value
+                  );
+                  if (selectedOption) {
+                    updateAnswer(
+                      6,
+                      questionId,
+                      [selectedOption.id],
+                      currentQuestionData.id
+                    );
+                  }
+                }}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </>
       );
@@ -514,61 +530,81 @@ export default function StartTest() {
 
       return (
         <>
-          {renderProgressTitle()}
-          <SortChoice
-            question={currentQuestionData.content}
-            description=""
-            options={mapOptionsToSortFormat(currentQuestionData.options)}
-            sortedOptions={currentSortedOptions}
-            onSort={(value) => {
-              const optionIds = value.map((v) => Number(v.id));
-              updateAnswer(4, questionId, optionIds, currentQuestionData.id);
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <SortChoice
+                question={currentQuestionData.content}
+                description={t("test.answerTips.tips2")}
+                options={mapOptionsToSortFormat(currentQuestionData.options)}
+                sortedOptions={currentSortedOptions}
+                onSort={(value) => {
+                  const optionIds = value.map((v) => Number(v.id));
+                  updateAnswer(
+                    4,
+                    questionId,
+                    optionIds,
+                    currentQuestionData.id
+                  );
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.bottomSpace} />
         </>
       );
     } else if (currentQuestionData.type === 3) {
       return (
         <>
-          {renderProgressTitle()}
-          <SliderChoice
-            question={currentQuestionData.content}
-            description=""
-            value={currentAnswer[0] ? currentAnswer[0] / 10 : 0}
-            onValueChange={(value) => {
-              updateAnswer(3, questionId, [value * 10], currentQuestionData.id);
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <SliderChoice
+                question={currentQuestionData.content}
+                description={t("test.answerTips.tips1")}
+                value={currentAnswer[0] ? currentAnswer[0] / 10 : 0}
+                onValueChange={(value) => {
+                  updateAnswer(
+                    3,
+                    questionId,
+                    [value * 10],
+                    currentQuestionData.id
+                  );
+                }}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </>
       );
     } else if (currentQuestionData.type === 5) {
       return (
         <>
-          {renderProgressTitle()}
-          <SingleEmotionChoice
-            question={currentQuestionData.content}
-            description=""
-            options={currentQuestionData.options.map((opt) => ({
-              id: String(opt.id),
-              content: opt.content,
-              imgUrl: imgProxy(opt.image),
-            }))}
-            selectedEmotion={currentAnswer[0]?.toString()}
-            onSelect={(value) => {
-              const selectedOption = currentQuestionData.options.find(
-                (opt) => String(opt.id) === value
-              );
-              if (selectedOption) {
-                updateAnswer(
-                  5,
-                  questionId,
-                  [selectedOption.id],
-                  currentQuestionData.id
-                );
-              }
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={[styles.answerContainer]}>
+              <SingleEmotionChoice
+                question={currentQuestionData.content}
+                description=""
+                options={currentQuestionData.options.map((opt) => ({
+                  id: String(opt.id),
+                  content: opt.content,
+                  imgUrl: imgProxy(opt.image),
+                }))}
+                selectedEmotion={currentAnswer[0]?.toString()}
+                onSelect={(value) => {
+                  const selectedOption = currentQuestionData.options.find(
+                    (opt) => String(opt.id) === value
+                  );
+                  if (selectedOption) {
+                    updateAnswer(
+                      5,
+                      questionId,
+                      [selectedOption.id],
+                      currentQuestionData.id
+                    );
+                  }
+                }}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </>
       );
@@ -578,23 +614,26 @@ export default function StartTest() {
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          {renderProgressTitle()}
-          <ColorChoice
-            question={currentQuestionData.content}
-            description=""
-            colorGroups={DEFAULT_COLOR_GROUPS}
-            selectedColor={currentAnswer[0] || null}
-            onSelect={(value) => {
-              // const optionId = value.groupIndex * 10 + value.strengthIndex;
-              // const selectedOption = currentQuestionData.options.find(opt => opt.id === optionId);
-              // if (selectedOption) {
-              //   updateAnswer(8, questionId, [selectedOption.id]);
-              // }
-              updateAnswer(8, questionId, [value], currentQuestionData.id);
-            }}
-            lowStrengthLabel="弱"
-            highStrengthLabel="强"
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <ColorChoice
+                question={currentQuestionData.content}
+                description={t("test.answerTips.tips4")}
+                colorGroups={DEFAULT_COLOR_GROUPS}
+                selectedColor={currentAnswer[0] || null}
+                onSelect={(value) => {
+                  // const optionId = value.groupIndex * 10 + value.strengthIndex;
+                  // const selectedOption = currentQuestionData.options.find(opt => opt.id === optionId);
+                  // if (selectedOption) {
+                  //   updateAnswer(8, questionId, [selectedOption.id]);
+                  // }
+                  updateAnswer(8, questionId, [value], currentQuestionData.id);
+                }}
+                lowStrengthLabel="弱"
+                highStrengthLabel="强"
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </ScrollView>
       );
@@ -604,26 +643,31 @@ export default function StartTest() {
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          {renderProgressTitle()}
-          <ImageTextChoice
-            question={currentQuestionData.content}
-            description=""
-            options={mapOptionsToImageTextFormat(currentQuestionData.options)}
-            selectedOption={currentAnswer[0]?.toString()}
-            onSelect={(value) => {
-              const selectedOption = currentQuestionData.options.find(
-                (opt) => String(opt.id) === value
-              );
-              if (selectedOption) {
-                updateAnswer(
-                  9,
-                  questionId,
-                  [selectedOption.id],
-                  currentQuestionData.id
-                );
-              }
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <ImageTextChoice
+                question={currentQuestionData.content}
+                description=""
+                options={mapOptionsToImageTextFormat(
+                  currentQuestionData.options
+                )}
+                selectedOption={currentAnswer[0]?.toString()}
+                onSelect={(value) => {
+                  const selectedOption = currentQuestionData.options.find(
+                    (opt) => String(opt.id) === value
+                  );
+                  if (selectedOption) {
+                    updateAnswer(
+                      9,
+                      questionId,
+                      [selectedOption.id],
+                      currentQuestionData.id
+                    );
+                  }
+                }}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </ScrollView>
       );
@@ -633,26 +677,31 @@ export default function StartTest() {
           style={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          {renderProgressTitle()}
-          <ImageTextChoice2
-            question={currentQuestionData.content}
-            description=""
-            options={mapOptionsToImageText2Format(currentQuestionData.options)}
-            selectedOption={currentAnswer[0]?.toString()}
-            onSelect={(value) => {
-              const selectedOption = currentQuestionData.options.find(
-                (opt) => String(opt.id) === value
-              );
-              if (selectedOption) {
-                updateAnswer(
-                  10,
-                  questionId,
-                  [selectedOption.id],
-                  currentQuestionData.id
-                );
-              }
-            }}
-          />
+          <View style={{ paddingHorizontal: 16 }}>
+            <View style={styles.answerContainer}>
+              <ImageTextChoice2
+                question={currentQuestionData.content}
+                description=""
+                options={mapOptionsToImageText2Format(
+                  currentQuestionData.options
+                )}
+                selectedOption={currentAnswer[0]?.toString()}
+                onSelect={(value) => {
+                  const selectedOption = currentQuestionData.options.find(
+                    (opt) => String(opt.id) === value
+                  );
+                  if (selectedOption) {
+                    updateAnswer(
+                      10,
+                      questionId,
+                      [selectedOption.id],
+                      currentQuestionData.id
+                    );
+                  }
+                }}
+              />
+            </View>
+          </View>
           <View style={styles.bottomSpace} />
         </ScrollView>
       );
@@ -887,12 +936,15 @@ export default function StartTest() {
             </TouchableOpacity>
             <View style={[styles.container, { paddingRight: 36 }]}>
               <Text style={styles.scrollViewTitle} numberOfLines={1}>
-                {questions[currentQuestion % questions.length].content}
+                {title}
               </Text>
             </View>
           </View>
           <View style={[styles.container]}>
-            <View style={styles.container}>{renderQuestion()}</View>
+            <View style={styles.container}>
+              {renderProgressTitle()}
+              {renderQuestion()}
+            </View>
             {renderBottomBar()}
           </View>
         </>
@@ -992,16 +1044,12 @@ const styles = StyleSheet.create({
     boxShadow: "0px 2px 8px 0px rgba(18, 99, 107, 0.12)",
   },
   bottomSpace: {
-    height: 150,
+    height: 20,
   },
   bottomBar: {
     flexDirection: "row",
     gap: 12,
-    position: "absolute",
     width: "100%",
-    bottom: 0,
-    left: 0,
-    right: 0,
     padding: 24,
     paddingBottom: Platform.OS === "ios" ? 34 : 24,
   },

@@ -10,13 +10,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import {
-  Image,
-  ImageBackground,
-  Keyboard,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Image,
+    ImageBackground,
+    Keyboard,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { Button } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     marginBottom: 48,
     fontSize: 14,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
     lineHeight: 20,
   },
   inputGroup: {

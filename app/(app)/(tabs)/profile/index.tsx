@@ -266,16 +266,13 @@ export default function Profile() {
             <View style={styles.testCardContent}>
               {/* 左侧图标 */}
               <View style={styles.testIconContainer}>
-                <LinearGradient
-                  colors={["#C3FDC6", "#8AEFFF"]}
-                  style={styles.testIcon}
-                >
+                <View style={styles.testIcon}>
                   <Image
                     source={require("@/assets/images/profile/test.png")}
                     style={styles.testIconImage}
                     fadeDuration={0}
                   />
-                </LinearGradient>
+                </View>
               </View>
 
               {/* 右侧内容 */}
@@ -468,8 +465,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   testIconImage: {
-    width: 40.86,
-    height: 40.86,
+    width: 48,
+    height: 48,
   },
   testInfo: {
     flex: 1,
@@ -496,7 +493,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 15.12,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
   } as TextStyle,
   statValue: {
     fontSize: 14,

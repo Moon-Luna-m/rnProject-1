@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   description: {
     fontFamily: "Outfit",
     fontSize: 12,
-    color: "#A9AEB8",
+    color: "#515C66",
   },
   footer: {
     height: 16,

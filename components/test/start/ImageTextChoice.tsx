@@ -1,3 +1,4 @@
+import { getOptionLetter } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -24,12 +25,8 @@ export function ImageTextChoice({
   return (
     <View style={styles.container}>
       <Text style={styles.question}>{question}</Text>
-      {description ? (
-        <Text style={styles.description}>{description}</Text>
-      ) : null}
-
       <View style={styles.optionsContainer}>
-        {options.map((option) => (
+        {options.map((option, index) => (
           <TouchableOpacity
             key={option.key}
             activeOpacity={0.7}
@@ -39,10 +36,17 @@ export function ImageTextChoice({
               //   backgroundColor: option.color,
               //   shadowColor: option.shadowColor,
               // }
+              {
+                opacity: selectedOption
+                  ? selectedOption === option.key
+                    ? 1
+                    : 0.2
+                  : 1,
+              },
             ]}
             onPress={() => onSelect(option.key)}
           >
-            <Text style={styles.optionKey}>{option.key}</Text>
+            <Text style={styles.optionKey}>{getOptionLetter(index)}</Text>
             <Image
               source={{ uri: option.imageUrl }}
               style={styles.optionImage}
@@ -58,28 +62,21 @@ export function ImageTextChoice({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
   },
   question: {
     fontSize: 18,
-    ...createFontStyle("700"),
+    ...createFontStyle("600"),
     color: "#0C0A09",
-    marginBottom: 8,
-  },
-  description: {
-    fontSize: 14,
-    color: "#72818F",
-    marginBottom: 32,
-    ...createFontStyle("400"),
+    marginBottom: 16,
   },
   optionsContainer: {
-    marginTop: 32,
+    marginTop: 16,
     gap: 24,
     flexDirection: "row",
     flexWrap: "wrap",
   },
   optionCard: {
-    width: 158,
+    width: 150,
     height: 100,
     borderRadius: 12,
   },
@@ -89,7 +86,7 @@ const styles = StyleSheet.create({
     top: 8,
     fontSize: 20,
     ...createFontStyle("700"),
-    color: "#FFFFFF",
+    color: "#fff",
     textTransform: "uppercase",
     lineHeight: 25,
     zIndex: 1,

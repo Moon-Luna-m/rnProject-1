@@ -1,4 +1,5 @@
 import CustomCamera from "@/components/CustomCamera";
+import BackBar from "@/components/ui/BackBar";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import { DatePicker } from "@/components/ui/DatePicker";
 import { userService } from "@/services/userService";
@@ -9,7 +10,6 @@ import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Image as ImageExpo } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
-import { router } from "expo-router";
 import React, { useCallback, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -306,18 +306,7 @@ export default function Edit() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("common.dataEditing")}</Text>
-      </TouchableOpacity>
+      <BackBar title={t("common.dataEditing")} />
       {openCamera && (
         <CustomCamera
           onClose={() => setOpenCamera(false)}
@@ -633,22 +622,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FA",
-  },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
   },
   content: {
     flex: 1,

@@ -393,13 +393,13 @@ const styles = StyleSheet.create({
   equalSign: {
     fontSize: 12,
     lineHeight: 15,
-    color: "#72818F",
+    color: "#515C66",
     marginHorizontal: 4,
   },
   dollarPrice: {
     fontSize: 14,
     lineHeight: 18,
-    color: "#72818F",
+    color: "#515C66",
   },
   methodList: {
     alignSelf: "stretch",
@@ -450,7 +450,7 @@ const styles = StyleSheet.create({
   illustrationTitle: {
     fontSize: 14,
     lineHeight: 18,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("500"),
   },
   illustrationText: {

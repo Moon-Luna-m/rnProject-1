@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   subtitle: {
     ...createFontStyle("400"),
     fontSize: 12,
-    color: "#72818F",
+    color: "#515C66",
   },
   progressList: {
     gap: 30,

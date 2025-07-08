@@ -1,3 +1,4 @@
+import BackBar from "@/components/ui/BackBar";
 import { Tabs } from "@/components/ui/Tabs";
 import {
   GetUserTestHistoryResponse,
@@ -7,7 +8,7 @@ import { formatDate, formatDateTime, setLocalCache } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -130,14 +131,16 @@ export default function Review() {
   const incompleteList = useReviewList("incomplete", setIncompleteCount);
 
   // 初始化数据
-  useEffect(() => {
-    async function initData() {
-      await completedList.onRefresh(false);
-      await incompleteList.onRefresh(false);
-      isFirstLoad.current = false;
-    }
-    initData();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      async function initData() {
+        await completedList.onRefresh(false);
+        await incompleteList.onRefresh(false);
+        isFirstLoad.current = false;
+      }
+      initData();
+    }, [])
+  );
 
   const tabs = useMemo(
     () => [
@@ -209,8 +212,8 @@ export default function Review() {
   const handleContinue = useCallback(
     async (item: GetUserTestHistoryResponse["list"][0]) => {
       await setLocalCache("user_test_way", "user");
-      await setLocalCache("user_test_id", String(item.test_id));
-      router.push(`/test/start/${item.id}`);
+      await setLocalCache("user_test_id", String(item.id));
+      router.push(`/test/start/${item.test_id}`);
     },
     []
   );
@@ -226,18 +229,7 @@ export default function Review() {
     <View style={styles.container}>
       <LinearGradient colors={["#B7E8FF", "#F5F7FA"]} style={styles.gradient} />
       <View style={[styles.content, { paddingTop: insets.top }]}>
-        <TouchableOpacity
-          style={styles.backContainer}
-          onPress={() => {
-            router.back();
-          }}
-        >
-          <Image
-            source={require("@/assets/images/common/icon-back.png")}
-            style={{ width: 24, height: 24 }}
-          />
-          <Text style={styles.backText}>{t("review.title")}</Text>
-        </TouchableOpacity>
+        <BackBar title={t("review.title")} />
         <Tabs
           tabs={tabs}
           activeKey={activeTab}
@@ -480,22 +472,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
-  },
   typeSwitch: {
     marginHorizontal: 24,
     marginTop: 12,
@@ -535,7 +511,7 @@ const styles = StyleSheet.create({
     ...createFontStyle("400"),
     fontSize: 12,
     lineHeight: 15,
-    color: "#72818F",
+    color: "#515C66",
   },
   timeContainer: {
     flexDirection: "row",
@@ -603,13 +579,13 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("400"),
   },
   noMoreText: {
     textAlign: "center",
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("400"),
     padding: 12,
   },

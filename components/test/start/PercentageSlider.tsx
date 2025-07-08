@@ -1,5 +1,10 @@
+import {
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+} from "@/components/ui/slider";
 import { createFontStyle } from "@/utils/typography";
-import Slider from "@react-native-community/slider";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -33,7 +38,7 @@ export function PercentageSlider({
     });
     return initialValues;
   };
-
+  const [initValues, setInitValues] = useState<Record<string, number>>(values);
   // 用于跟踪滑动过程中的临时值
   const [tempValues, setTempValues] = useState<Record<string, number>>(
     getInitialValues()
@@ -41,7 +46,9 @@ export function PercentageSlider({
 
   // 当 values 或 options 变化时更新 tempValues
   useEffect(() => {
-    setTempValues(getInitialValues());
+    if (JSON.stringify(initValues) !== "{}") {
+      setTempValues(getInitialValues());
+    }
   }, [values, options]);
 
   // 处理滑动过程中的值变化
@@ -71,7 +78,6 @@ export function PercentageSlider({
     <View style={styles.container}>
       <Text style={styles.question}>{question}</Text>
       <Text style={styles.description}>{description}</Text>
-
       {options.map((option, index) => (
         <View key={index} style={styles.sliderCard}>
           <View style={styles.titleContainer}>
@@ -80,31 +86,40 @@ export function PercentageSlider({
               {Math.round(tempValues[option.id] || 0)}%
             </Text>
           </View>
-
           <View style={styles.sliderContainer}>
-            <View style={styles.sliderTrack}>
-              <View
-                style={[
-                  styles.sliderProgress,
-                  { width: `${tempValues[option.id] || 0}%` },
-                ]}
-              />
-            </View>
             <Slider
-              style={[styles.slider, { zIndex: 1 }]}
-              minimumValue={0}
-              maximumValue={100}
+              minValue={0}
+              maxValue={100}
               value={values[option.id] || 0}
-              onValueChange={(value) => handleValueChange(option.id, value)}
-              onSlidingComplete={(value) =>
-                handleSlidingComplete(option.id, value)
-              }
-              minimumTrackTintColor="transparent"
-              maximumTrackTintColor="transparent"
-              thumbTintColor="transparent"
+              onChange={(value) => {
+                handleValueChange(option.id, value);
+                handleSlidingComplete(option.id, value);
+              }}
               step={1}
-              thumbImage={require("@/assets/images/test/slider-thumb.png")}
-            />
+            >
+              <SliderTrack
+                style={{
+                  backgroundColor: "#fff",
+                  height: 12,
+                  borderRadius: 100,
+                }}
+              >
+                <SliderFilledTrack
+                  style={{ backgroundColor: "#19DBF2", height: "100%" }}
+                />
+              </SliderTrack>
+              <SliderThumb
+                style={{
+                  width: 24,
+                  height: 24,
+                  backgroundColor: "#19DBF2",
+                  borderWidth: 1,
+                  borderRadius: 100,
+                  borderColor: "#fff",
+                  filter: "drop-shadow(0px 4px 17px rgba(0, 0, 0, 0.06))",
+                }}
+              />
+            </Slider>
           </View>
         </View>
       ))}
@@ -115,7 +130,6 @@ export function PercentageSlider({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
   },
   question: {
     fontSize: 18,
@@ -125,15 +139,15 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    color: "#72818F",
-    marginBottom: 32,
+    color: "#515C66",
+    marginBottom: 16,
     ...createFontStyle("400"),
   },
   sliderCard: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 20,
+    backgroundColor: "#F3F4F6",
+    borderRadius: 12,
     padding: 14,
-    marginBottom: 24,
+    marginBottom: 16,
   },
   titleContainer: {
     flexDirection: "row",
@@ -153,28 +167,8 @@ const styles = StyleSheet.create({
     color: "#686D76",
   },
   sliderContainer: {
-    height: 22,
     justifyContent: "center",
-  },
-  sliderTrack: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    height: 12,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 100,
-    overflow: "hidden",
-  },
-  sliderProgress: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: "#19DBF2",
-    borderRadius: 100,
-  },
-  slider: {
-    width: "100%",
-    height: 22,
+    height: 40,
+    paddingHorizontal: 0,
   },
 });

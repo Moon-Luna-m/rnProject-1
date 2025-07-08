@@ -7,6 +7,7 @@ import { router } from "expo-router";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
+  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -20,6 +21,8 @@ interface RecommendCardProps {
   item: GetTestListByTypeResponse["list"][0];
   onPress?: () => void;
 }
+
+const WIDTH = Dimensions.get("window").width;
 
 const RecommendCard: React.FC<RecommendCardProps> = ({ item, onPress }) => {
   const icon = icons[Number(item.image.split("/")[2].split(".")[0]) - 1];
@@ -117,6 +120,27 @@ export default function TodayRecommend({
           style={styles.headerIcon}
         />
         <Text style={styles.headerTitle}>{t("home.recommend.title")}</Text>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => {
+            router.push({
+              pathname: "/(app)/(home)/[params]",
+              params: {
+                params: "recommend",
+              },
+            });
+          }}
+          style={styles.headerMoreWrapper}
+        >
+          <Text style={styles.headerMore}>{t("common.more")}</Text>
+          <Image
+            source={require("@/assets/images/common/arrow-right.png")}
+            style={{
+              width: 20,
+              height: 20,
+            }}
+          />
+        </TouchableOpacity>
       </View>
       <ScrollView
         horizontal
@@ -166,11 +190,11 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 16,
-    gap: 8,
+    gap: 12,
     paddingBottom: 12,
   },
   card: {
-    width: 156,
+    width: (WIDTH - 44) / 2,
     height: 180,
     borderRadius: 20,
     overflow: "hidden",
@@ -262,5 +286,16 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     ...createFontStyle("400"),
     color: "#0C0A09",
+  },
+  headerMoreWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: "auto",
+  },
+  headerMore: {
+    color: "#515C66",
+    fontSize: 12,
+    lineHeight: 15,
+    ...createFontStyle("500"),
   },
 });

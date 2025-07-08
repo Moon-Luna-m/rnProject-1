@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   subtitle: {
     ...createFontStyle("400"),
     fontSize: 12,
-    color: "#72818F",
+    color: "#515C66",
   },
   dashboardContainer: {
     width: 240,
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   infoLabel: {
     fontSize: 12,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
   },
   infoValue: {
     ...createFontStyle("600"),

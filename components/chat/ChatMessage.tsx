@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
   timestamp: {
     fontFamily: "Poppins",
     fontSize: 10,
-    color: "#72818F",
+    color: "#515C66",
     marginBottom: 6,
     backgroundColor: "#EBF5FF",
     paddingHorizontal: 6,

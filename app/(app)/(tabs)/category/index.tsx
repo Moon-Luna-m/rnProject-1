@@ -1,7 +1,7 @@
 import SearchResultCard from "@/components/home/SearchResultCard";
 import {
-  GetTestListByTypeResponse,
-  testService,
+    GetTestListByTypeResponse,
+    testService,
 } from "@/services/testServices";
 
 import { createFontStyle } from "@/utils/typography";
@@ -10,15 +10,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  ActivityIndicator,
-  Dimensions,
-  FlatList,
-  Image,
-  RefreshControl,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ActivityIndicator,
+    Dimensions,
+    FlatList,
+    Image,
+    RefreshControl,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -223,7 +223,7 @@ export default function Category() {
           style={styles.tabBar}
           tabStyle={styles.tab}
           activeColor="#0C0A09"
-          inactiveColor="#72818F"
+          inactiveColor="#515C66"
           indicatorStyle={styles.indicator}
           renderLabel={({
             route,
@@ -420,7 +420,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 17.64,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
   },
   categoryTextActive: {
     color: "#FFFFFF",

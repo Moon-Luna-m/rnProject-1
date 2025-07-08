@@ -1,8 +1,8 @@
 import { icons } from "@/assets/static";
+import BackBar from "@/components/ui/BackBar";
 import { TabItem, Tabs } from "@/components/ui/Tabs";
 import { createFontStyle } from "@/utils/typography";
 
-import { router } from "expo-router";
 import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -14,8 +14,7 @@ import {
   RefreshControl,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -357,19 +356,7 @@ export default function Details() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("coinDetail.title")}</Text>
-      </TouchableOpacity>
-
+      <BackBar title={t("coinDetail.title")} />
       <View style={styles.content}>
         <Tabs
           tabs={tabs}
@@ -393,22 +380,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FA",
-  },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
   },
   content: {
     flex: 1,

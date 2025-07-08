@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
   dot: {
     width: 4,
     height: 4,
-    backgroundColor: "#72818F",
+    backgroundColor: "#515C66",
     borderRadius: 2,
   },
   adviceText: {
     fontFamily: "Outfit-Regular",
     fontSize: 12,
     lineHeight: 15,
-    color: "#72818F",
+    color: "#515C66",
   },
 });
 

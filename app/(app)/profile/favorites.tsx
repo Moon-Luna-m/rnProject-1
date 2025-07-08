@@ -1,4 +1,5 @@
 import Collect from "@/components/test/icons/CollectIcon";
+import BackBar from "@/components/ui/BackBar";
 import {
   GetTestListByTypeResponse,
   testService,
@@ -11,7 +12,8 @@ import { router } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  ActivityIndicator, Image, NativeScrollEvent,
+  ActivityIndicator,
+  NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
   RefreshControl,
@@ -211,18 +213,7 @@ export default function Favorites() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("favorites.title")}</Text>
-      </TouchableOpacity>
+      <BackBar title={t("favorites.title")} />
       <View style={styles.content}>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -264,22 +255,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F5F7FA",
   },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
-  },
   content: {
     flex: 1,
     marginHorizontal: 16,
@@ -309,7 +284,7 @@ const styles = StyleSheet.create({
     height: 30,
     fontSize: 12,
     lineHeight: 15,
-    color: "#72818F",
+    color: "#515C66",
   },
   cardStats: {
     flexDirection: "row",
@@ -330,7 +305,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 12,
     lineHeight: 15,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("500"),
   },
   deleteButton: {
@@ -382,13 +357,13 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("400"),
   },
   noMoreText: {
     textAlign: "center",
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("400"),
     padding: 12,
   },

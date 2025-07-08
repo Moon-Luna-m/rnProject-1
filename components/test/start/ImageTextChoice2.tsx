@@ -17,7 +17,6 @@ interface ImageTextChoice2Props {
 
 export function ImageTextChoice2({
   question,
-  description,
   options,
   selectedOption,
   onSelect,
@@ -25,8 +24,6 @@ export function ImageTextChoice2({
   return (
     <View style={styles.container}>
       <Text style={styles.question}>{question}</Text>
-      <Text style={styles.description}>{description}</Text>
-
       <View style={styles.optionsContainer}>
         {options.map((option) => (
           <TouchableOpacity
@@ -36,8 +33,11 @@ export function ImageTextChoice2({
               styles.optionCard,
               {
                 borderColor:
-                  selectedOption === option.key ? "#19DBF2" : "#F3F4F6",
-                backgroundColor: "#FFFFFF",
+                  selectedOption === option.key ? "#19DBF2" : "transparent",
+                backgroundColor:
+                  selectedOption === option.key
+                    ? "rgba(25, 219, 242, 0.12)"
+                    : "#F3F4F6",
               },
             ]}
             onPress={() => onSelect(option.key)}
@@ -62,19 +62,12 @@ export function ImageTextChoice2({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
   },
   question: {
     fontSize: 18,
     ...createFontStyle("700"),
     color: "#0C0A09",
-    marginBottom: 8,
-  },
-  description: {
-    fontSize: 14,
-    color: "#72818F",
-    marginBottom: 32,
-    ...createFontStyle("400"),
+    marginBottom: 16,
   },
   optionsContainer: {
     gap: 12,
@@ -82,22 +75,23 @@ const styles = StyleSheet.create({
   optionCard: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     borderRadius: 12,
-    borderWidth: 1,
+    borderWidth: 2,
     gap: 12,
   },
   iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 43,
+    width: 36,
+    height: 36,
+    borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
   },
   icon: {
-    width: "100%",
-    height: "100%",
+    width: 36,
+    height: 36,
   },
   textContainer: {
     flex: 1,
@@ -105,7 +99,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("400"),
   },
 });

@@ -1,5 +1,6 @@
 {
   "common": {
+    "more": "More",
     "welcome": "Welcome to {{name}}",
     "login": "Login",
     "register": "Register",
@@ -233,6 +234,10 @@
     }
   },
   "home": {
+    "list": {
+      "recommend": "Recommendations",
+      "popular": "Popular Tests"
+    },
     "digitalAssistant": {
       "greeting": "HI, I am an AI digital person",
       "question": "How can I assist you?",
@@ -246,7 +251,7 @@
       "tryDifferentTerm": "Try a different search term"
     },
     "recommend": {
-      "title": "Today's Recommendations",
+      "title": "Recommendations",
       "free": "Free",
       "test1": {
         "title": "Jung's Eight Dimensions Test",

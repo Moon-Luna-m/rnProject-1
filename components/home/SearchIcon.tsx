@@ -1,6 +1,6 @@
 import Svg, { Path } from "react-native-svg";
 
-export default function SearchIcon({ fill = "#72818F" }: { fill?: string }) {
+export default function SearchIcon({ fill = "#515C66" }: { fill?: string }) {
   return (
     <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <Path

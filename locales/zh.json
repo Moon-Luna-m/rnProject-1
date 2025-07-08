@@ -1,5 +1,6 @@
 {
   "common": {
+    "more": "更多",
     "welcome": "欢迎来到{{name}}",
     "login": "登录",
     "register": "注册",
@@ -327,6 +328,10 @@
     }
   },
   "home": {
+    "list": {
+      "recommend": "今日推荐",
+      "popular": "热门测试"
+    },
     "digitalAssistant": {
       "greeting": "你好，我是AI数字人",
       "question": "有什么我能帮你的吗？",

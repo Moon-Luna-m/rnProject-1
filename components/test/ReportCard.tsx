@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 12,
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "uppercase",
   },
   trendTitle: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     ...createFontStyle("600"),
   },
   footerSubtitle: {
-    color: "#72818F",
+    color: "#515C66",
     fontSize: 12,
     ...createFontStyle("400"),
   },

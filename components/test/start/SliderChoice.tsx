@@ -138,12 +138,11 @@ export const SliderChoice: React.FC<SliderChoiceProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.content}>
         <Text style={styles.question}>{question}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
-
       <View style={styles.sliderContainer}>
         <View style={styles.scaleContainer}>
           <View style={styles.currentValueContainer}>
@@ -151,7 +150,7 @@ export const SliderChoice: React.FC<SliderChoiceProps> = ({
               style={[
                 styles.currentValue,
                 value !== 0 && {
-                  color: "#19DBF2",
+                  color: "#0C0A09",
                 },
               ]}
             >
@@ -175,11 +174,11 @@ export const SliderChoice: React.FC<SliderChoiceProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    // height: 320,
   },
   content: {
-    gap: 12,
-    paddingHorizontal: 24,
+    gap: 8,
   },
   question: {
     ...createFontStyle("600"),
@@ -190,11 +189,11 @@ const styles = StyleSheet.create({
   description: {
     ...createFontStyle("400"),
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "capitalize",
   },
   sliderContainer: {
-    marginTop: 44,
+    marginTop: 16,
     alignItems: "center",
   },
   currentValue: {
@@ -207,7 +206,7 @@ const styles = StyleSheet.create({
   maxValue: {
     ...createFontStyle("400"),
     fontSize: 12,
-    color: "#0C0A09",
+    color: "#515C66",
     lineHeight: 12,
     marginBottom: 8,
   },
@@ -287,7 +286,7 @@ const styles = StyleSheet.create({
   label: {
     ...createFontStyle("400"),
     fontSize: 12,
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "capitalize",
   },
 });

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 12,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "uppercase",
     textAlign: "center",
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 12,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "capitalize",
     textAlign: "center",
   },

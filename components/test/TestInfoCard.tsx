@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
   },
   value: {
     ...createFontStyle("400"),
-    fontSize: 12,
-    color: "#72818F",
+    fontSize: 14,
+    color: "#515C66",
     textTransform: "capitalize",
   },
   divider: {

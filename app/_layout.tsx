@@ -1,3 +1,4 @@
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import StripeProvider from "@/components/wallet/StripeProvider";
 import { Providers } from "@/store/provider";
 import i18n from "@/utils/i18n";
@@ -34,7 +35,9 @@ export default function RootLayout() {
                   },
                 })}
               >
-                <StripeProvider />
+                <GluestackUIProvider>
+                  <StripeProvider />
+                </GluestackUIProvider>
               </ThemeProvider>
             </PaperProvider>
           </Providers>

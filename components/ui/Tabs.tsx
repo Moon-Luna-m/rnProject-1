@@ -1,22 +1,22 @@
 import { createFontStyle } from "@/utils/typography";
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  LayoutChangeEvent,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  View,
-  ViewStyle,
+    LayoutChangeEvent,
+    StyleProp,
+    StyleSheet,
+    Text,
+    TextStyle,
+    TouchableOpacity,
+    View,
+    ViewStyle,
 } from "react-native";
 import Animated, {
-  interpolate,
-  runOnJS,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring,
+    interpolate,
+    runOnJS,
+    useAnimatedStyle,
+    useDerivedValue,
+    useSharedValue,
+    withSpring,
 } from "react-native-reanimated";
 
 export interface TabItem {
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
   },
   activeText: {
     color: "#FFFFFF",

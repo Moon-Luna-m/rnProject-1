@@ -31,6 +31,7 @@ import {
 import { Button } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
+import BackBar from "../ui/BackBar";
 
 export default function Vip() {
   const { t } = useTranslation();
@@ -217,19 +218,7 @@ export default function Vip() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("vip.memberCenter")}</Text>
-      </TouchableOpacity>
-
+      <BackBar title={t("vip.memberCenter")} />
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.cardContainer}>
           <LinearGradient
@@ -735,14 +724,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 18,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
     textAlign: "center",
   },
   benefitDesc: {
     fontSize: 10,
     lineHeight: 13,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
   },
   footer: {
     position: "fixed",

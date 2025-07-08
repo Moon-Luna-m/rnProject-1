@@ -1,4 +1,5 @@
 import CustomCheckbox from "@/components/CustomCheckbox";
+import BackBar from "@/components/ui/BackBar";
 
 import i18n, { LANGUAGES, setLanguage } from "@/utils/i18n";
 import { createFontStyle } from "@/utils/typography";
@@ -21,18 +22,7 @@ export default function Languages() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("settings.language")}</Text>
-      </TouchableOpacity>
+      <BackBar title={t("settings.language")} />
       <View style={styles.content}>
         <ScrollView>
           {Object.entries(LANGUAGES).map(([key, lang]) => (
@@ -81,22 +71,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FA",
-  },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
   },
   content: {
     flex: 1,

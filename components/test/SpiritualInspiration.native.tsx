@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     fontFamily: "Outfit-Regular",
     fontSize: 14,
     lineHeight: 18,
-    color: "#72818F",
+    color: "#515C66",
   },
   indicators: {
     flexDirection: "row",

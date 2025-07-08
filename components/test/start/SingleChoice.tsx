@@ -1,3 +1,4 @@
+import { getOptionLetter } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -16,11 +17,6 @@ interface SingleChoiceProps {
   multiple?: boolean;
   maxSelect?: number;
 }
-
-const getOptionLetter = (index: number): string => {
-  if (index < 0 || index > 25) return "";
-  return String.fromCharCode(65 + index); // 65 是 'A' 的 ASCII 码
-};
 
 export const SingleChoice: React.FC<SingleChoiceProps> = ({
   question,
@@ -81,8 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   questionContainer: {
-    paddingHorizontal: 24,
-    marginBottom: 32,
+    marginBottom: 16,
   },
   question: {
     ...createFontStyle("600"),
@@ -93,22 +88,24 @@ const styles = StyleSheet.create({
   maxSelectHint: {
     marginTop: 8,
     fontSize: 14,
-    color: "#72818F",
+    color: "#515C66",
   },
   optionsContainer: {
-    paddingHorizontal: 24,
+    // paddingHorizontal: 24,
   },
   optionItem: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    backgroundColor: "#FFFFFF",
+    padding: 12,
+    backgroundColor: "#F3F4F6",
     borderRadius: 12,
     marginBottom: 12,
+    borderWidth: 2,
+    borderColor: "transparent",
   },
   optionItemSelected: {
-    backgroundColor: "#19DBF2",
+    backgroundColor: "rgba(25, 219, 242, 0.12)",
+    borderColor: "#19DBF2",
   },
   optionCircle: {
     justifyContent: "center",
@@ -121,14 +118,15 @@ const styles = StyleSheet.create({
     color: "#0C0A09",
   },
   optionLetterSelected: {
-    color: "#FFFFFF",
+    color: "#0C0A09",
   },
   optionText: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 16,
     color: "#0C0A09",
+    ...createFontStyle("400"),
   },
   optionTextSelected: {
-    color: "#FFFFFF",
+    color: "#0C0A09",
   },
 });

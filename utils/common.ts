@@ -517,3 +517,8 @@ export const padZero = (
 ): string => {
   return String(number).padStart(length, "0");
 };
+
+export const getOptionLetter = (index: number): string => {
+  if (index < 0 || index > 25) return "";
+  return String.fromCharCode(65 + index); // 65 是 'A' 的 ASCII 码
+};

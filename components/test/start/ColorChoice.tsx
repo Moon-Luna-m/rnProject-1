@@ -83,7 +83,6 @@ export function ColorChoice({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
   },
   question: {
     fontSize: 18,
@@ -93,8 +92,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    color: "#72818F",
-    marginBottom: 32,
+    color: "#515C66",
+    marginBottom: 16,
   },
   colorGrid: {
     flexDirection: "row",
@@ -110,8 +109,11 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   selectedColorBox: {
-    transform: [{ scale: 2 }],
+    transform: [{ scale: 1.5 }],
     zIndex: 10,
+    borderWidth: 1,
+    borderColor: "#0C0A09",
+    boxShadow: "0px 8px 22px 0px rgba(36, 164, 179, 0.32)",
   },
   labelContainer: {
     flexDirection: "row",
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "uppercase",
   },
 });

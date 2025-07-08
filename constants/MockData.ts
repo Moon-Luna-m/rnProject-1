@@ -255,6 +255,17 @@ export const mockDataFn = (t: TFunction) => {
 export const mockQuestionsFn = (): Question[] => {
   return [
     {
+      type: 4,
+      content: "工作价值观评估",
+      id: 10,
+      options: [
+        { id: 1, content: "成就感", dimension: "A", score: 5 },
+        { id: 2, content: "工作稳定性", dimension: "S", score: 4 },
+        { id: 3, content: "团队协作", dimension: "T", score: 3 },
+        { id: 4, content: "创新机会", dimension: "I", score: 2 },
+      ],
+    },
+    {
       type: 7,
       content: "时间分配评估",
       id: 4,
@@ -280,7 +291,7 @@ export const mockQuestionsFn = (): Question[] => {
     },
     {
       type: 6,
-      content: "Role Preference Assessment",
+      content: "Which character do you most identify with:",
       id: 1,
       options: [
         { id: 1, content: "领导者", dimension: "L", score: 5 },
@@ -359,18 +370,6 @@ export const mockQuestionsFn = (): Question[] => {
         { id: 2, content: "积极参与讨论", dimension: "P", score: 4 },
         { id: 3, content: "默默支持团队", dimension: "S", score: 3 },
         { id: 4, content: "独立完成任务", dimension: "I", score: 2 },
-      ],
-    },
-
-    {
-      type: 4,
-      content: "工作价值观评估",
-      id: 10,
-      options: [
-        { id: 1, content: "成就感", dimension: "A", score: 5 },
-        { id: 2, content: "工作稳定性", dimension: "S", score: 4 },
-        { id: 3, content: "团队协作", dimension: "T", score: 3 },
-        { id: 4, content: "创新机会", dimension: "I", score: 2 },
       ],
     },
   ];

@@ -22,6 +22,7 @@ import {
 import { Button } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
+import BackBar from "../ui/BackBar";
 
 interface RechargeOption {
   description: string;
@@ -133,18 +134,7 @@ export default function Payment() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-        style={styles.backContainer}
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <Image
-          source={require("@/assets/images/common/icon-back.png")}
-          style={{ width: 24, height: 24 }}
-        />
-        <Text style={styles.backText}>{t("wallet.title")}</Text>
-      </TouchableOpacity>
+      <BackBar title={t("wallet.title")} />
       <View style={styles.content}>
         <LinearGradient
           colors={["#2277FF", "#34D9FA"]}
@@ -346,22 +336,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F7FA",
-  },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
   },
   content: {
     flex: 1,

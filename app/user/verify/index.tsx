@@ -1,30 +1,30 @@
 import ErrorMessage from "@/components/ErrorMessage";
 import { userService } from "@/services/userService";
 import {
-  clearLocalCache,
-  decrypt,
-  encrypt,
-  getLocalCache,
-  setLocalCache,
+    clearLocalCache,
+    decrypt,
+    encrypt,
+    getLocalCache,
+    setLocalCache,
 } from "@/utils/common";
 import { createFontStyle } from "@/utils/typography";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import {
-  Image, ImageBackground,
-  Keyboard,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+    Image, ImageBackground,
+    Keyboard,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
 } from "react-native";
 import Animated, {
-  useAnimatedStyle,
-  withRepeat,
-  withSequence,
-  withTiming,
+    useAnimatedStyle,
+    withRepeat,
+    withSequence,
+    withTiming,
 } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
     lineHeight: 20,
   },
   codeContainer: {

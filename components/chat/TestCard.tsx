@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 15,
     ...createFontStyle("500"),
-    color: "#72818F",
+    color: "#515C66",
   },
   button: {
     backgroundColor: "#19DBF2",

@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 12,
-    color: "#72818F",
+    color: "#515C66",
     ...createFontStyle("400"),
   },
   tabContainer: {

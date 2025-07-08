@@ -2,11 +2,11 @@ import { createFontStyle } from "@/utils/typography";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  View,
+    Image,
+    ImageSourcePropType,
+    StyleSheet,
+    Text,
+    View,
 } from "react-native";
 
 interface Trait {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 12,
     ...createFontStyle("400"),
-    color: "#72818F",
+    color: "#515C66",
     textTransform: "capitalize",
   },
 });

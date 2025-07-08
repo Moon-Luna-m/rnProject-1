@@ -71,7 +71,7 @@ export function ExitTestModal({
             onPress={onClose}
             activeOpacity={0.7}
           >
-            <Text style={[styles.buttonText, { color: "#72818F" }]}>
+            <Text style={[styles.buttonText, { color: "#515C66" }]}>
               {t("test.exit.cancelButton")}
             </Text>
           </TouchableOpacity>

@@ -5,7 +5,7 @@ import { createFontStyle } from "@/utils/typography";
 import { router } from "expo-router";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SearchResultCard from "./SearchResultCard";
 
 interface SearchResult {
@@ -38,12 +38,7 @@ const generateMockData = (page: number): SearchResult[] => {
   }));
 };
 
-const mockData = generateMockData(1);
-
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
-const CARD_GAP = 12;
 const HORIZONTAL_PADDING = 16;
-const CARD_WIDTH = (SCREEN_WIDTH - HORIZONTAL_PADDING * 2 - CARD_GAP) / 2;
 
 export default function Popular({
   data,
@@ -59,10 +54,41 @@ export default function Popular({
           style={styles.headerIcon}
         />
         <Text style={styles.headerTitle}>{t("home.popular.title")}</Text>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => {
+            router.push({
+              pathname: "/(app)/(home)/[params]",
+              params: {
+                params: "popular",
+              },
+            });
+          }}
+          style={styles.headerMoreWrapper}
+        >
+          <Text style={styles.headerMore}>{t("common.more")}</Text>
+          <Image
+            source={require("@/assets/images/common/arrow-right.png")}
+            style={{
+              width: 20,
+              height: 20,
+            }}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         {data.map((item, index) => (
-          <View key={index} style={styles.cardWrapper}>
+          <View
+            key={index}
+            style={[
+              styles.cardWrapper,
+              {
+                paddingRight: index % 2 === 0 ? 6 : 0,
+                paddingLeft: index % 2 === 0 ? 0 : 6,
+                marginBottom: 12,
+              },
+            ]}
+          >
             <SearchResultCard
               item={item}
               onPress={() => {
@@ -106,13 +132,23 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 12,
     paddingHorizontal: HORIZONTAL_PADDING,
     justifyContent: "space-between",
     marginBottom: 12,
   },
   cardWrapper: {
-    width: "48%",
+    width: "50%",
     marginBottom: 0,
+  },
+  headerMoreWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: "auto",
+  },
+  headerMore: {
+    color: "#515C66",
+    fontSize: 12,
+    lineHeight: 15,
+    ...createFontStyle("500"),
   },
 });

@@ -57,17 +57,9 @@ export const EmotionChoice: React.FC<EmotionChoiceProps> = ({
   }));
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.question}>{question}</Text>
-      </View>
-
+    <View>
+      <Text style={styles.question}>{question}</Text>
       <View style={styles.emotionsContainer}>
-        <View style={styles.centerCircle}>
-          <View style={styles.circle1} />
-          <View style={styles.circle2} />
-        </View>
-
         {emotionsWithLayout.map((emotion) => (
           <TouchableOpacity
             key={emotion.id}
@@ -103,76 +95,36 @@ export const EmotionChoice: React.FC<EmotionChoiceProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    gap: 12,
-    paddingHorizontal: 24,
-  },
   question: {
     ...createFontStyle("600"),
     fontSize: 18,
     color: "#0C0A09",
     textTransform: "capitalize",
   },
-  description: {
-    ...createFontStyle("400"),
-    fontSize: 14,
-    color: "#72818F",
-    textTransform: "capitalize",
-  },
   emotionsContainer: {
     width: "100%",
-    height: 375,
+    height: 320,
     alignSelf: "center",
-    marginTop: 44,
-  },
-  centerCircle: {
-    position: "absolute",
-    top: 66,
-    left: 66,
-    width: 243,
-    height: 243,
-    borderRadius: 121.5,
-    borderWidth: 1,
-    borderColor: "rgba(234, 236, 240, 0.4)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  circle1: {
-    width: 175,
-    height: 175,
-    borderRadius: 87.5,
-    borderWidth: 1,
-    borderColor: "rgba(234, 236, 240, 0.4)",
-  },
-  circle2: {
-    position: "absolute",
-    width: 115,
-    height: 115,
-    borderRadius: 57.5,
-    borderWidth: 1,
-    borderColor: "rgba(234, 236, 240, 0.4)",
-    top: 64,
-    left: 64,
+    marginTop: 16,
   },
   emotionButton: {
     position: "absolute",
     borderRadius: 999,
-    backgroundColor: "#F1F9FF",
+    backgroundColor: "#F3F4F6",
     alignItems: "center",
     justifyContent: "center",
   },
   selectedEmotion: {
-    backgroundColor: "#19DBF2",
+    backgroundColor: "rgba(25, 219, 242, 0.12)",
+    borderWidth: 2,
+    borderColor: "#19DBF2",
   },
   emotionText: {
     ...createFontStyle("700"),
-    color: "#72818F",
+    color: "#7F909F",
     textTransform: "capitalize",
   },
   selectedEmotionText: {
-    color: "#FFFFFF",
+    color: "#0C0A09",
   },
 });

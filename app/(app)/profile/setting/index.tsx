@@ -1,4 +1,5 @@
 import LogoutModal from "@/components/modal/LogoutModal";
+import BackBar from "@/components/ui/BackBar";
 import { showNotification } from "@/store/slices/notificationSlice";
 import { logout } from "@/store/slices/userSlice";
 import { clearCache, getCacheSize } from "@/utils/common";
@@ -34,10 +35,10 @@ const SettingItem = ({ title, hint, onPress }: SettingItemProps) => {
       </View>
       <View style={styles.settingRight}>
         {hint && <Text style={styles.settingHint}>{hint}</Text>}
-        <Image
+        {/* <Image
           source={require("@/assets/images/profile/icon-arrow-right.png")}
           style={{ width: 24, height: 24 }}
-        />
+        /> */}
       </View>
     </TouchableOpacity>
   );
@@ -186,17 +187,7 @@ export default function Setting() {
     <View style={styles.container}>
       <LinearGradient colors={["#ABF1FF", "#F5F7FA"]} style={styles.gradient} />
       <View style={[styles.content, { paddingTop: insets.top }]}>
-        <TouchableOpacity
-          style={styles.backContainer}
-          onPress={() => router.back()}
-          activeOpacity={0.5}
-        >
-          <Image
-            source={require("@/assets/images/common/icon-back.png")}
-            style={{ width: 24, height: 24 }}
-          />
-          <Text style={styles.backText}>{t("settings.title")}</Text>
-        </TouchableOpacity>
+        <BackBar title={t("settings.title")} />
 
         <View style={styles.logoContainer}>
           <View style={styles.logoWrapper}>
@@ -268,22 +259,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
-  backContainer: {
-    position: "relative",
-    height: 44,
-    width: "100%",
-    paddingHorizontal: 16,
-    justifyContent: "center",
-  },
-  backText: {
-    position: "absolute",
-    inset: 0,
-    textAlign: "center",
-    paddingVertical: 10,
-    fontSize: 18,
-    color: "#0C0A09",
-    ...createFontStyle("700"),
-  },
   logoContainer: {
     width: "100%",
     alignItems: "center",
@@ -310,7 +285,7 @@ const styles = StyleSheet.create({
   versionText: {
     fontSize: 14,
     lineHeight: 18,
-    color: "#72818F",
+    color: "#515C66",
   },
   settingsContainer: {
     paddingHorizontal: 16,
