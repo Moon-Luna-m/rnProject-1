@@ -6,8 +6,10 @@ import { I18nManager, ImageSourcePropType } from "react-native";
 // 导入翻译资源
 import dayjs from "dayjs";
 import "dayjs/locale/en";
+import "dayjs/locale/pt-br";
 import "dayjs/locale/zh";
 import en from "../locales/en.json";
+import ptBR from "../locales/pt-BR.json";
 import zh from "../locales/zh.json";
 import { clearLocalCache, getLocalCache, setLocalCache } from "./common";
 
@@ -42,6 +44,13 @@ export const LANGUAGES: Languages = {
     flag: require("@/assets/images/flags/zh.png"),
     code: "zh-CN",
   },
+  "pt-BR": {
+    label: "Português (BR)",
+    value: "pt-BR",
+    isRTL: false,
+    flag: require("@/assets/images/flags/pt-BR.png"),
+    code: "pt-BR",
+  },
 };
 
 // 检查语言是否在支持列表中
@@ -54,15 +63,22 @@ const getDeviceLanguage = () => {
   const locales = Localization.getLocales();
 
   if (locales && locales.length > 0) {
-    // 获取首选语言代码
-    const languageCode = locales[0].languageCode;
-    if (languageCode) {
-      const primaryLanguage = languageCode.split("-")[0];
-      return LANGUAGES[primaryLanguage] ? primaryLanguage : "en";
+    const locale = locales[0];
+    const fullLanguageCode = locale.languageCode + (locale.regionCode ? `-${locale.regionCode}` : '');
+    
+    // 首先检查完整的语言代码（如 pt-BR）
+    if (LANGUAGES[fullLanguageCode]) {
+      return fullLanguageCode;
+    }
+    
+    // 如果完整代码不存在，则检查主语言代码（如 pt）
+    const primaryLanguage = locale.languageCode;
+    if (LANGUAGES[primaryLanguage]) {
+      return primaryLanguage;
     }
   }
 
-  // 如果无法获取语言设置，返回默认语言
+  // 如果无法获取语言设置或不支持该语言，返回默认语言
   return "en";
 };
 
@@ -123,8 +139,9 @@ i18n.use(initReactI18next).init({
   resources: {
     en: { translation: en },
     zh: { translation: zh },
+    "pt-BR": { translation: ptBR }
   },
-  fallbackLng: "en",
+  fallbackLng: "pt-BR",
   interpolation: {
     escapeValue: false,
   },

@@ -1,85 +1,84 @@
+import BackBar from "@/components/ui/BackBar";
 import { createFontStyle } from "@/utils/typography";
 import { useTranslation } from "react-i18next";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import BackBar from "../ui/BackBar";
 
-export default function LoginProtocol() {
+export default function SubscribeProtocol() {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <BackBar title={t("settings.privacyPolicy")} />
+      <BackBar title={t("subscribeProtocol.title")} />
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.termsContainer}>
           <View style={styles.termSection}>
-            <Text style={styles.termTitle}>{t("loginProtocol.content")}</Text>
-          </View>
-          <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content1.title")}
-            </Text>
-            <Text style={styles.termText}>
-              {t("loginProtocol.content1.content")}
+              {t("subscribeProtocol.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content2.title")}
+              {t("subscribeProtocol.content1.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content2.content")}
-            </Text>
-            <Text style={styles.termText}>
-              {t("loginProtocol.content2.content2")}
+              {t("subscribeProtocol.content1.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content3.title")}
+              {t("subscribeProtocol.content2.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content3.content")}
+              {t("subscribeProtocol.content2.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content4.title")}
+              {t("subscribeProtocol.content3.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content4.content")}
+              {t("subscribeProtocol.content3.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content5.title")}
+              {t("subscribeProtocol.content4.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content5.content")}
+              {t("subscribeProtocol.content4.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content6.title")}
+              {t("subscribeProtocol.content5.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content6.content")}
+              {t("subscribeProtocol.content5.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content7.title")}
+              {t("subscribeProtocol.content6.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content7.content")}
+              {t("subscribeProtocol.content6.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content8.title")}
+              {t("subscribeProtocol.content7.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content8.content")}
+              {t("subscribeProtocol.content7.content")}
+            </Text>
+          </View>
+          <View style={styles.termSection}>
+            <Text style={styles.termTitle}>
+              {t("subscribeProtocol.content8.title")}
+            </Text>
+            <Text style={styles.termText}>
+              {t("subscribeProtocol.content8.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
@@ -87,15 +86,12 @@ export default function LoginProtocol() {
               {t("loginProtocol.content9.title")}
             </Text>
             <Text style={styles.termText}>
-              {t("loginProtocol.content9.content")}
+              {t("subscribeProtocol.content9.content")}
             </Text>
           </View>
           <View style={styles.termSection}>
             <Text style={styles.termTitle}>
-              {t("loginProtocol.content10.title")}
-            </Text>
-            <Text style={styles.termText}>
-              {t("loginProtocol.content10.content")}
+              {t("loginProtocol.content10")}
             </Text>
           </View>
         </View>

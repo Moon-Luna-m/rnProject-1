@@ -1,6 +1,7 @@
 import BackBar from "@/components/ui/BackBar";
 import { createFontStyle } from "@/utils/typography";
 import { AntDesign } from "@expo/vector-icons";
+import { TFunction } from "i18next";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -9,7 +10,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  useWindowDimensions
+  useWindowDimensions,
 } from "react-native";
 import Animated, {
   Extrapolation,
@@ -21,40 +22,130 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 
-type TabKey =
-  | "reviews"
-  | "privacy"
-  | "account"
-  | "payments"
-  | "others"
-  | "attachment";
-
 interface FaqItem {
   id: string;
   question: string;
   answer: string;
 }
 
-const mockFaqData: Record<TabKey, FaqItem[]> = {
-  reviews: [
-    {
-      id: "1",
-      question: "这个测试科学吗？结果准确吗？",
-      answer:
-        "基于心理学理论，经过实证验证；问题中立且明确，有预测筛选；确保信度（内部一致性、重测稳定性）和效度（内容、构念、效标）；建立常模参照群体数据；标准化测试程序，保护隐私伦理；动态纠正文化偏差。目标：客观准确测量，避免主观标签。",
-    },
-    {
-      id: "2",
-      question: "如何解读测试结果？",
-      answer:
-        "测试结果包含详细的解释说明，帮助您理解各个维度的含义。我们提供专业的分析报告，包括个性特征、行为倾向等多个方面。",
-    },
-  ],
-  privacy: [],
-  account: [],
-  payments: [],
-  others: [],
-  attachment: [],
+const mockFaqData = (t: TFunction) => {
+  return {
+    reviews: [
+      {
+        id: "1",
+        question: t("faq.questions.question1"),
+        answer: t("faq.questions.answer1"),
+      },
+      {
+        id: "2",
+        question: t("faq.questions.question2"),
+        answer: t("faq.questions.answer2"),
+      },
+      // {
+      //   id: "3",
+      //   question: t("faq.questions.question3"),
+      //   answer: t("faq.questions.answer3"),
+      // },
+      {
+        id: "4",
+        question: t("faq.questions.question4"),
+        answer: t("faq.questions.answer4"),
+      },
+      {
+        id: "5",
+        question: t("faq.questions.question5"),
+        answer: t("faq.questions.answer5"),
+      },
+    ],
+    privacy: [
+      {
+        id: "1",
+        question: t("faq.questions.question6"),
+        answer: t("faq.questions.answer6"),
+      },
+      {
+        id: "2",
+        question: t("faq.questions.question7"),
+        answer: t("faq.questions.answer7"),
+      },
+      {
+        id: "3",
+        question: t("faq.questions.question8"),
+        answer: t("faq.questions.answer8"),
+      },
+      {
+        id: "4",
+        question: t("faq.questions.question9"),
+        answer: t("faq.questions.answer9"),
+      },
+    ],
+    account: [
+      {
+        id: "1",
+        question: t("faq.questions.question10"),
+        answer: t("faq.questions.answer10"),
+      },
+      {
+        id: "2",
+        question: t("faq.questions.question11"),
+        answer: t("faq.questions.answer11"),
+      },
+      {
+        id: "3",
+        question: t("faq.questions.question12"),
+        answer: t("faq.questions.answer12"),
+      },
+      {
+        id: "4",
+        question: t("faq.questions.question13"),
+        answer: t("faq.questions.answer13"),
+      },
+    ],
+    payments: [
+      {
+        id: "1",
+        question: t("faq.questions.question14"),
+        answer: t("faq.questions.answer14"),
+      },
+      {
+        id: "2",
+        question: t("faq.questions.question15"),
+        answer: t("faq.questions.answer15"),
+      },
+      {
+        id: "3",
+        question: t("faq.questions.question16"),
+        answer: t("faq.questions.answer16"),
+      },
+      // {
+      //   id: "4",
+      //   question: t("faq.questions.question17"),
+      //   answer: t("faq.questions.answer17"),
+      // },
+    ],
+    others: [
+      {
+        id: "1",
+        question: t("faq.questions.question18"),
+        answer: t("faq.questions.answer18"),
+      },
+      {
+        id: "2",
+        question: t("faq.questions.question19"),
+        answer: t("faq.questions.answer19"),
+      },
+      {
+        id: "3",
+        question: t("faq.questions.question20"),
+        answer: t("faq.questions.answer20"),
+      },
+      {
+        id: "4",
+        question: t("faq.questions.question21"),
+        answer: t("faq.questions.answer21"),
+      },
+    ],
+  };
 };
 
 function AccordionItem({ item }: { item: FaqItem }) {
@@ -149,16 +240,14 @@ export default function Faq() {
     { key: "account", title: t("faq.tabs.account") },
     { key: "payments", title: t("faq.tabs.payments") },
     { key: "others", title: t("faq.tabs.others") },
-    { key: "attachment", title: t("faq.tabs.attachment") },
   ]);
 
   const renderScene = SceneMap({
-    reviews: () => <TabContent items={mockFaqData.reviews} />,
-    privacy: () => <TabContent items={mockFaqData.privacy} />,
-    account: () => <TabContent items={mockFaqData.account} />,
-    payments: () => <TabContent items={mockFaqData.payments} />,
-    others: () => <TabContent items={mockFaqData.others} />,
-    attachment: () => <TabContent items={mockFaqData.attachment} />,
+    reviews: () => <TabContent items={mockFaqData(t).reviews} />,
+    privacy: () => <TabContent items={mockFaqData(t).privacy} />,
+    account: () => <TabContent items={mockFaqData(t).account} />,
+    payments: () => <TabContent items={mockFaqData(t).payments} />,
+    others: () => <TabContent items={mockFaqData(t).others} />,
   });
 
   const renderTabBar = (props: any) => (
@@ -202,8 +291,8 @@ const styles = StyleSheet.create({
   tabBar: {
     height: 44,
     backgroundColor: "#F5F7FA",
-    shadowOpacity: 0,
     marginHorizontal: 16,
+    shadowColor: "transparent",
   },
   tab: {
     width: "auto",

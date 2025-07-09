@@ -1,7 +1,7 @@
 import SearchResultCard from "@/components/home/SearchResultCard";
 import {
-    GetTestListByTypeResponse,
-    testService,
+  GetTestListByTypeResponse,
+  testService,
 } from "@/services/testServices";
 
 import { createFontStyle } from "@/utils/typography";
@@ -10,15 +10,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
-    ActivityIndicator,
-    Dimensions,
-    FlatList,
-    Image,
-    RefreshControl,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Dimensions,
+  FlatList,
+  Image,
+  RefreshControl,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

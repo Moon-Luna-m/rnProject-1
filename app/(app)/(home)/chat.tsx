@@ -127,7 +127,10 @@ const MainContent = React.memo(
       <View
         style={[
           styles.scrollContainer,
-          { marginTop: Platform.OS === "web" ? 215 : 230 },
+          {
+            marginTop:
+              Platform.OS === "web" ? 215 : Platform.OS === "ios" ? 230 : 195,
+          },
         ]}
       >
         <View style={styles.scrollContent}>

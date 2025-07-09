@@ -1,0 +1,923 @@
+{
+  "common": {
+    "more": "Mais",
+    "welcome": "Bem-vindo ao {{name}}",
+    "login": "Entrar",
+    "register": "Cadastrar",
+    "logout": "Sair",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "loading": "Carregando...",
+    "noMoreData": "Não há mais dados",
+    "selectDate": "Selecionar data",
+    "dataEditing": "Edição de dados",
+    "settings": "Configurações",
+    "time": {
+      "minutes": "minutos",
+      "hours": "horas"
+    },
+    "datePicker": {
+      "year": "Ano",
+      "month": "Mês",
+      "day": "Dia"
+    },
+    "avatar": {
+      "title": "Configuração de avatar",
+      "camera": "Câmera",
+      "gallery": "Galeria"
+    },
+    "allCategories": "Todas as categorias",
+    "camera": {
+      "switchCamera": "Alternar câmera",
+      "flash": {
+        "on": "Flash ligado",
+        "off": "Flash desligado",
+        "auto": "Flash automático"
+      },
+      "capture": "Capturar",
+      "retake": "Refazer",
+      "confirm": "Confirmar",
+      "cancel": "Cancelar",
+      "permissionDenied": "Permissão de câmera necessária",
+      "permissionMessage": "Por favor, permita o acesso à câmera nas configurações",
+      "processing": "Processando...",
+      "guide": "Posicione seu rosto dentro do círculo",
+      "tips": "Toque para foto, pressione para vídeo"
+    },
+    "gallery": {
+      "permissionDenied": "Permissão de galeria necessária",
+      "permissionMessage": "Por favor, permita o acesso à galeria nas configurações"
+    }
+  },
+  "profile": {
+    "edit": "Editar",
+    "changeName": "Modificar nome",
+    "genderSelection": "Seleção de gênero",
+    "selectGender": "Selecionar gênero",
+    "birthday": "Seu aniversário",
+    "selectBirthday": "Selecionar aniversário",
+    "birthdayPlaceholder": "YYYY.MM.DD",
+    "testCard": {
+      "title": "Meus testes",
+      "completed": "Completado",
+      "notCompleted": "Não completado"
+    },
+    "popularServices": {
+      "title": "Serviços populares",
+      "vip": {
+        "title": "VIP",
+        "expires": "Expiração"
+      },
+      "wallet": "Meu bolso",
+      "favorites": "Meus favoritos"
+    },
+    "otherServices": {
+      "title": "Outros serviços",
+      "faq": "Perguntas frequentes",
+      "settings": "Configurações"
+    }
+  },
+  "gender": {
+    "male": "Masculino",
+    "female": "Feminino",
+    "placeholder": "Selecione o gênero"
+  },
+  "form": {
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Digite seu e-mail"
+    },
+    "password": {
+      "label": "Senha",
+      "placeholder": "Digite sua senha"
+    },
+    "confirmPassword": {
+      "label": "Confirmar senha",
+      "placeholder": "Confirme sua senha",
+      "required": "Confirme sua senha",
+      "match": "As senhas não coincidem"
+    },
+    "submit": {
+      "login": "Entrar",
+      "register": "Cadastrar"
+    },
+    "verify": {
+      "title": "Verificar código",
+      "subtitle": "Digite o código enviado para <0>{{email}}</0>",
+      "error": "Código incorreto, tente novamente",
+      "success": "Cadastro realizado",
+      "successSubtitle": "Faça login agora",
+      "successButton": "Ir para login",
+      "password": "Senha redefinida com sucesso"
+    },
+    "login": {
+      "tab": "Entrar",
+      "subtitle": "Comece sua jornada",
+      "forgotPassword": "Esqueceu a senha?",
+      "agreement": "Aceita <0>{{agreement}}</0>",
+      "agreementRequired": "Aceite o protocolo de login",
+      "agreementLink": "Protocolo de login",
+      "otherMethods": "Outros métodos de login"
+    },
+    "register": {
+      "tab": "Cadastrar",
+      "subtitle": "Crie seu perfil"
+    },
+    "forgot": {
+      "title": "Recuperar senha",
+      "subtitle": "Digite seu e-mail para receber o código",
+      "button": "Obter código"
+    },
+    "reset": {
+      "title": "Definir nova senha",
+      "subtitle": "Defina sua nova senha",
+      "newPassword": "Nova senha",
+      "confirmPassword": "Confirmar senha",
+      "button": "Concluir"
+    }
+  },
+  "auth": {
+    "username": "Usuário",
+    "password": "Senha",
+    "email": "E-mail",
+    "forgotPassword": "Esqueceu a senha",
+    "loginSuccess": "Login realizado",
+    "loginFailed": "Login falhou",
+    "registerSuccess": "Cadastro realizado",
+    "registerFailed": "Cadastro falhou"
+  },
+  "error": {
+    "networkError": "Erro de rede",
+    "timeout": "Tempo limite excedido",
+    "serverError": "Erro de servidor",
+    "unauthorized": "Acesso não autorizado"
+  },
+  "validation": {
+    "email": {
+      "invalid": "Digite um e-mail válido, como: test@gmail.com",
+      "required": "O e-mail não pode ser vazio"
+    },
+    "password": {
+      "minLength": "A senha deve ter pelo menos {{count}} caracteres",
+      "requireAll": "A senha deve ter pelo menos 8 caracteres, incluindo letras e números"
+    }
+  },
+  "review": {
+    "title": "Meu teste",
+    "tabs": {
+      "completed": "Completado ({{count}})",
+      "incomplete": "Incompleto ({{count}})"
+    },
+    "card": {
+      "details": "Detalhes",
+      "generateReport": "Gerar relatório",
+      "testAgain": "Testar novamente",
+      "progress": "Progresso",
+      "continue": "Continuar"
+    }
+  },
+  "favorites": {
+    "title": "Meus favoritos",
+    "card": {
+      "questionCount": "Número de questões",
+      "timeTaken": "Tempo de teste",
+      "deleteSuccess": "Desfavoritado com sucesso",
+      "addSuccess": "Favoritado com sucesso"
+    }
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "tabs": {
+      "reviews": "Medição e testes psicológicos",
+      "privacy": "Privacidade e proteção de dados",
+      "account": "Segurança da conta",
+      "payments": "Pagamentos e assinaturas",
+      "others": "Outros assuntos"
+    },
+    "questions": {
+      "question1": "Como os testes são criados?",
+      "answer1": "Estes testes são baseados em modelos psicológicos reconhecidos ou gerados por IA, e validados por padrões de coerência e clareza estruturada.",
+      "question2": "Os resultados são científicos?",
+      "answer2": "Estes testes são para autoexploração e entretenimento, não substituem a avaliação clínica. Para diagnóstico ou tratamento, consulte um profissional.",
+      "question3": "Posso repetir o mesmo teste quantas vezes quiser?",
+      "answer3": "Você pode repetir o teste quantas vezes quiser. Os resultados podem variar de acordo com seu estado emocional.",
+      "question4": "Posso compartilhar meus resultados?",
+      "answer4": "Sim! Você pode gerar imagens com resultados visualizados e compartilhar nas redes sociais ou com seus amigos.",
+      "question5": "Existem testes específicos para entender meu estilo de relacionamento?",
+      "answer5": "Sim. Oferecemos testes de estilo de apego, que são muito úteis para entender seus padrões de emoção.",
+      "question6": "Quais dados coletamos?",
+      "answer6": "Coletamos dados, como respostas de teste, idioma, tipo de dispositivo e comportamento de navegação (anônimo).",
+      "question7": "Armazenamos dados pessoais sensíveis?",
+      "answer7": "Apenas quando necessário para personalização, armazenamos e sempre armazenamos de forma anônima e segura, conforme as leis LGPD.",
+      "question8": "Como excluo meus dados?",
+      "answer8": "Você pode enviar um e-mail para suporte@mindsecho.com.br, solicitando a exclusão completa de seus dados.",
+      "question9": "Meus dados são vendidos a terceiros?",
+      "answer9": "Não. Seus dados não são vendidos ou usados para fins comerciais.",
+      "question10": "Como faço login no aplicativo?",
+      "answer10": "Você pode fazer login com e-mail, Google ID ou outros métodos sociais.",
+      "question11": "Esqueci minha senha. O que fazer?",
+      "answer11": "Use a opção 'Esqueci minha senha' na tela de login ou redefina sua senha por e-mail ou telefone.",
+      "question12": "Posso usar minha conta em múltiplos dispositivos?",
+      "answer12": "Sim, desde que eu use o mesmo método de login.",
+      "question13": "Alguém acessou minha conta. O que fazer?",
+      "answer13": "Mude sua senha imediatamente e entre em contato com o suporte.",
+      "question14": "Como funciona a assinatura?",
+      "answer14": "Após a assinatura, você terá acesso a conteúdos exclusivos, testes psicológicos personalizados, relatórios personalizados, resultados de gráficos, conteúdo visual compartilhável, recomendações personalizadas e outras funcionalidades avançadas. A assinatura pode ser mensal, trimestral, anual ou um pagamento único. ",
+      "question15": "Como posso cancelar a assinatura?",
+      "answer15": "Acesse seu aplicativo de loja (App Store ou Google Play), encontre a opção de cancelamento ou entre em contato com o fornecedor de cartão de crédito.",
+      "question16": "Após o cancelamento da assinatura, ainda posso acessar?",
+      "answer16": "Sim. Você continuará acessando até o final do período pago.",
+      "question17": "Você oferece reembolso?",
+      "answer17": "De acordo com a política atual da loja de aplicativos, o reembolso deve ser solicitado diretamente pela loja de aplicativos.",
+      "question18": "O aplicativo é gratuito?",
+      "answer18": "Sim, o aplicativo oferece um período de teste gratuito e conteúdos pagos opcionais.",
+      "question19": "O aplicativo oferece outras versões em outros idiomas?",
+      "answer19": "Atualmente, oferecemos suporte em português, inglês e chinês simplificado.",
+      "question20": "Posso sugerir novos testes?",
+      "answer20": "Ótimo! Envie seu feedback para suporte@mindsecho.com.br",
+      "question21": "Como entrar em contato com o suporte?",
+      "answer21": "Envie um e-mail para suporte@mindsecho.com.br. Nosso time responderá em até 2 dias úteis."
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "account": "Configuração da conta",
+    "customerService": "Suporte ao cliente",
+    "userAgreement": "Contrato de usuário",
+    "privacyPolicy": "Política de privacidade",
+    "disclaimer": "Aviso de isenção de responsabilidade",
+    "language": "Alternar idioma",
+    "checkUpdate": "Verificar atualização",
+    "clearCache": "Limpar cache",
+    "logout": {
+      "button": "Sair",
+      "title": "Deseja realmente sair?",
+      "description": "Após sair, você não poderá enviar propostas de teste.",
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
+    },
+    "clearCacheSuccess": "Cache limpo com sucesso",
+    "clearCacheFailed": "Cache limpo com falha",
+    "updateAvailable": "Atualização disponível, atualizando...",
+    "noUpdate": "Já é a versão mais recente"
+  },
+  "privacy": {
+    "terms": {
+      "title": "Termos",
+      "content1": "Nos esforçamos para proteger sua privacidade e seus dados pessoais. Esta política de privacidade explica como coletamos, usamos e protegemos seus dados quando você usa nosso serviço.",
+      "content2": "Coletamos apenas as informações necessárias para fornecer e melhorar nosso serviço. Isso pode incluir informações básicas, dados de uso e qualquer outra informação que você escolha fornecer."
+    },
+    "changes": {
+      "title": "Alterações de serviços e termos",
+      "content1": "Reservamo-nos o direito de modificar ou atualizar a política de privacidade a qualquer momento. Qualquer alteração significativa será comunicada ao usuário por meio de canais apropriados.",
+      "content2": "Continuar a usar nosso serviço após tais modificações é considerado aceitação da política de privacidade atualizada."
+    }
+  },
+  "privacyPolicy": {
+    "title": "Política de privacidade",
+    "content": "Esta política de privacidade explica como a MindsEcho coleta, usa, armazena e protege as informações dos usuários que usam nossos serviços de teste psicológico e autoexploração por meio de aplicativos móveis, sites e outras interfaces digitais.",
+    "content1": {
+      "title": "Dados coletados",
+      "content": "Coletamos os seguintes tipos de dados:",
+      "content1": "- Dados de identificação: e-mail, nome de usuário, ID de dispositivo anônimo.",
+      "content2": "- Dados de uso: histórico de testes, respostas, tempo de uso, preferências e contagem de cliques.",
+      "content3": "- Dados técnicos: tipo de dispositivo, sistema operacional, idioma, localização aproximada.",
+      "content4": "Dados sensíveis: respostas de teste que podem refletir características psicológicas ou emocionais (processadas de forma anônima)."
+    },
+    "content2": {
+      "title": "Finalidade do uso dos dados",
+      "content": "Usamos seus dados para:",
+      "content1": "- Gerar relatórios de teste psicológico personalizados.",
+      "content2": "- Melhorar a experiência do usuário e recomendar testes relacionados. - Cumprir obrigações legais ou contratuais.",
+      "content3": "- Garantir segurança, prevenir fraude e abuso.",
+      "content4": "- Fornecer suporte técnico e processar pagamentos."
+    },
+    "content3": {
+      "title": "Base legal para o processamento",
+      "content": "O processamento de dados é baseado nas seguintes bases legais:",
+      "content1": "- Consentimento do usuário (através da aceitação desta política).",
+      "content2": "- Cumprimento de contrato (através do uso de recursos da aplicação).",
+      "content3": "- Interesses legítimos da plataforma (melhoria contínua do serviço)."
+    },
+    "content4": {
+      "title": "Compartilhamento de dados",
+      "content": "A MindsEcho não vende ou compartilha seus dados pessoais com terceiros para fins comerciais.",
+      "content1": "Podemos compartilhar dados com as seguintes entidades:",
+      "content2": "- Provedores de infraestrutura de nuvem (Google Cloud, AWS, etc.).",
+      "content3": "- Plataformas de pagamento (Google Play, Apple Pay, etc.).",
+      "content4": "- Compartilhamento de dados com autoridades legais mediante ordem judicial."
+    },
+    "content5": {
+      "title": "Armazenamento e segurança",
+      "content": "Seus dados são armazenados em servidores seguros localizados no Brasil e/ou no exterior, seguindo protocolos de segurança e criptografia rigorosos. Adotamos medidas técnicas e organizacionais para garantir a integridade e a confidencialidade das informações."
+    },
+    "content6": {
+      "title": "Direitos do usuário",
+      "content": "De acordo com a Lei Geral de Proteção de Dados (LGPD), você pode:",
+      "content1": "- Solicitar acesso, correção ou exclusão de seus dados.",
+      "content2": "- Revogar o consentimento a qualquer momento.",
+      "content3": "- Solicitar portabilidade e informações compartilhadas.",
+      "content4": "Você pode solicitar via e-mail: suporte@mindsecho.com.br"
+    },
+    "content7": {
+      "title": "Cookies e tecnologias semelhantes",
+      "content": "Usamos cookies funcionais e analíticos para melhorar a navegação e medir o desempenho. Você pode configurar seu navegador para desativar cookies, mas observe que isso pode afetar sua experiência de usuário."
+    },
+    "content8": {
+      "title": "Retenção de dados",
+      "content": "Reteremos os dados pelo período necessário para atingir os propósitos descritos nesta política ou conforme exigido pela lei."
+    },
+    "content9": {
+      "title": "Menores de idade",
+      "content": "A MindsEcho não coleta intencionalmente dados de menores de 13 anos sem o consentimento dos pais ou tutores. Se detectarmos abuso, os dados serão excluídos imediatamente."
+    },
+    "content10": {
+      "title": "Alterações desta política",
+      "content": "Podemos atualizar esta política periodicamente. Notificaremos os usuários por meio do aplicativo ou e-mail. Recomendamos que você revise esta política regularmente."
+    },
+    "content11": {
+      "title": "Informações de contato",
+      "content": "Se você tiver qualquer dúvida ou solicitação relacionada a privacidade e proteção de dados, entre em contato conosco:",
+      "content1": "suporte@mindsecho.com.br"
+    },
+    "content12": "Ao usar o MindsEcho, você reconhece que leu, entendeu e aceitou completamente esta política de privacidade."
+  },
+  "loginProtocol": {
+    "content": "Este protocolo de login (abaixo referido como “este protocolo”) regulariza o uso do MindsEcho, incluindo o acesso e o uso da plataforma de testes psicológicos, e fornece informações sobre as obrigações e responsabilidades de usuários e da plataforma.",
+    "content1": {
+      "title": "Escopo e aplicabilidade",
+      "content": "Este protocolo se aplica a todos os usuários que acessam ou utilizam o MindsEcho, seja por meio de aplicativo móvel, site ou outros meios eletrônicos."
+    },
+    "content2": {
+      "title": "Registro e gerenciamento de conta",
+      "content": "O usuário deve fornecer informações precisas e completas ao criar uma conta. O uso de informações falsas ou enganosas pode resultar em bloqueio da conta. ",
+      "content2": "A plataforma pode impor restrições para prevenir registros repetidos de e-mail/telefone. O usuário é responsável pela confidencialidade de sua senha e informações de login."
+    },
+    "content3": {
+      "title": "Comportamento de uso",
+      "content": "O usuário não deve usar a plataforma para atividades ilegais ou nocivas, como manipulação de resultados, acesso não autorizado ou interferência nos serviços da plataforma."
+    },
+    "content4": {
+      "title": "Aviso de isenção de responsabilidade por conteúdo artificial",
+      "content": "Parte do conteúdo gerado pela plataforma pode ser baseado em modelos de linguagem (por exemplo, GPT), para entretenimento e autoexploração. Os resultados dos testes não são usados para diagnóstico ou aconselhamento médico. A plataforma não é responsável por qualquer abuso de informações geradas."
+    },
+    "content5": {
+      "title": "Limitações de uso de conteúdo psicológico",
+      "content": "O conteúdo fornecido pela plataforma é para autoavaliação e entretenimento. A plataforma não substitui aconselhamento médico, psicológico ou terapêutico. Se o usuário apresentar problemas mentais graves, recomendamos procurar ajuda de um psicólogo ou médico especialista."
+    },
+    "content6": {
+      "title": "Processamento de privacidade e dados",
+      "content": "A plataforma coleta informações do usuário, incluindo respostas de teste, preferências e situações de interação. Os dados serão processados de acordo com a política de privacidade da plataforma. O usuário concorda com a coleta e processamento de seus dados não pessoais, conforme abaixo. O usuário tem o direito de acessar, modificar ou excluir seus dados pessoais de acordo com a lei aplicável."
+    },
+    "content7": {
+      "title": "Comportamento de compartilhamento de resultados",
+      "content": "O usuário pode optar por compartilhar seus resultados nas redes sociais ou na comunidade de aplicativos. A plataforma reserva o direito de exibir esta informação, mas não revelará a identidade do usuário, a menos que seja compartilhado explicitamente."
+    },
+    "content8": {
+      "title": "Cancelamento de conta e exclusão de dados",
+      "content": "A plataforma não é responsável por danos causados por abuso de serviço. A plataforma também não é responsável por falhas de rede, interrupção de serviço ou falhas de sistemas de terceiros."
+    },
+    "content9": {
+      "title": "Alterações de protocolo",
+      "content": "O MindsEcho reserva-se o direito de modificar este protocolo a qualquer momento. Qualquer alteração será comunicada ao usuário por meio de notificação no aplicativo ou e-mail. O uso da plataforma após tais alterações será considerado aceitação dos novos termos."
+    },
+    "content10": {
+      "title": "Lei aplicável",
+      "content": "Este protocolo é regido pela Lei Federal do Brasil, qualquer litígio deve ser resolvido pelo Tribunal de São Paulo."
+    }
+  },
+  "subscribeProtocol": {
+    "title": "Protocolo de ativação de assinatura (membro VIP)",
+    "content": "Este protocolo de ativação de assinatura (abaixo referido como “este protocolo”) estabelece os termos e condições para o usuário (“você”) comprar e usar os serviços pagos da MindsEcho.",
+    "content1": {
+      "title": "Descrição de serviços avançados",
+      "content": "Após a ativação da assinatura, você terá acesso a conteúdos exclusivos, testes psicológicos avançados, relatórios personalizados, resultados de gráficos, conteúdo visual compartilhável, recomendações personalizadas e outras funcionalidades avançadas."
+    },
+    "content2": {
+      "title": "Qualificação",
+      "content": "Você deve ter 18 anos ou obter consentimento legal do responsável para ativar a assinatura paga."
+    },
+    "content3": {
+      "title": "Forma de pagamento e liquidação",
+      "content": "O pagamento será processado usando o método de pagamento escolhido (cartão de crédito, débito, Google Play, Apple Pay ou outros métodos de pagamento fornecidos pela plataforma). De acordo com o pacote escolhido (mensal, trimestral ou anual), o método de liquidação pode ser único ou recorrente."
+    },
+    "content4": {
+      "title": "Ativação de assinatura",
+      "content": "Algumas assinaturas podem ser configuradas para renovação automática, a menos que você cancele antecipadamente. A renovação seguirá o mesmo plano e preço, a menos que você cancele antecipadamente por outro meio."
+    },
+    "content5": {
+      "title": "Cancelamento de assinatura",
+      "content": "Você pode cancelar a assinatura a qualquer momento através da plataforma ou do sistema de pagamento (Google Play/App Store) através da área de configurações. O cancelamento da assinatura resultará em não renovação futura, mas não resultará em reembolso proporcional ao tempo utilizado."
+    },
+    "content6": {
+      "title": "Reembolso",
+      "content": "O reembolso será processado de acordo com a política atual da loja de aplicativos (Google Play/App Store) e a lei brasileira de consumidor. A MindsEcho não garante reembolsos diretos fora dessas plataformas."
+    },
+    "content7": {
+      "title": "Garantia de limite",
+      "content": "A assinatura não garante diagnóstico psicológico ou benefícios clínicos. O conteúdo é para autoexploração e entretenimento. A plataforma não é responsável pelas decisões baseadas nos resultados."
+    },
+    "content8": {
+      "title": "Alterações de termos",
+      "content": "O MindsEcho pode revisar este protocolo periodicamente. As alterações serão comunicadas por meio de aplicativo ou e-mail, e o uso do serviço será considerado aceitação dos novos termos."
+    },
+    "content9": {
+      "title": "Lei aplicável e jurisdição",
+      "content": "Este protocolo é regido pela Lei Federal do Brasil. O Tribunal de São Paulo é designado para resolver qualquer litígio decorrente deste protocolo."
+    },
+    "content10": "Se você não concordar com os termos acima, não ative a assinatura. A ativação da assinatura significa que você leu, entendeu e aceitou completamente este protocolo."
+  },
+  "renewProtocol": {
+    "title": "Protocolo de renovação",
+    "content": "Este protocolo de renovação (abaixo referido como “este protocolo”) estabelece os termos e condições para a compra e renovação automática de assinaturas pagas avançadas na MindsEcho, aplicável ao Brasil.",
+    "content1": {
+      "title": "Descrição de renovação de serviço",
+      "content": "Através da renovação, o usuário terá acesso ilimitado aos recursos avançados da MindsEcho, como testes psicológicos avançados, análise personalizada, relatórios visualizados, dados exclusivos e suporte prioritário."
+    },
+    "content2": {
+      "title": "Renovação automática",
+      "content": "O serviço de assinatura será renovado automaticamente ao final de cada ciclo (mensal, trimestral ou anual), usando a mesma forma de pagamento autorizada anteriormente, a menos que o usuário cancele a renovação antecipadamente."
+    },
+    "content3": {
+      "title": "Forma de pagamento",
+      "content": "O boleto será processado através da plataforma integrada (App Store, Google Play, cartão de crédito/débito). A MindsEcho não armazena dados financeiros diretamente."
+    },
+    "content4": {
+      "title": "Cancelamento de renovação",
+      "content": "O usuário pode cancelar a renovação automática a qualquer momento através das configurações da loja de aplicativos ou através do aplicativo. O cancelamento da renovação interromperá a cobrança do próximo ciclo, mas o serviço permanecerá ativo até o final do ciclo de renovação atual."
+    },
+    "content5": {
+      "title": "Política de reembolso",
+      "content": "De acordo com as diretrizes do Google Play e do App Store, você pode solicitar reembolso diretamente da loja de aplicativos dentro do prazo legal. A MindsEcho não oferece reembolso direto fora dessas plataformas."
+    },
+    "content6": {
+      "title": "Alterações de termos de assinatura",
+      "content": "O MindsEcho reserva-se o direito de ajustar preços, modificar benefícios de assinatura e atualizar estes termos. Qualquer alteração será comunicada por e-mail ou antecipadamente no aplicativo."
+    },
+    "content7": {
+      "title": "Cancelamento por violação",
+      "content": "Se você violar os termos de uso, tiver comportamento abusivo, fraude ou violação de direitos autorais, a MindsEcho pode suspender ou cancelar a assinatura, sem aviso prévio, e sem obrigação de reembolso."
+    },
+    "content8": {
+      "title": "Responsabilidade limitada",
+      "content": "A assinatura contínua não garante diagnóstico clínico, nem substitui aconselhamento médico ou psicológico profissional. Este conteúdo tem como objetivo educar e autoexplorar. A MindsEcho não é responsável por decisões baseadas nos resultados obtidos."
+    },
+    "content9": {
+      "title": "Proteção de dados e privacidade",
+      "content": "Os dados coletados durante a assinatura estão sujeitos à política de privacidade da plataforma e serão processados de acordo com a Lei Geral de Proteção de Dados (LGPD). O usuário tem o direito de acessar, corrigir e excluir seus dados."
+    },
+    "content10": {
+      "title": "Lei aplicável e jurisdição",
+      "content": "Este protocolo é regido pela Lei Federal do Brasil. Qualquer litígio decorrente deste protocolo será de competência do Tribunal de São Paulo/SP."
+    },
+    "content11": "A assinatura contínua do MindsEcho, neste caso, significa que o usuário leu, entendeu e aceitou completamente os termos descritos aqui."
+  },
+  "wallet": {
+    "success": "Recarga bem-sucedida",
+    "cancelPay": "Cancelar pagamento",
+    "title": "Meu bolso",
+    "currentBalance": "Saldo atual",
+    "coinDetails": "Detalhes de moeda",
+    "rechargeAmount": "Valor de recarga",
+    "rechargeMethod": "Método de recarga",
+    "paymentMethods": {
+      "mastercard": "Mastercard",
+      "paypal": "PayPal"
+    },
+    "tags": {
+      "firstCharge": "Primeira recarga",
+      "limitedTime": "Tempo limitado"
+    },
+    "rechargeInstructions": "Instruções de recarga",
+    "instructions": {
+      "0": "Recarga permanente",
+      "1": "Proporção de recarga: $1 = 1 moeda",
+      "2": "O valor de recarga não pode ser reembolsado ou trocado",
+      "3": "A moeda de recarga só pode ser usada dentro deste APP"
+    }
+  },
+  "coinDetail": {
+    "title": "Detalhes de moeda"
+  },
+  "vip": {
+    "monthlyMemberShip": "Membro mensal",
+    "quarterlyMemberShip": "Membro trimestral",
+    "yearlyMemberShip": "Membro anual",
+    "lifetimeMemberShip": "Membro vitalício",
+    "memberCenter": "Centro de membros",
+    "noSk": "Falha ao abrir, tente novamente mais tarde",
+    "success": "Sucesso ao abrir",
+    "quarterly": "{{n}}/Trimestral",
+    "monthly": "{{n}}/Mensal",
+    "yearly": "{{n}}/Anual",
+    "lifetime": "Único pagamento",
+    "title": "Membro",
+    "notActivated": "Não ativado",
+    "expires": "Expiração",
+    "subscriptions": {
+      "monthly": {
+        "title": "Membro mensal",
+        "price": "9.9",
+        "perMonth": "¥9.9/Mensal"
+      },
+      "quarterly": {
+        "title": "Membro trimestral",
+        "price": "24.9",
+        "perMonth": "¥9.5/Mensal"
+      },
+      "annual": {
+        "title": "Membro anual",
+        "price": "60.9",
+        "perMonth": "¥8.5/Mensal"
+      },
+      "lifetime": {
+        "title": "Membro vitalício",
+        "price": "200",
+        "perMonth": "Pagamento único"
+      }
+    },
+    "agreement": {
+      "autoRenewal": "Renovação automática, ¥{{price}}/Mensal, pode cancelar a qualquer momento",
+      "oneTimePayment": "Pagamento único, uso vitalício",
+      "prefix": "Ser membro significa concordar",
+      "membershipAgreement": "Contrato de serviço de membro",
+      "and": "e",
+      "subscriptionAgreement": "Contrato de serviço de assinatura contínua de membro"
+    },
+    "benefits": {
+      "title": "Benefícios do membro",
+      "items": {
+        "unlimitedTests": {
+          "title": "Desbloqueie testes avançados",
+          "desc": "Dados de teste mais completos"
+        },
+        "exclusiveContent": {
+          "title": "Serviço de companheiro AI",
+          "desc": "Identificação precisa de pontos de dor com o modelo grande"
+        },
+        "prioritySupport": {
+          "title": "Exportação de relatório PDF profissional",
+          "desc": "Relatório compartilhável"
+        },
+        "noAds": {
+          "title": "Desbloqueie testes exclusivos",
+          "desc": "Muitos testes exclusivos de membros"
+        }
+      }
+    }
+  },
+  "home": {
+    "list": {
+      "recommend": "Recomendação de hoje",
+      "popular": "Testes populares"
+    },
+    "digitalAssistant": {
+      "greeting": "Olá, sou o assistente digital AI",
+      "question": "O que posso ajudar?",
+      "askButton": "Perguntar"
+    },
+    "search": {
+      "placeholder": "Buscar teste",
+      "history": "Histórico de busca",
+      "button": "Buscar",
+      "noContent": "Sem conteúdo",
+      "tryDifferentTerm": "Tente um termo diferente"
+    },
+    "recommend": {
+      "title": "Recomendação de hoje",
+      "free": "Gratuito",
+      "test1": {
+        "title": "Teste de 8 dimensões de Jung",
+        "subtitle": "Avaliação profissional"
+      },
+      "test2": {
+        "title": "Análise de código de personalidade",
+        "subtitle": "Descubra seu verdadeiro eu"
+      },
+      "test3": {
+        "title": "Avaliação de resiliência psicológica",
+        "subtitle": "Identificação e cura de traumas"
+      }
+    },
+    "popular": {
+      "title": "Testes populares"
+    }
+  },
+  "chat": {
+    "hello": "Olá, sou seu assistente de IA psicológica. O que posso ajudar?",
+    "error": "Desculpe, não entendi sua solicitação. Você pode tentar descrever de outra forma?",
+    "type_confirmation": "Entendi sua necessidade. Por favor, confirme se este é o tipo de teste que você deseja.",
+    "need_clarification": "Para entender melhor sua necessidade, preciso fazer algumas perguntas.",
+    "test_ready": "Estou pronto para o teste {{name}}, com {{count}} questões. Deseja iniciar?",
+    "unknown_error": "Desculpe, ocorreu um erro desconhecido. Tente novamente mais tarde.",
+    "network_error": "Ocorreu um problema de conexão de rede, verifique a conexão e tente novamente.",
+    "retry": "Tentar novamente",
+    "input": {
+      "placeholder": "Digite sua resposta",
+      "send": "Confirmar"
+    },
+    "typing": "Digitando...",
+    "optional": "Opcional",
+    "your_answer": "Sua resposta"
+  },
+  "test": {
+    "answerTips": {
+      "tips1": "Deslize para selecionar a opção mais adequada para você",
+      "tips2": "Arraste as opções abaixo, ordenando do mais importante para o menos importante",
+      "tips3": "Atribua 100% a estas opções (a soma deve ser 100%)",
+      "tips4": "Clique na área abaixo, indicando sua intensidade de preferência"
+    },
+    "previous": "Questão anterior",
+    "progress": "Progresso da resposta",
+    "saving": "Salvando...",
+    "next": "Próxima questão",
+    "submit": "Enviar",
+    "testDetail": "Detalhes do teste",
+    "testReport": "Relatório do teste",
+    "testAgain": "Testar novamente",
+    "advancedReport": "Relatório avançado",
+    "total_questions": "Total de {{count}} questões",
+    "estimated_time": "Estimado: {{minutes}} minutos",
+    "start": "Iniciar teste",
+    "continue": "Continuar teste",
+    "viewResult": "Ver resultado",
+    "result": {
+      "title": "Descubra seu verdadeiro eu",
+      "subtitle": "Uma avaliação breve e perspicaz, revelando seu tipo MBTI de forma profunda, examinando como você obtém energia, processa informações, toma decisões e organiza sua vida.",
+      "advancedReport": "Relatório avançado"
+    },
+    "exit": {
+      "title": "Deseja realmente sair do teste?",
+      "description": "Você pode salvar o progresso do teste atual, para continuar mais tarde.",
+      "confirmButton": "Confirmar saída",
+      "saveButton": "Salvar progresso",
+      "cancelButton": "Cancelar"
+    },
+    "tags": {
+      "personalityAnalysis": "Análise de personalidade",
+      "psychologicalAssessment": "Avaliação psicológica",
+      "selfAwareness": "Autoconsciência"
+    },
+    "traits": {
+      "innovativeThinking": "Pensamento inovador",
+      "innovativeThinkingDesc": "Sua capacidade de pensamento inovador",
+      "leadership": "Liderança",
+      "leadershipDesc": "Você é excelente em liderança",
+      "teamBuilder": "Construtor de equipes",
+      "teamBuilderDesc": "Você é um excelente construtor de equipes"
+    },
+    "dimensions": {
+      "leadership": "Liderança",
+      "rolePerception": "Percepção de papéis",
+      "values": "Valores",
+      "positiveness": "Positividade",
+      "emotionalManagement": "Gestão emocional"
+    },
+    "radar": {
+      "logicalThinking": "Pensamento lógico",
+      "executionAbility": "Capacidade de execução",
+      "decisionMaking": "Tomada de decisão",
+      "emotionalManagement": "Gestão emocional",
+      "learningAdaptability": "Adaptabilidade de aprendizado",
+      "teamwork": "Trabalho em equipe",
+      "communication": "Comunicação",
+      "innovativeThinking": "Pensamento inovador"
+    },
+    "faqs": {
+      "scientific": {
+        "question": "O teste tem base científica?",
+        "answer": "Nossa avaliação é baseada em pesquisas psicológicas e recomendações de especialistas, com um certo valor de referência."
+      },
+      "accuracy": {
+        "question": "Os resultados do teste são precisos?",
+        "answer": "Os resultados do teste são meramente informativos. Você é mais complexo e único do que qualquer teste."
+      },
+      "duration": {
+        "question": "Quanto tempo leva para completar o teste?",
+        "answer": "Leva aproximadamente 8 minutos. Recomenda-se completar em um ambiente silencioso para obter resultados mais precisos."
+      }
+    },
+    "badges": {
+      "creativeThinking": {
+        "title": "Pensamento inovador",
+        "description": "Você é excelente em pensamento inovador"
+      },
+      "adaptability": {
+        "title": "Adaptabilidade",
+        "description": "Você é excelente em adaptabilidade"
+      },
+      "leadership": {
+        "title": "Liderança",
+        "description": "Você é excelente em liderança"
+      },
+      "teamBuilder": {
+        "title": "Construtor de equipes",
+        "description": "Você é excelente em construtor de equipes"
+      },
+      "communicator": {
+        "title": "Comunicador",
+        "description": "Você é excelente em comunicação"
+      },
+      "learner": {
+        "title": "Aprendiz",
+        "description": "Você é excelente em aprendizado"
+      }
+    },
+    "textProgress": {
+      "title": "Resumo da análise psicológica",
+      "subtitle": "Análise e orientação de especialistas em psicologia",
+      "items": {
+        "unique": "Cada pessoa é única, sua combinação de características pessoais faz de você quem você é hoje.",
+        "understanding": "Entender seus pontos fortes e espaços para crescimento é o ponto de partida para o desenvolvimento pessoal.",
+        "traits": "Lembre-se, características pessoais não têm melhor ou pior, o que importa é como você aproveita seus pontos fortes.",
+        "reflection": "O reflexo contínuo e o aprendizado ajudarão você a seguir mais longe na vida.",
+        "potential": "Acredite em si mesmo, abra-se às mudanças, seu potencial é muito maior do que você imagina"
+      }
+    },
+    "growthPath": {
+      "selfAwareness": {
+        "title": "Autoconsciência",
+        "description": "Entender-se e suas características únicas"
+      },
+      "skillDevelopment": {
+        "title": "Desenvolvimento de habilidades",
+        "description": "Construir e aprimorar habilidades essenciais"
+      },
+      "practicalApplication": {
+        "title": "Aplicação prática",
+        "description": "Aplicar habilidades em situações reais"
+      },
+      "optimization": {
+        "title": "Otimização contínua",
+        "description": "Melhorar e aprimorar habilidades"
+      },
+      "influence": {
+        "title": "Influência",
+        "description": "Ter um impacto positivo nas pessoas ao seu redor"
+      }
+    },
+    "visualDashboard": {
+      "title": "Capacidades gerais",
+      "subtitle": "Indicadores gerais",
+      "info": {
+        "currentValue": "Valor atual",
+        "level": "Nível",
+        "completionRate": "Taxa de conclusão"
+      }
+    },
+    "share": {
+      "message": "Veja este ótimo teste de personalidade!",
+      "title": "Teste de personalidade"
+    },
+    "card": {
+      "title": "Caminho da personalidade: instantâneo MBTI",
+      "description": "Uma avaliação breve e perspicaz, revelando seu tipo MBTI de forma profunda, examinando como você obtém energia, processa informações, toma decisões e organiza sua vida."
+    },
+    "button": {
+      "buyTest": "Comprar teste"
+    },
+    "components": {
+      "avatar": {
+        "title": "Seu avatar exclusivo?",
+        "description": "Imagem animal que representa sua personalidade"
+      },
+      "feature": {
+        "title": "Qual é o seu tipo de personalidade?",
+        "subtitle": "Obtenha seu rótulo de personalidade e análise detalhada"
+      },
+      "personalAdvice": {
+        "title": "Conselhos personalizados",
+        "items": {
+          "personal": "Conselhos de crescimento pessoal",
+          "career": "Direção de carreira",
+          "relationship": "Orientação de relacionamentos"
+        }
+      },
+      "spiritual": {
+        "title": "Inspiração espiritual",
+        "inspirations": {
+          "leadership": "Os verdadeiros líderes não dizem o que fazer, mas inspiram a fazer. Você tem este dom, é excelente em inspirar e orientar outras pessoas.",
+          "empathy": "Sua empatia e inteligência emocional te permitem entender profundamente outras pessoas, tornando-se um guia natural em relacionamentos pessoais e profissionais.",
+          "potential": "Você tem uma habilidade rara de ver o potencial das outras pessoas e ajudá-las a alcançar."
+        }
+      },
+      "trait": {
+        "title": "Seu rótulo de características?"
+      },
+      "radar": {
+        "title": "Análise multidimensional",
+        "subtitle": "Avaliação completa de seu desempenho e potencial em cada dimensão"
+      },
+      "badge": {
+        "title": "Seu distintivo de características",
+        "subtitle": "Parabéns por ter conquistado os distintivos de conquista abaixo"
+      },
+      "growthPath": {
+        "title": "Caminho de crescimento",
+        "subtitle": "Sua fase de crescimento psicológico",
+        "currentStage": "Fase atual: {{stage}}"
+      },
+      "visualDashboard": {
+        "title": "Capacidades gerais",
+        "subtitle": "Indicadores gerais",
+        "level": "Nível",
+        "info": {
+          "currentValue": "Valor atual",
+          "level": "Nível",
+          "completionRate": "Taxa de conclusão"
+        }
+      },
+      "testInfo": {
+        "title": "Informações do teste",
+        "questions": {
+          "label": "Número de questões",
+          "value": "{{count}} questões"
+        },
+        "time": {
+          "label": "Tempo estimado",
+          "value": "{{time}}"
+        },
+        "source": {
+          "label": "Fonte de dados",
+          "value": "{{source}}"
+        }
+      },
+      "faq": {
+        "title": "Perguntas frequentes"
+      }
+    },
+    "types": {
+      "personality": {
+        "name": "Personalidade",
+        "description": "Entenda suas características de personalidade"
+      },
+      "emotion": {
+        "name": "Emocional",
+        "description": "Avalie sua capacidade de gestão emocional"
+      },
+      "relationship": {
+        "name": "Relacionamento",
+        "description": "Explore seu padrão de relacionamento"
+      },
+      "career": {
+        "name": "Carreira",
+        "description": "Descubra sua direção de carreira"
+      },
+      "youth": {
+        "name": "Adolescente",
+        "description": "Ajude o crescimento saudável dos jovens"
+      },
+      "fun": {
+        "name": "Divertido",
+        "description": "Explore sua personalidade de forma divertida"
+      }
+    }
+  },
+  "purchase": {
+    "tabs": {
+      "payment": "Pagamento",
+      "coin": "Pagamento com moeda"
+    },
+    "coin": {
+      "balance": "Minha moeda",
+      "recharge": "Recarregar",
+      "illustration": {
+        "title": "Observação:",
+        "text": "Use uma moeda virtual equivalente ao dinheiro real"
+      }
+    },
+    "card": {
+      "title": "Descubra seu verdadeiro eu",
+      "badge": "Relatório avançado"
+    },
+    "confirm": "Confirmar"
+  },
+  "http": {
+    "errors": {
+      "network": {
+        "unavailable": "Conexão de rede indisponível",
+        "requestFailed": "Falha na solicitação de rede",
+        "timeout": "Tempo limite excedido"
+      },
+      "business": {
+        "failed": "Falha no processamento de negócios",
+        "invalidResponse": "Formato de resposta de dados inválido",
+        "serverError": "Erro de servidor"
+      },
+      "auth": {
+        "expired": "Sessão expirada, faça login novamente"
+      },
+      "unknown": "Erro desconhecido"
+    }
+  },
+  "payment": {
+    "success": "Compra bem-sucedida",
+    "error": "Falha na compra, tente novamente mais tarde.",
+    "paying": "Pagamento em andamento, aguarde...",
+    "return": "Voltar",
+    "paySuccess": "Pagamento bem-sucedido, volte para verificar"
+  }
+}

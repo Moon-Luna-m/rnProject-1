@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
+  Dimensions,
   Modal,
   Platform,
   StyleSheet,
   TouchableOpacity,
   View,
-  ViewStyle,
+  ViewStyle
 } from "react-native";
 import Animated, {
   runOnJS,
@@ -30,12 +31,15 @@ interface BottomSheetProps {
   };
 }
 
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
 export const BottomSheet: React.FC<BottomSheetProps> = ({
   visible,
   onClose,
   children,
   containerStyle,
-  initialY = 1000,
+  initialY = SCREEN_HEIGHT,
   toast,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -92,19 +96,17 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
       transparent
       animationType="none"
       onRequestClose={handleClose}
+      statusBarTranslucent
     >
       {toast?.visible ? <View style={styles.toastOverlay}></View> : null}
       <Animated.View
         style={[
           styles.overlay,
-          {
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          },
           overlayStyle,
         ]}
       >
         <TouchableOpacity
-          style={[styles.overlay, { backgroundColor: "transparent" }]}
+          style={styles.touchableOverlay}
           activeOpacity={1}
           onPress={handleClose}
         >
@@ -138,6 +140,16 @@ const styles = StyleSheet.create({
     zIndex: 10000,
   },
   overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  touchableOverlay: {
     flex: 1,
     justifyContent: "flex-end",
   },
@@ -146,7 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 16,
     paddingBottom: Platform.OS === "ios" ? 32 : 16,
-    marginBottom: 40,
+    marginBottom: Platform.OS === "ios" ? 40 : 24,
     marginHorizontal: 16,
   },
 });

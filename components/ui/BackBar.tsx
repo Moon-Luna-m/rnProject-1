@@ -16,7 +16,16 @@ export default function BackBar({ title }: { title: string }) {
           style={{ width: 24, height: 24 }}
         />
       </TouchableOpacity>
-      <Text style={styles.backText}>{title}</Text>
+      <View
+        style={{
+          flex: 1,
+          paddingHorizontal: 48,
+        }}
+      >
+        <Text style={styles.backText} numberOfLines={1}>
+          {title}
+        </Text>
+      </View>
     </View>
   );
 }
@@ -24,14 +33,13 @@ export default function BackBar({ title }: { title: string }) {
 const styles = StyleSheet.create({
   backContainer: {
     position: "relative",
+    flexDirection: "row",
     height: 44,
     width: "100%",
     paddingHorizontal: 16,
-    justifyContent: "center",
+    alignItems: "center",
   },
   backText: {
-    position: "absolute",
-    inset: 0,
     textAlign: "center",
     paddingVertical: 10,
     fontSize: 18,

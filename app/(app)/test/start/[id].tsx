@@ -22,12 +22,11 @@ import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -174,8 +173,7 @@ export default function StartTest() {
     } = {};
 
     let maxQuestionIndex = 0;
-
-    submission.answers.forEach((answer) => {
+    submission?.answers?.forEach((answer) => {
       // 找到对应的问题以获取type
       const question = questions.find((q) => q.id === answer.question_id);
       if (question) {
@@ -203,7 +201,6 @@ export default function StartTest() {
         }
       }
     });
-
     // 更新当前问题索引
     setCurrentQuestion(maxQuestionIndex);
 
@@ -711,7 +708,7 @@ export default function StartTest() {
   };
 
   const renderBottomBar = () => (
-    <View style={styles.bottomBar}>
+    <View style={[styles.bottomBar, { paddingBottom: insets.bottom }]}>
       <TouchableOpacity
         style={[
           styles.submitButton,
@@ -1051,7 +1048,6 @@ const styles = StyleSheet.create({
     gap: 12,
     width: "100%",
     padding: 24,
-    paddingBottom: Platform.OS === "ios" ? 34 : 24,
   },
   submitButton: {
     flex: 1,

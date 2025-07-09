@@ -377,7 +377,7 @@ export default function TestResultPage() {
           {!testData?.has_access ? (
             <LinearGradient
               colors={["rgba(255,255,255,1)", "#FFFFFF"]}
-              style={styles.buttonContainer}
+              style={[styles.buttonContainer, { paddingBottom: insets.bottom }]}
               locations={[0, 0.7]}
             >
               {/* <TouchableOpacity
@@ -483,7 +483,6 @@ const styles = StyleSheet.create({
     right: 0,
     paddingHorizontal: 16,
     paddingTop: 20,
-    paddingBottom: 34, // 适配底部安全区域
   },
   buttonRow: {
     flexDirection: "row",

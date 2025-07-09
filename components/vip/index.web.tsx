@@ -326,7 +326,7 @@ export default function Vip() {
                         onPress={(e) => {
                           e.stopPropagation();
                           // 处理会员协议点击
-                          router.push("/protocol/login");
+                          router.push("/protocol/subscribe");
                         }}
                       >
                         <Text style={styles.agreementLink}>
@@ -341,7 +341,7 @@ export default function Vip() {
                         onPress={(e) => {
                           e.stopPropagation();
                           // 处理订阅协议点击
-                          router.push("/protocol/login");
+                          router.push("/protocol/renew");
                         }}
                       >
                         <Text style={styles.agreementLink}>

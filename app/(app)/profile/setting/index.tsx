@@ -91,7 +91,7 @@ export default function Setting() {
         break;
       case "privacy":
         // 处理隐私政策
-        router.push("/profile/setting/privacy");
+        router.push("/protocol/privacy");
         break;
       case "disclaimer":
         // 处理免责声明
@@ -162,7 +162,7 @@ export default function Setting() {
       {
         items: [
           //   { type: "account", title: "settings.account" },
-          { type: "customer_service", title: "settings.customerService" },
+          // { type: "customer_service", title: "settings.customerService" },
           { type: "agreement", title: "settings.userAgreement" },
           { type: "privacy", title: "settings.privacyPolicy" },
           { type: "disclaimer", title: "settings.disclaimer" },

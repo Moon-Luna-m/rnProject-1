@@ -295,7 +295,7 @@ export default function TestDetailsPage() {
           </Animated.ScrollView>
           <LinearGradient
             colors={["rgba(255,255,255,0)", "#FFFFFF"]}
-            style={styles.buttonContainer}
+            style={[styles.buttonContainer, { paddingBottom: insets.bottom }]}
             locations={[0, 0.7]}
           >
             <TouchableHighlight
@@ -366,7 +366,6 @@ const styles = StyleSheet.create({
     right: 0,
     paddingHorizontal: 16,
     paddingTop: 20,
-    paddingBottom: 34, // 适配底部安全区域
   },
   buttonRow: {
     flexDirection: "row",

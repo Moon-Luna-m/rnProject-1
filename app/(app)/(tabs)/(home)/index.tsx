@@ -90,7 +90,7 @@ export default function () {
             "#E8FDFF",
             "#F5F7FA",
           ]}
-          style={styles.linearGradient}
+          style={[styles.linearGradient]}
           pointerEvents="none"
         />
       </LinearGradient>
@@ -121,7 +121,12 @@ export default function () {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.content}>
+      <View
+        style={[
+          styles.content,
+          { marginTop: Platform.OS === "ios" ? -60 : -76 },
+        ]}
+      >
         <ScrollView ref={scrollViewRef}>
           <TodayRecommend data={recommendList} />
           <Popular data={popularList} />
@@ -139,11 +144,10 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: "100%",
-    height: 300,
+    height: Platform.OS === "ios" ? 300 : 276,
   },
   content: {
     flex: 1,
-    marginTop: -60,
   },
   searchContainer: {
     position: "absolute",

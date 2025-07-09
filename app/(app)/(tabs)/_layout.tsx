@@ -5,7 +5,6 @@ import HomeIcon from "@/components/tabs/HomeIcon";
 import ProfileIcon from "@/components/tabs/ProfileIcon";
 import { createFontStyle } from "@/utils/typography";
 import { Tabs } from "expo-router";
-import { Platform } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function AppLayout() {
@@ -18,23 +17,13 @@ export default function AppLayout() {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
-            height: 64,
+            minHeight: 64,
             paddingHorizontal: 24,
             paddingTop: 8,
-            paddingBottom: 8,
+            paddingBottom: 8 + insets.bottom,
             backgroundColor: "#FFFFFF",
-            borderTopColor: "#F3F4F6",
-            borderTopWidth: 1,
-            marginBottom: insets.bottom,
           },
           tabBarButton: (props) => <CustomTab {...props} />,
-          tabBarItemStyle: {
-            gap: 2,
-            ...(Platform.OS === "android" && {
-              opacity: 1,
-              backgroundColor: "#FFFFFF",
-            }),
-          },
           tabBarActiveTintColor: "#19DBF2",
           tabBarInactiveTintColor: "#0C0A09",
           tabBarLabelStyle: {
