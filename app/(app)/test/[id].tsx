@@ -252,11 +252,7 @@ export default function TestDetailsPage() {
               styles.content,
               {
                 paddingBottom:
-                  (Platform.OS === "android"
-                    ? 110
-                    : Platform.OS === "ios"
-                    ? -30
-                    : 40) + insets.bottom,
+                  (Platform.OS !== "web" ? -30 : 40) + insets.bottom,
               },
             ]}
             onScroll={scrollHandler}
@@ -310,7 +306,10 @@ export default function TestDetailsPage() {
                 }
                 if (testData?.test_status === 1) {
                   await setLocalCache("user_test_way", "user");
-                  await setLocalCache("user_test_id", String(testData?.user_test_id));
+                  await setLocalCache(
+                    "user_test_id",
+                    String(testData?.user_test_id)
+                  );
                   router.push(`/test/start/${testData.id}`);
                   return;
                 }
