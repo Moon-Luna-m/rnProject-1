@@ -226,6 +226,7 @@ export default function Category() {
     (key: string) => {
       const newIndex = routes.findIndex((route) => route.key === key);
       if (newIndex !== -1) {
+        nextIndex.current = newIndex;
         setIndex(newIndex);
       }
     },
