@@ -1,12 +1,12 @@
 import { createFontStyle } from "@/utils/typography";
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import {
-    Image,
-    ImageSourcePropType,
-    StyleSheet,
-    Text,
-    View,
+  Image,
+  ImageSourcePropType,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 
 interface Trait {
@@ -21,11 +21,19 @@ interface TraitCardProps {
 export default function TraitCard({ traits }: TraitCardProps) {
   const { t } = useTranslation();
 
+  const { topTraits, bottomTrait } = useMemo(() => {
+    const isEven = traits.length % 2 === 0;
+    return {
+      topTraits: isEven ? traits : traits.slice(0, -1),
+      bottomTrait: !isEven ? traits[traits.length - 1] : null
+    };
+  }, [traits]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t("test.components.trait.title")}</Text>
       <View style={styles.traitsContainer}>
-        {traits.slice(0, traits.length - 1).map((trait, index) => (
+        {topTraits.map((trait, index) => (
           <View key={index} style={[styles.traitItem, { flex: 1 }]}>
             <View style={styles.iconContainer}>
               <Image source={trait.icon} style={styles.icon} />
@@ -37,20 +45,21 @@ export default function TraitCard({ traits }: TraitCardProps) {
           </View>
         ))}
       </View>
-      <View
-        style={[
-          styles.traitItem,
-          { flexDirection: "row", alignItems: "center" },
-        ]}
-      >
-        <View style={styles.iconContainer}>
-          <Image source={traits[traits.length - 1].icon} style={styles.icon} />
+      {bottomTrait && (
+        <View
+          style={[
+            styles.traitItem,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <View style={styles.iconContainer}>
+            <Image source={bottomTrait.icon} style={styles.icon} />
+          </View>
+          <View style={styles.traitContent}>
+            <Text style={styles.label}>{bottomTrait.label}</Text>
+          </View>
         </View>
-        <View style={styles.traitContent}>
-          <Text style={styles.label}>{traits[traits.length - 1].label}</Text>
-          {/* <Text style={styles.description}>{trait.description}</Text> */}
-        </View>
-      </View>
+      )}
     </View>
   );
 }
@@ -71,7 +80,7 @@ const styles = StyleSheet.create({
   },
   traitsContainer: {
     flexDirection: "row",
-    // flexWrap: "wrap",
+    flexWrap: "wrap",
     gap: 11,
   },
   traitItem: {
