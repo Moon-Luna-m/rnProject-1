@@ -8,15 +8,15 @@ import { createFontStyle } from "@/utils/typography";
 import { useFocusEffect } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Dimensions,
   FlatList,
   Image,
+  Platform,
   RefreshControl,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -33,33 +33,46 @@ const initialLayout = {
   width: Dimensions.get("window").width,
 };
 
-const TabContent = ({ route }: { route: TabRoute }) => {
+// 使用 memo 优化 TabContent 的重渲染
+const TabContent = memo(({ route }: { route: TabRoute }) => {
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState<GetTestListByTypeResponse["list"]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const isMounted = useRef(true);
+
   const resetState = useCallback(() => {
+    if (!isMounted.current) return;
     setData([]);
     setCurrentPage(1);
     setHasMore(true);
     setIsLoading(false);
     setRefreshing(false);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
   }, []);
 
   useFocusEffect(
     useCallback(() => {
       resetState();
+      setLoading(true);
       fetchData(1, true);
       return () => {
-        // 页面失焦时清理状态
         resetState();
       };
     }, [resetState])
   );
 
   const fetchData = async (page: number, isRefresh = false) => {
-    if (isLoading) return;
+    if (isLoading || !isMounted.current) return;
 
     !isRefresh && setIsLoading(true);
     try {
@@ -68,21 +81,24 @@ const TabContent = ({ route }: { route: TabRoute }) => {
         page,
         size: 20,
       });
-      if (res.code === 200) {
+      if (res.code === 200 && isMounted.current) {
         const newData = res.data.list || [];
         if (isRefresh) {
           setData(newData);
         } else {
           setData((prev) => [...prev, ...newData]);
         }
+        setHasMore(page * 20 < res.data.count);
+        setCurrentPage(page);
       }
-      setHasMore(page * 20 < res.data.count);
-      setCurrentPage(page);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     } finally {
-      setIsLoading(false);
-      setRefreshing(false);
+      if (isMounted.current) {
+        setIsLoading(false);
+        setRefreshing(false);
+        setLoading(false);
+      }
     }
   };
 
@@ -90,52 +106,55 @@ const TabContent = ({ route }: { route: TabRoute }) => {
     if (isLoading) return;
     setRefreshing(true);
     fetchData(1, true);
-  }, [isLoading, resetState]);
+  }, [isLoading]);
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     if (isLoading || !hasMore || refreshing) return;
     fetchData(currentPage + 1);
-  };
+  }, [isLoading, hasMore, refreshing, currentPage]);
 
   useEffect(() => {
     resetState();
     fetchData(1, true);
   }, [route.key, resetState]);
 
-  const renderItem = ({
-    item,
-  }: {
-    item: GetTestListByTypeResponse["list"][0];
-  }) => (
-    <View style={[styles.cardContainer, { width: "48%" }]}>
-      <SearchResultCard
-        item={item}
-        onPress={() => {
-          router.push({
-            pathname: "/test/[id]",
-            params: {
-              id: item.id.toString(),
-            },
-          });
-        }}
-      />
-    </View>
+  const renderItem = useCallback(
+    ({ item }: { item: GetTestListByTypeResponse["list"][0] }) => (
+      <View style={[styles.cardContainer, { width: "48%" }]}>
+        <SearchResultCard
+          item={item}
+          onPress={() => {
+            router.push({
+              pathname: "/test/[id]",
+              params: {
+                id: item.id.toString(),
+              },
+            });
+          }}
+        />
+      </View>
+    ),
+    []
   );
 
-  const renderFooter = () => {
+  const renderFooter = useCallback(() => {
     if (!isLoading) return null;
     return (
       <View style={styles.footer}>
         <ActivityIndicator color="#0C0A09" />
       </View>
     );
-  };
+  }, [isLoading]);
 
-  return (
+  const keyExtractor = useCallback((item: any) => item.id.toString(), []);
+
+  return loading ? (
+    <ActivityIndicator color="#0C0A09" style={{ marginTop: "20%" }} />
+  ) : (
     <FlatList
       data={data}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={keyExtractor}
       contentContainerStyle={styles.resultList}
       showsVerticalScrollIndicator={false}
       onEndReached={loadMore}
@@ -146,13 +165,12 @@ const TabContent = ({ route }: { route: TabRoute }) => {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
+      removeClippedSubviews={true}
+      maxToRenderPerBatch={10}
+      windowSize={5}
     />
   );
-};
-
-const renderScene = ({ route }: { route: TabRoute }) => (
-  <TabContent route={route} />
-);
+});
 
 export default function Category() {
   const [index, setIndex] = useState(0);
@@ -160,30 +178,42 @@ export default function Category() {
   const [isLoading, setIsLoading] = useState(false);
   const { showModal, setOnSelect } = useCategoryModal();
   const insets = useSafeAreaInsets();
+  const timeRef = useRef(0);
+  const nextIndex = useRef(0);
 
-  const getTestTypeList = async () => {
-    setIsLoading(true);
-    setIndex(0);
-    const res = await testService.getTestTypeList({
-      page: 1,
-      size: 20,
-    });
-    if (res.code === 200) {
-      setRoutes(
-        res.data.list.map((item) => ({
-          key: item.id.toString(),
-          title: item.name,
-        }))
-      );
+  const renderScene = useCallback(({ route }: { route: Route }) => {
+    return <TabContent route={route as TabRoute} />;
+  }, []);
+
+  const getTestTypeList = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setIndex(0);
+      const res = await testService.getTestTypeList({
+        page: 1,
+        size: 20,
+      });
+      if (res.code === 200) {
+        setRoutes(
+          res.data.list.map((item) => ({
+            key: item.id.toString(),
+            title: item.name,
+          }))
+        );
+      }
+    } catch (error) {
+      console.error("Failed to fetch test type list:", error);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
-  };
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
       getTestTypeList();
     }, [])
   );
+
   const arrowStyle = useAnimatedStyle(() => ({
     transform: [
       {
@@ -199,7 +229,7 @@ export default function Category() {
         setIndex(newIndex);
       }
     },
-    [routes, index]
+    [routes]
   );
 
   useEffect(() => {
@@ -224,27 +254,13 @@ export default function Category() {
           tabStyle={styles.tab}
           activeColor="#0C0A09"
           inactiveColor="#515C66"
-          indicatorStyle={styles.indicator}
-          renderLabel={({
-            route,
-            focused,
-          }: {
-            route: TabRoute;
-            focused: boolean;
-          }) => (
-            <Text style={[styles.label, focused && styles.labelActive]}>
-              {route.title}
-            </Text>
-          )}
+          indicatorStyle={[
+            styles.indicator,
+            Platform.OS !== "web" && { width: 0.24 },
+          ]}
           pressColor="transparent"
           pressOpacity={1}
           gap={16}
-          onTabPress={({ route }) => {
-            const newIndex = routes.findIndex((r) => r.key === route.key);
-            if (newIndex !== -1) {
-              setIndex(newIndex);
-            }
-          }}
         />
         <LinearGradient
           colors={["rgba(245, 247, 250, 0)", "rgba(245, 247, 250, 1)"]}
@@ -282,7 +298,17 @@ export default function Category() {
                 navigationState={{ index, routes }}
                 renderScene={renderScene}
                 renderTabBar={renderTabBar}
-                onIndexChange={setIndex}
+                onIndexChange={(index) => {
+                  nextIndex.current = index;
+                }}
+                onSwipeEnd={() => {
+                  if (timeRef.current) {
+                    clearTimeout(timeRef.current);
+                  }
+                  timeRef.current = setTimeout(() => {
+                    setIndex(nextIndex.current);
+                  }, 50);
+                }}
                 initialLayout={initialLayout}
               />
             )
@@ -328,7 +354,7 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   indicator: {
-    bottom: 10,
+    bottom: 6,
     backgroundColor: "#19DBF2",
   },
   label: {

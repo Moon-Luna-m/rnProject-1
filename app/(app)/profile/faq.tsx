@@ -2,10 +2,11 @@ import BackBar from "@/components/ui/BackBar";
 import { createFontStyle } from "@/utils/typography";
 import { AntDesign } from "@expo/vector-icons";
 import { TFunction } from "i18next";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   LayoutChangeEvent,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -20,7 +21,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { SceneMap, TabBar, TabView } from "react-native-tab-view";
+import { TabBar, TabView } from "react-native-tab-view";
 
 interface FaqItem {
   id: string;
@@ -218,21 +219,12 @@ function AccordionItem({ item }: { item: FaqItem }) {
   );
 }
 
-const TabContent = ({ items }: { items: FaqItem[] }) => {
-  return (
-    <View style={styles.content}>
-      {items.map((item) => (
-        <AccordionItem key={item.id} item={item} />
-      ))}
-    </View>
-  );
-};
-
 export default function Faq() {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
   const layout = useWindowDimensions();
-
+  const nextIndex = useRef(0);
+  const timeRef = useRef(0);
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: "reviews", title: t("faq.tabs.reviews") },
@@ -242,13 +234,38 @@ export default function Faq() {
     { key: "others", title: t("faq.tabs.others") },
   ]);
 
-  const renderScene = SceneMap({
-    reviews: () => <TabContent items={mockFaqData(t).reviews} />,
-    privacy: () => <TabContent items={mockFaqData(t).privacy} />,
-    account: () => <TabContent items={mockFaqData(t).account} />,
-    payments: () => <TabContent items={mockFaqData(t).payments} />,
-    others: () => <TabContent items={mockFaqData(t).others} />,
-  });
+  const faqData = useCallback(() => mockFaqData(t), [t]);
+
+  const TabContent = useCallback(({ items }: { items: FaqItem[] }) => {
+    return (
+      <View style={styles.content}>
+        {items.map((item) => (
+          <AccordionItem key={item.id} item={item} />
+        ))}
+      </View>
+    );
+  }, []);
+
+  const renderScene = useCallback(
+    ({ route }) => {
+      const data = faqData();
+      switch (route.key) {
+        case "reviews":
+          return <TabContent items={data.reviews} />;
+        case "privacy":
+          return <TabContent items={data.privacy} />;
+        case "account":
+          return <TabContent items={data.account} />;
+        case "payments":
+          return <TabContent items={data.payments} />;
+        case "others":
+          return <TabContent items={data.others} />;
+        default:
+          return null;
+      }
+    },
+    [TabContent, faqData]
+  );
 
   const renderTabBar = (props: any) => (
     <TabBar
@@ -256,7 +273,10 @@ export default function Faq() {
       scrollEnabled
       style={styles.tabBar}
       tabStyle={styles.tab}
-      indicatorStyle={styles.indicator}
+      indicatorStyle={[
+        styles.indicator,
+        Platform.OS !== "web" && { width: 0.24 },
+      ]}
       labelStyle={styles.label}
       activeColor="#0C0A09"
       inactiveColor="#515C66"
@@ -272,9 +292,21 @@ export default function Faq() {
         navigationState={{ index, routes }}
         renderScene={renderScene}
         renderTabBar={renderTabBar}
-        onIndexChange={setIndex}
+        onIndexChange={(index) => {
+          nextIndex.current = index;
+        }}
+        lazy
+        lazyPreloadDistance={20}
         initialLayout={{ width: layout.width }}
         style={styles.tabView}
+        onSwipeEnd={() => {
+          if (timeRef.current) {
+            clearTimeout(timeRef.current);
+          }
+          timeRef.current = setTimeout(() => {
+            setIndex(nextIndex.current);
+          }, 50);
+        }}
       />
     </View>
   );
@@ -297,10 +329,9 @@ const styles = StyleSheet.create({
   tab: {
     width: "auto",
     padding: 0,
-    marginHorizontal: 8,
   },
   indicator: {
-    bottom: 10,
+    bottom: 6,
     backgroundColor: "#19DBF2",
   },
   label: {
