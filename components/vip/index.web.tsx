@@ -179,7 +179,7 @@ export default function Vip() {
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.cardContainer}>
           <LinearGradient
-            colors={vipInfo[userInfo?.vip || 0].bg}
+            colors={vipInfo[userInfo?.subscription_type || ""].bg}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.cardBackground}
@@ -220,7 +220,7 @@ export default function Vip() {
               <Text
                 style={[
                   styles.status,
-                  { color: vipInfo[userInfo?.vip || 0].color },
+                  { color: vipInfo[userInfo?.subscription_type || ""].color },
                 ]}
               >
                 {userInfo?.is_vip_active
@@ -231,7 +231,7 @@ export default function Vip() {
             </View>
           </LinearGradient>
           <Image
-            source={vipInfo[userInfo?.vip || 0].icon}
+            source={vipInfo[userInfo?.subscription_type || ""].icon}
             style={styles.cardDecoration}
             resizeMode="contain"
           />
