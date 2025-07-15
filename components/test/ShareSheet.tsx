@@ -2,6 +2,7 @@ import { BottomSheet } from "@/components/ui/BottomSheet";
 import { createFontStyle } from "@/utils/typography";
 import { Image } from "expo-image";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface ShareMethod {
@@ -14,11 +15,13 @@ interface ShareSheetProps {
   isVisible: boolean;
   onClose: () => void;
   onShare: (method: string) => void;
+  isCapturing?: boolean;
 }
 
 interface ShareSheetContentProps {
   onShare: (method: string) => void;
   onClose?: () => void;
+  isCapturing?: boolean;
 }
 
 const shareMethods: ShareMethod[] = [
@@ -44,7 +47,8 @@ const shareMethods: ShareMethod[] = [
   },
 ];
 
-function ShareSheetContent({ onShare, onClose }: ShareSheetContentProps) {
+function ShareSheetContent({ onShare, onClose, isCapturing }: ShareSheetContentProps) {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
       {/* 顶部拖动条 */}
@@ -53,7 +57,7 @@ function ShareSheetContent({ onShare, onClose }: ShareSheetContentProps) {
       </View>
 
       {/* 标题 */}
-      <Text style={styles.title}>share</Text>
+      <Text style={styles.title}>{t("test.share.title")}</Text>
 
       {/* 分享方式列表 */}
       <View style={styles.methodList}>
@@ -86,6 +90,7 @@ export default function ShareSheet({
   isVisible,
   onClose,
   onShare,
+  isCapturing = false,
 }: ShareSheetProps) {
   return (
     <BottomSheet
@@ -94,7 +99,7 @@ export default function ShareSheet({
       initialY={500}
       containerStyle={{ padding: 12 }}
     >
-      <ShareSheetContent onShare={onShare} onClose={onClose} />
+      <ShareSheetContent onShare={onShare} onClose={onClose} isCapturing={isCapturing} />
     </BottomSheet>
   );
 }
@@ -143,6 +148,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 12.8,
     overflow: "hidden",
+    position: "relative",
   },
   icon: {
     width: "100%",
@@ -150,10 +156,18 @@ const styles = StyleSheet.create({
   },
   methodName: {
     fontSize: 12,
-    lineHeight: 15,
-    letterSpacing: 0.2,
-    color: "#212121",
-    ...createFontStyle("500"),
+    fontFamily: "Outfit-Medium",
+    color: "#515C66",
     textAlign: "center",
+  },
+  loading: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

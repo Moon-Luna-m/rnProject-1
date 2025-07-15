@@ -15,6 +15,10 @@
     "selectDate": "Selecionar data",
     "dataEditing": "Edição de dados",
     "settings": "Configurações",
+    "goToDownload": "Ir para download do aplicativo",
+    "testYourMentalHealth": "Teste sua saúde mental",
+    "longPressToShare": "Long press to share",
+    "close": "Fechar",
     "time": {
       "minutes": "minutos",
       "hours": "horas"
@@ -117,7 +121,7 @@
       "tab": "Entrar",
       "subtitle": "Comece sua jornada",
       "forgotPassword": "Esqueceu a senha?",
-      "agreement": "Aceita <0>{{agreement}}</0>",
+      "agreement": "Aceita <0>{{agreement}}</0> e <0>{{agreement1}}</0>",
       "agreementRequired": "Aceite o protocolo de login",
       "agreementLink": "Protocolo de login",
       "otherMethods": "Outros métodos de login"
@@ -213,7 +217,7 @@
       "question7": "Armazenamos dados pessoais sensíveis?",
       "answer7": "Apenas quando necessário para personalização, armazenamos e sempre armazenamos de forma anônima e segura, conforme as leis LGPD.",
       "question8": "Como excluo meus dados?",
-      "answer8": "Você pode enviar um e-mail para suporte@mindsecho.com.br, solicitando a exclusão completa de seus dados.",
+      "answer8": "Você pode enviar um e-mail para support@mindsecho.com, solicitando a exclusão completa de seus dados.",
       "question9": "Meus dados são vendidos a terceiros?",
       "answer9": "Não. Seus dados não são vendidos ou usados para fins comerciais.",
       "question10": "Como faço login no aplicativo?",
@@ -237,9 +241,9 @@
       "question19": "O aplicativo oferece outras versões em outros idiomas?",
       "answer19": "Atualmente, oferecemos suporte em português, inglês e chinês simplificado.",
       "question20": "Posso sugerir novos testes?",
-      "answer20": "Ótimo! Envie seu feedback para suporte@mindsecho.com.br",
+      "answer20": "Ótimo! Envie seu feedback para support@mindsecho.com",
       "question21": "Como entrar em contato com o suporte?",
-      "answer21": "Envie um e-mail para suporte@mindsecho.com.br. Nosso time responderá em até 2 dias úteis."
+      "answer21": "Envie um e-mail para support@mindsecho.com. Nosso time responderá em até 2 dias úteis."
     }
   },
   "settings": {
@@ -274,6 +278,61 @@
       "title": "Alterações de serviços e termos",
       "content1": "Reservamo-nos o direito de modificar ou atualizar a política de privacidade a qualquer momento. Qualquer alteração significativa será comunicada ao usuário por meio de canais apropriados.",
       "content2": "Continuar a usar nosso serviço após tais modificações é considerado aceitação da política de privacidade atualizada."
+    }
+  },
+  "userProtocol": {
+    "title": "Termos de uso",
+    "content": "Bem-vindo ao MindsEcho! Este Termos de uso (abaixo referido como “este acordo”) se aplica a qualquer pessoa que acesse e use a plataforma digital do MindsEcho no Brasil. Usar nossos serviços significa que você concorda integralmente com este acordo.",
+    "content1": {
+      "title": "Descrição da plataforma",
+      "content": "MindsEcho é um aplicativo de teste psicológico e autoexploração que fornece conteúdo interativo baseado em modelos de linguagem artificial e teorias psicológicas populares."
+    },
+    "content2": {
+      "title": "Aceitação de termos",
+      "content": "Ao usar este aplicativo, acessar qualquer conteúdo ou registrar uma conta, você leu, entendeu e aceitou este acordo."
+    },
+    "content3": {
+      "title": "Registro e acesso",
+      "content": "MindsEcho é apenas para uso pessoal, entretenimento ou educação. As seguintes ações são proibidas:",
+      "content1": "- Modificação, distribuição ou cópia não autorizada de conteúdo para fins comerciais.",
+      "content2": "- Uso da plataforma para coletar dados de outros usuários.",
+      "content3": "- Uso de robôs ou scripts para acessar ou manipular o sistema."
+    },
+    "content4": {
+      "title": "Conteúdo gerado por IA",
+      "content": "Parte do conteúdo gerado pela plataforma pode ser baseado em modelos de linguagem (por exemplo, GPT), para entretenimento e autoexploração. Os resultados dos testes não são usados para diagnóstico ou aconselhamento médico. A plataforma não é responsável por qualquer abuso de informações geradas."
+    },
+    "content5": {
+      "title": "Propriedade intelectual",
+      "content": "Todos os textos, marcas, logotipos, interfaces e conteúdos do aplicativo são protegidos por direitos autorais e pertencem ao MindsEcho ou aos seus licenciadores. Não é permitida a cópia não autorizada."
+    },
+    "content6": {
+      "title": "Plano de assinatura",
+      "content": "- MindsEcho pode oferecer recursos pagos por meio de assinaturas regulares. - As regras estão detalhadas no acordo de assinatura e renovação correspondente."
+    },
+    "content7": {
+      "title": "Privacidade e proteção de dados",
+      "content": "Usar a plataforma significa que você leu e aceitou nossa política de privacidade. O processamento de dados seguirá a Lei Geral de Proteção de Dados (LGPD). Você pode solicitar a exclusão ou modificação de seus dados pessoais."
+    },
+    "content8": {
+      "title": "Encerramento de conta",
+      "content": "Se um usuário violar este acordo ou se envolver em comportamento abusivo, o MindsEcho pode suspender ou encerrar seu acesso."
+    },
+    "content9": {
+      "title": "Limitação de responsabilidade",
+      "content": "O MindsEcho não garante resultados específicos e não é responsável por decisões baseadas no conteúdo fornecido. Não garantimos estabilidade, disponibilidade contínua ou funcionamento sem erros."
+    },
+    "content10": {
+      "title": "Alterações de termos",
+      "content": "Este acordo pode ser modificado a qualquer momento. As modificações entrarão em vigor imediatamente após serem publicadas no aplicativo ou no site. Continuar usando a plataforma será considerado aceitação das modificações."
+    },
+    "content11": {
+      "title": "Lei aplicável e jurisdição",
+      "content": "Este acordo é regido pelas leis brasileiras. A cidade de São Paulo é designada como a primeira instância para qualquer litígio decorrente deste acordo."
+    },
+    "content12": {
+      "content": "Se você tiver qualquer dúvida ou solicitação relacionada a privacidade e proteção de dados, entre em contato conosco:",
+      "content1": "support@mindsecho.com"
     }
   },
   "privacyPolicy": {
@@ -320,7 +379,7 @@
       "content1": "- Solicitar acesso, correção ou exclusão de seus dados.",
       "content2": "- Revogar o consentimento a qualquer momento.",
       "content3": "- Solicitar portabilidade e informações compartilhadas.",
-      "content4": "Você pode solicitar via e-mail: suporte@mindsecho.com.br"
+      "content4": "Você pode solicitar via e-mail: support@mindsecho.com"
     },
     "content7": {
       "title": "Cookies e tecnologias semelhantes",
@@ -341,7 +400,7 @@
     "content11": {
       "title": "Informações de contato",
       "content": "Se você tiver qualquer dúvida ou solicitação relacionada a privacidade e proteção de dados, entre em contato conosco:",
-      "content1": "suporte@mindsecho.com.br"
+      "content1": "support@mindsecho.com"
     },
     "content12": "Ao usar o MindsEcho, você reconhece que leu, entendeu e aceitou completamente esta política de privacidade."
   },

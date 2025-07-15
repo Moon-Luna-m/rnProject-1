@@ -191,10 +191,10 @@ export const transformers = {
   // 徽章数据转换
   transformBadgeData: (data: BadgeData) => {
     return {
-      badges: data.badges.map((badge) => ({
+      badges: (data.badges || []).map((badge) => ({
         title: badge.name,
         description: badge.description,
-        icon: badge.icon,
+        icon: imgProxy(badge.icon),
       })),
     };
   },

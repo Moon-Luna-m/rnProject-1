@@ -15,6 +15,10 @@
     "selectDate": "选择日期",
     "dataEditing": "资料编辑",
     "settings": "去设置",
+    "goToDownload": "去下载应用",
+    "testYourMentalHealth": "测试你的心理健康",
+    "longPressToShare": "长按分享",
+    "close": "关闭",
     "time": {
       "minutes": "分钟",
       "hours": "小时"
@@ -117,7 +121,7 @@
       "tab": "登录",
       "subtitle": "开启你的心灵之旅",
       "forgotPassword": "忘记密码？",
-      "agreement": "同意 <0>{{agreement}}</0>",
+      "agreement": "同意 <0>{{agreement}}</0> 和 <0>{{agreement1}}</0>",
       "agreementRequired": "请同意登录协议",
       "agreementLink": "登录协议",
       "otherMethods": "其他登录方式"
@@ -213,7 +217,7 @@
       "question7": "你们会存储敏感个人数据吗？",
       "answer7": "仅在个性化定制需要时，我们才会存储，并且始终以匿名且安全的方式存储，符合 LGPD 的规定。",
       "question8": "如何删除我的数据？",
-      "answer8": "您可以发送电子邮件至 suporte@mindsecho.com.br，请求完全删除您的数据。",
+      "answer8": "您可以发送电子邮件至 support@mindsecho.com，请求完全删除您的数据。",
       "question9": "我的数据会出售给第三方吗？",
       "answer9": "不会。您的数据不会出售或用于商业目的。",
       "question10": "如何登录应用程序？",
@@ -237,9 +241,9 @@
       "question19": "该应用程序是否提供其他语言版本？",
       "answer19": "我们目前提供葡萄牙语、英语和简体中文支持。",
       "question20": "我可以建议新的测试吗？",
-      "answer20": "好的！请将您的建议发送至 suporte@mindsecho.com.br",
+      "answer20": "好的！请将您的建议发送至 support@mindsecho.com",
       "question21": "如何联系客服？",
-      "answer21": "请发送电子邮件至 suporte@mindsecho.com.br。我们的团队将在 2 个工作日内回复。"
+      "answer21": "请发送电子邮件至 support@mindsecho.com。我们的团队将在 2 个工作日内回复。"
     }
   },
   "settings": {
@@ -263,6 +267,61 @@
     "clearCacheFailed": "清除缓存失败",
     "updateAvailable": "有更新，正在更新...",
     "noUpdate": "已是最新版本"
+  },
+  "userProtocol": {
+    "title": "使用条款",
+    "content": "欢迎使用 MindsEcho！本使用条款（简称“条款”）适用于巴西联邦共和国境内任何人访问和使用 MindsEcho 数字平台。使用我们的服务即表示您完全同意本条款。",
+    "content1": {
+      "title": "平台描述",
+      "content": "MindsEcho 是一款心理测试和自我探索应用程序，提供基于人工语言模型和流行心理学理论的互动内容。"
+    },
+    "content2": {
+      "title": "条款接受",
+      "content": "使用本应用程序、访问任何内容或注册账户，即表示您已阅读、理解并接受本条款。"
+    },
+    "content3": {
+      "title": "注册和访问",
+      "content": "MindsEcho 仅可用于个人、娱乐或教育目的。以下行为被禁止：",
+      "content1": "- 未经授权，修改、分发或复制内容用于商业目的。",
+      "content2": "- 使用平台收集其他用户的数据。",
+      "content3": "- 使用机器人或脚本访问或操纵系统。"
+    },
+    "content4": {
+      "title": "人工智能生成内容",
+      "content": "部分测试和结果由人工智能（例如 GPT 模型）生成。此内容仅供娱乐和自我探索之用，不构成临床、法律或专业建议。"
+    },
+    "content5": {
+      "title": "知识产权",
+      "content": "所有文本、商标、徽标、界面和应用程序内容均受版权保护，并属于 MindsEcho 或其许可方。禁止任何未经授权的复制。"
+    },
+    "content6": {
+      "title": "订阅计划",
+      "content": "- MindsEcho 可能通过定期订阅提供付费功能。- 规则详见相应的订阅和续订协议。"
+    },
+    "content7": {
+      "title": "隐私和数据保护",
+      "content": "使用平台即表示您已阅读并接受我们的隐私政策。数据处理将遵循《通用数据保护法》(LGPD)。您可以请求删除或修改您的个人数据。"
+    },
+    "content8": {
+      "title": "账户终止",
+      "content": "如果用户违反本条款或存在滥用行为，MindsEcho 可能会暂停或终止其访问权限。"
+    },
+    "content9": {
+      "title": "责任限制",
+      "content": "MindsEcho 不保证特定结果，也不对基于所提供内容做出的决策负责。我们不保证稳定性、持续可用性或无错误性。"
+    },
+    "content10": {
+      "title": "条款变更",
+      "content": "本条款可能随时修改。修改内容将在应用程序或网站上发布后立即生效。继续使用将被视为接受修改内容。"
+    },
+    "content11": {
+      "title": "法律和管辖权",
+      "content": "本条款受巴西法律管辖。兹选定圣保罗地区管辖解决任何争议。"
+    },
+    "content12": {
+      "content": "如有任何疑问，请通过电子邮件联系我们：",
+      "content1": "support@mindsecho.com"
+    }
   },
   "privacy": {
     "terms": {
@@ -320,7 +379,7 @@
       "content1": "- 请求访问、更正或删除您的数据。",
       "content2": "- 随时撤销同意。",
       "content3": "- 请求可移植性和共享信息。",
-      "content4": "您可以通过电子邮件提出请求：suporte@mindsecho.com.br"
+      "content4": "您可以通过电子邮件提出请求：support@mindsecho.com"
     },
     "content7": {
       "title": "Cookie 和类似技术",
@@ -341,7 +400,7 @@
     "content11": {
       "title": "联系方式",
       "content": "如果您有任何与隐私和数据保护相关的问题或要求，请联系：",
-      "content1": "suporte@mindsecho.com.br"
+      "content1": "support@mindsecho.com"
     },
     "content12": "使用 MindsEcho，即表示您已阅读、理解并完全接受本隐私政策。"
   },

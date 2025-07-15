@@ -26,6 +26,14 @@ export default function AvatarCard({ avatar, result }: AvatarCardProps) {
         {avatar ? (
           <View style={styles.realAvatar}>
             <Image
+              source={require("@/assets/images/test/avatar-bg.png")}
+              style={{
+                height: 90,
+                width: 90,
+              }}
+              contentFit="contain"
+            />
+            <Image
               source={avatar}
               style={styles.realAvatarImage}
               contentFit="cover"
@@ -89,8 +97,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   realAvatarImage: {
-    height: 90,
-    width: 90,
+    position: "absolute",
+    height: 70,
+    width: 70,
   },
   content: {
     alignItems: "center",

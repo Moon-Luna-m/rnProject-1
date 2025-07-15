@@ -87,7 +87,7 @@ export default function Setting() {
         break;
       case "agreement":
         // 处理用户协议
-        router.push("/profile/setting/privacy");
+        router.push("/protocol/user");
         break;
       case "privacy":
         // 处理隐私政策
@@ -163,7 +163,7 @@ export default function Setting() {
         items: [
           //   { type: "account", title: "settings.account" },
           // { type: "customer_service", title: "settings.customerService" },
-          { type: "agreement", title: "settings.userAgreement" },
+          { type: "agreement", title: "userProtocol.title" },
           { type: "privacy", title: "settings.privacyPolicy" },
           { type: "disclaimer", title: "settings.disclaimer" },
         ],

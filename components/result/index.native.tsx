@@ -14,7 +14,6 @@ import TraitCard from "@/components/test/TraitCard";
 import VisualDashboard from "@/components/test/VisualDashboard";
 import { mockDataFn } from "@/constants/MockData";
 import { paymentService } from "@/services/paymentServices";
-import { shareService } from "@/services/shareServices";
 import {
   BlockType,
   TestReportResponse,
@@ -26,15 +25,19 @@ import { selectUserInfo, setUserInfo } from "@/store/slices/userSlice";
 import { getTransformedReport } from "@/utils/reportTransformer";
 import { createFontStyle } from "@/utils/typography";
 import { useStripe } from "@stripe/stripe-react-native";
+import * as FileSystem from 'expo-file-system';
 import { LinearGradient } from "expo-linear-gradient";
+import * as MediaLibrary from 'expo-media-library';
 import { router, useLocalSearchParams } from "expo-router";
 import React, { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
+  Alert,
   Dimensions,
   ImageBackground,
   ImageSourcePropType,
+  Linking,
   Platform,
   Share,
   StyleSheet,
@@ -50,6 +53,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
+import PosterImage from "../PosterImage";
 
 const { width } = Dimensions.get("window");
 const SCROLL_THRESHOLD = Platform.OS === "web" ? 180 : 120;
@@ -57,6 +61,7 @@ const SCROLL_THRESHOLD = Platform.OS === "web" ? 180 : 120;
 export default function TestResultPage() {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const [triggerShare, setTriggerShare] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const scrollY = useSharedValue(0);
@@ -245,45 +250,53 @@ export default function TestResultPage() {
     }
   };
 
-  const handleShare = async (method: string) => {
+  const handleShare = async (imageUri: string) => {
     try {
-      // 先关闭分享面板，避免界面卡住
-      setShowShare(false);
-
-      // 生成分享链接
-      const shareRes = await shareService.generateShareLink({
-        platform: method.toUpperCase(),
-        target_id: testData?.test_id || 0,
-        target_type: "TEST",
-        title: testData?.test_name || "",
-      });
-
-      if (shareRes.code !== 200) {
-        throw new Error(shareRes.message);
+      // 请求权限
+      const { status } = await MediaLibrary.requestPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert(
+          t('common.gallery.permissionDenied'),
+          t('common.gallery.permissionMessage'),
+          [
+            { text: t('common.cancel'), style: 'cancel' },
+            {
+              text: t('common.settings'),
+              onPress: () => {
+                Platform.OS === 'ios' ? Linking.openURL('app-settings:') : Linking.openSettings();
+              },
+            },
+          ]
+        );
+        return;
       }
 
-      // 执行系统分享
-      const result = await Share.share({
-        message: t("test.share.message"),
-        url: shareRes.data.share_link,
-        title: testData?.test_name || t("test.share.title"),
+      // 将 base64 图片保存为临时文件
+      const tempFilePath = `${FileSystem.cacheDirectory}share_${Date.now()}.png`;
+      const base64Data = imageUri.split('base64,')[1];
+      await FileSystem.writeAsStringAsync(tempFilePath, base64Data, {
+        encoding: FileSystem.EncodingType.Base64,
       });
 
-      // 处理分享结果
-      if (result.action === Share.sharedAction) {
-        // 记录分享点击
-        await shareService.clickShare({
-          share_code: Number(shareRes.data.share_code),
-        });
-      }
-    } catch (error: any) {
-      console.error("Share failed:", error.message);
+      // 保存图片到相册
+      const asset = await MediaLibrary.createAssetAsync(tempFilePath);
+      await MediaLibrary.createAlbumAsync('Echo', asset, false);
+      // 分享图片
+      await Share.share({
+        url: tempFilePath,
+      });
+      // 清理临时文件
+      await FileSystem.deleteAsync(tempFilePath, { idempotent: true });
+    } catch (error) {
+      console.error('保存图片失败:', error);
+    } finally {
+      setTriggerShare(false);
     }
   };
 
   const handleHeaderPress = async (type: "share" | "collect") => {
     if (type === "share") {
-      setShowShare(true);
+      setTriggerShare(true);
     } else if (type === "collect") {
       if (!testData) return;
       const res = await testService.addTestToFavorite({
@@ -312,6 +325,14 @@ export default function TestResultPage() {
 
   return (
     <View style={styles.container}>
+      {triggerShare && (
+        <PosterImage
+          width={375}
+          height={700}
+          testData={testData}
+          onReady={handleShare}
+        />
+      )}
       {!testData ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color="#19DBF2" />

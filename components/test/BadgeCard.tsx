@@ -33,7 +33,7 @@ export default function BadgeCard({ badges }: BadgeCardProps) {
             </View>
             <View style={styles.badgeContent}>
               <Text style={styles.badgeTitle}>{badge.title}</Text>
-              <Text style={styles.badgeDescription}>{badge.description}</Text>
+              {/* <Text style={styles.badgeDescription}>{badge.description}</Text> */}
             </View>
           </View>
         ))}

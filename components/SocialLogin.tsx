@@ -25,21 +25,21 @@ export default function SocialLogin() {
   const dispatch = useDispatch();
 
   const socialButtons = [
-    {
-      id: "facebook",
-      icon: require("@/assets/images/social/facebook.png"),
-      onPress: () => handleSocialLogin("facebook"),
-    },
+    // {
+    //   id: "facebook",
+    //   icon: require("@/assets/images/social/facebook.png"),
+    //   onPress: () => handleSocialLogin("facebook"),
+    // },
     {
       id: "google",
       icon: require("@/assets/images/social/google.png"),
       onPress: () => handleSocialLogin("google"),
     },
-    {
-      id: "apple",
-      icon: require("@/assets/images/social/apple.png"),
-      onPress: () => handleSocialLogin("apple"),
-    },
+    // {
+    //   id: "apple",
+    //   icon: require("@/assets/images/social/apple.png"),
+    //   onPress: () => handleSocialLogin("apple"),
+    // },
   ];
 
   const handleSocialLogin = async (type: string) => {

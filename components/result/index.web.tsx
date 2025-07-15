@@ -7,14 +7,12 @@ import Header from "@/components/test/Header";
 import PersonalizedAdvice from "@/components/test/PersonalizedAdvice";
 import PurchaseSheet from "@/components/test/PurchaseSheet";
 import RadarCard from "@/components/test/RadarCard";
-import ShareSheet from "@/components/test/ShareSheet";
 import SpiritualInspiration from "@/components/test/SpiritualInspiration";
 import TextProgressCard from "@/components/test/TextProgressCard";
 import TraitCard from "@/components/test/TraitCard";
 import VisualDashboard from "@/components/test/VisualDashboard";
 import { mockDataFn } from "@/constants/MockData";
 import { paymentService } from "@/services/paymentServices";
-import { shareService } from "@/services/shareServices";
 import {
   BlockType,
   TestReportResponse,
@@ -29,11 +27,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
-  Dimensions,
   ImageBackground,
   ImageSourcePropType,
   Platform,
-  Share,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -46,13 +42,14 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import PosterImageWeb from "../PosterImageWeb";
 
-const { width } = Dimensions.get("window");
 const SCROLL_THRESHOLD = Platform.OS === "web" ? 180 : 120;
 
 export default function TestResultPage() {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const [triggerShare, setTriggerShare] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const scrollY = useSharedValue(0);
@@ -197,45 +194,13 @@ export default function TestResultPage() {
     setPaymentLoading(false);
   };
 
-  const handleShare = async (method: string) => {
-    try {
-      // 先关闭分享面板，避免界面卡住
-      setShowShare(false);
-
-      // 生成分享链接
-      const shareRes = await shareService.generateShareLink({
-        platform: method.toUpperCase(),
-        target_id: testData?.test_id || 0,
-        target_type: "TEST",
-        title: testData?.test_name || "",
-      });
-
-      if (shareRes.code !== 200) {
-        throw new Error(shareRes.message);
-      }
-
-      // 执行系统分享
-      const result = await Share.share({
-        message: t("test.share.message"),
-        url: shareRes.data.share_link,
-        title: testData?.test_name || t("test.share.title"),
-      });
-
-      // 处理分享结果
-      if (result.action === Share.sharedAction) {
-        // 记录分享点击
-        await shareService.clickShare({
-          share_code: Number(shareRes.data.share_code),
-        });
-      }
-    } catch (error: any) {
-      console.error("Share failed:", error.message);
-    }
+  const handleShare = () => {
+    setTriggerShare(false);
   };
 
   const handleHeaderPress = async (type: "share" | "collect") => {
     if (type === "share") {
-      setShowShare(true);
+      setTriggerShare(true);
     } else if (type === "collect") {
       if (!testData) return;
       const res = await testService.addTestToFavorite({
@@ -262,75 +227,80 @@ export default function TestResultPage() {
     getTestData();
   }, []);
 
+  const handleClose = () => {
+    setTriggerShare(false);
+  };
+
   return (
-    <View style={styles.container}>
-      {!testData ? (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#19DBF2" />
-        </View>
-      ) : (
-        <>
-          <Header
-            insetTop={insets.top}
-            onPress={handleHeaderPress}
-            headerBackgroundAnimatedStyle={headerBackgroundAnimatedStyle}
-            headerColorAnimatedStyle={headerColorAnimatedStyle}
-            showCollect={false}
-            title={t("test.testReport")}
-            headerSlot={
-              <>
-                <ImageBackground
-                  source={headerBg.normal}
-                  style={styles.gradient}
-                >
-                  <View style={styles.headerContainer}>
-                    <Text style={styles.title}>{t("test.result.title")}</Text>
-                    <Text style={styles.subtitle}>
-                      {t("test.result.subtitle")}
-                    </Text>
-                  </View>
-                </ImageBackground>
-              </>
-            }
-          />
-          <Animated.ScrollView
-            style={[styles.scrollView, { marginTop: insets.top + 44 }]}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={[
-              styles.content,
-              {
-                paddingBottom:
-                  insets.bottom +
-                  (!testData?.has_access
-                    ? Platform.OS === "android"
-                      ? 224
-                      : 120
-                    : 40),
-              },
-            ]}
-            onScroll={scrollHandler}
-            scrollEventThrottle={16}
-          >
-            {testData && (
-              <>
-                {getTransformedReport(testData).components.map(
-                  (item: { type: BlockType; data: any }) => (
-                    <Fragment key={item.type}>
-                      {renderComponent(item.type, item.data)}
-                    </Fragment>
-                  )
-                )}
-                <FAQCard faqs={mockData.faqs} />
-              </>
-            )}
-          </Animated.ScrollView>
-          {!testData?.has_access ? (
-            <LinearGradient
-              colors={["rgba(255,255,255,1)", "#FFFFFF"]}
-              style={styles.buttonContainer}
-              locations={[0, 0.7]}
+    <>
+      <View style={styles.container}>
+        {!testData ? (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#19DBF2" />
+          </View>
+        ) : (
+          <>
+            <Header
+              insetTop={insets.top}
+              onPress={handleHeaderPress}
+              headerBackgroundAnimatedStyle={headerBackgroundAnimatedStyle}
+              headerColorAnimatedStyle={headerColorAnimatedStyle}
+              showCollect={false}
+              title={t("test.testReport")}
+              headerSlot={
+                <>
+                  <ImageBackground
+                    source={headerBg.normal}
+                    style={styles.gradient}
+                  >
+                    <View style={styles.headerContainer}>
+                      <Text style={styles.title}>{t("test.result.title")}</Text>
+                      <Text style={styles.subtitle}>
+                        {t("test.result.subtitle")}
+                      </Text>
+                    </View>
+                  </ImageBackground>
+                </>
+              }
+            />
+            <Animated.ScrollView
+              style={[styles.scrollView, { marginTop: insets.top + 44 }]}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={[
+                styles.content,
+                {
+                  paddingBottom:
+                    insets.bottom +
+                    (!testData?.has_access
+                      ? Platform.OS === "android"
+                        ? 224
+                        : 120
+                      : 40),
+                },
+              ]}
+              onScroll={scrollHandler}
+              scrollEventThrottle={16}
             >
-              {/* <TouchableOpacity
+              {testData && (
+                <>
+                  {getTransformedReport(testData).components.map(
+                    (item: { type: BlockType; data: any }) => (
+                      <Fragment key={item.type}>
+                        {renderComponent(item.type, item.data)}
+                      </Fragment>
+                    )
+                  )}
+                  <FAQCard faqs={mockData.faqs} />
+                </>
+              )}
+            </Animated.ScrollView>
+            {!testData?.has_access ? (
+              <LinearGradient
+                colors={["rgba(255,255,255,1)", "#FFFFFF"]}
+                style={styles.buttonContainer}
+                locations={[0, 0.7]}
+              >
+                {/* <TouchableOpacity
               style={[styles.button, styles.testAgainButton]}
               activeOpacity={0.7}
               onPress={async () => {
@@ -340,44 +310,47 @@ export default function TestResultPage() {
             >
               <Text style={styles.buyButtonText}>{t("test.testAgain")}</Text>
             </TouchableOpacity> */}
-              {!testData?.has_access ? (
-                <TouchableOpacity
-                  style={[
-                    styles.button,
-                    styles.buyButton,
-                    { opacity: paymentLoading ? 0.5 : 1 },
-                  ]}
-                  activeOpacity={0.7}
-                  onPress={() => handlePurchase("stripe")}
-                  disabled={paymentLoading}
-                >
-                  <Text style={styles.buyButtonText}>
-                    {paymentLoading
-                      ? t("common.camera.processing")
-                      : t("test.result.advancedReport")}
-                  </Text>
-                </TouchableOpacity>
-              ) : null}
-            </LinearGradient>
-          ) : null}
-        </>
+                {!testData?.has_access ? (
+                  <TouchableOpacity
+                    style={[
+                      styles.button,
+                      styles.buyButton,
+                      { opacity: paymentLoading ? 0.5 : 1 },
+                    ]}
+                    activeOpacity={0.7}
+                    onPress={() => handlePurchase("stripe")}
+                    disabled={paymentLoading}
+                  >
+                    <Text style={styles.buyButtonText}>
+                      {paymentLoading
+                        ? t("common.camera.processing")
+                        : t("test.result.advancedReport")}
+                    </Text>
+                  </TouchableOpacity>
+                ) : null}
+              </LinearGradient>
+            ) : null}
+          </>
+        )}
+
+        <PurchaseSheet
+          toastInfo={toastInfo}
+          isVisible={showPurchase}
+          testName={testData?.test_name || ""}
+          onClose={() => setShowPurchase(false)}
+          price={testData?.discount_price || 0}
+          onConfirm={handlePurchase}
+        />
+      </View>
+      {triggerShare && (
+        <PosterImageWeb
+          width={375}
+          height={700}
+          testData={testData}
+          onClose={handleClose}
+        />
       )}
-
-      <PurchaseSheet
-        toastInfo={toastInfo}
-        isVisible={showPurchase}
-        testName={testData?.test_name || ""}
-        onClose={() => setShowPurchase(false)}
-        price={testData?.discount_price || 0}
-        onConfirm={handlePurchase}
-      />
-
-      <ShareSheet
-        isVisible={showShare}
-        onClose={() => setShowShare(false)}
-        onShare={handleShare}
-      />
-    </View>
+    </>
   );
 }
 

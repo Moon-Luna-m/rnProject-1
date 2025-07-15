@@ -1,4 +1,3 @@
-import { AUTH_CONFIG } from "@/config/auth";
 import { makeRedirectUri } from "expo-auth-session";
 import * as Google from "expo-auth-session/providers/google";
 import Constants from "expo-constants";
@@ -10,6 +9,15 @@ import appJson from "../app.config";
 if (Platform.OS === "web") {
   WebBrowser.maybeCompleteAuthSession();
 }
+
+const AUTH_CONFIG = {
+  google: {
+    appClientId: Constants.expoConfig?.extra?.google.appClientId,
+    webClientId: Constants.expoConfig?.extra?.google.webClientId,
+    appClientSecret: Constants.expoConfig?.extra?.google.appClientSecret,
+    webClientSecret: Constants.expoConfig?.extra?.google.webClientSecret,
+  },
+} as const;
 
 // 配置 Google OAuth 2.0 scope
 const GOOGLE_SCOPES = ["profile", "email"] as const;
@@ -83,7 +91,6 @@ export function useGoogleAuth() {
         params = new URLSearchParams({
           code,
           client_id: AUTH_CONFIG.google.appClientId,
-          client_secret: AUTH_CONFIG.google.appClientSecret,
           redirect_uri: redirectUri,
           grant_type: "authorization_code",
           code_verifier: request?.codeVerifier || "",

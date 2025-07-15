@@ -395,6 +395,7 @@ export default function LoginForm() {
                 i18nKey="form.login.agreement"
                 values={{
                   agreement: t("form.login.agreementLink"),
+                  agreement1: t("settings.privacyPolicy"),
                 }}
                 components={[
                   <Text
@@ -402,6 +403,12 @@ export default function LoginForm() {
                     style={{ textDecorationLine: "underline" }}
                   >
                     {t("form.login.agreementLink")}
+                  </Text>,
+                  <Text
+                    onPress={() => router.push("/protocol/privacy")}
+                    style={{ textDecorationLine: "underline" }}
+                  >
+                    {t("settings.privacyPolicy")}
                   </Text>,
                 ]}
               />
