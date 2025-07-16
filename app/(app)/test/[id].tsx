@@ -19,24 +19,23 @@ import {
   testService,
 } from "@/services/testServices";
 import { showNotification } from "@/store/slices/notificationSlice";
-import { formatDuration, setLocalCache } from "@/utils/common";
+import { copyToClipboard, formatDuration, setLocalCache } from "@/utils/common";
 import { getTestTypeKey } from "@/utils/reportTransformer";
 import { createFontStyle } from "@/utils/typography";
-import * as FileSystem from 'expo-file-system';
+import Constants from "expo-constants";
 import { LinearGradient } from "expo-linear-gradient";
-import * as MediaLibrary from 'expo-media-library';
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import React, { Fragment, useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ActivityIndicator,
-  Alert, Linking, Platform,
+  Platform,
   Share,
   StyleSheet,
   Text,
   TouchableHighlight,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
 import Animated, {
   interpolateColor,
   useAnimatedScrollHandler,
@@ -58,7 +57,6 @@ export default function TestDetailsPage() {
   const [testData, setTestData] = useState<TestDetailResponse | null>(null);
   const { id } = useLocalSearchParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [triggerShare, setTriggerShare] = useState(false);
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
       // scrollY.value = event.contentOffset.y;
@@ -142,53 +140,35 @@ export default function TestDetailsPage() {
     }
   };
 
-  const handleShare = async (imageUri: string) => {
-    try {
-      // 请求权限
-      const { status } = await MediaLibrary.requestPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert(
-          t('common.gallery.permissionDenied'),
-          t('common.gallery.permissionMessage'),
-          [
-            { text: t('common.cancel'), style: 'cancel' },
-            {
-              text: t('common.settings'),
-              onPress: () => {
-                Platform.OS === 'ios' ? Linking.openURL('app-settings:') : Linking.openSettings();
-              },
-            },
-          ]
+  const handleShare = async () => {
+    if (Platform.OS === "web") {
+      const res = await copyToClipboard(
+        Constants.expoConfig?.extra?.webUrl +
+          "?redirect=" +
+          encodeURIComponent("/test/" + testData?.id)
+      );
+      if (res) {
+        dispatch(
+          showNotification({
+            message: t("common.copySuccess"),
+            type: "default",
+          })
         );
-        return;
       }
-
-      // 将 base64 图片保存为临时文件
-      const tempFilePath = `${FileSystem.cacheDirectory}share_${Date.now()}.png`;
-      const base64Data = imageUri.split('base64,')[1];
-      await FileSystem.writeAsStringAsync(tempFilePath, base64Data, {
-        encoding: FileSystem.EncodingType.Base64,
+    } else {
+      Share.share({
+        message: testData?.name,
+        url:
+          Constants.expoConfig?.extra?.webUrl +
+          "?redirect=" +
+          encodeURIComponent("/test/" + testData?.id),
       });
-
-      // 保存图片到相册
-      const asset = await MediaLibrary.createAssetAsync(tempFilePath);
-      await MediaLibrary.createAlbumAsync('Echo', asset, false);
-      // 分享图片
-      await Share.share({
-        url: tempFilePath,
-      });
-      // 清理临时文件
-      await FileSystem.deleteAsync(tempFilePath, { idempotent: true });
-    } catch (error) {
-      console.error('保存图片失败:', error);
-    } finally {
-      setTriggerShare(false);
     }
   };
 
   const handleHeaderPress = async (type: "share" | "collect") => {
     if (type === "share") {
-      setTriggerShare(true);
+      handleShare();
     } else if (type === "collect") {
       if (!testData) return;
       let res: any;
@@ -352,19 +332,6 @@ export default function TestDetailsPage() {
           </LinearGradient>
         </>
       )}
-      {/* 
-      <ShareSheet
-        isVisible={showShare}
-        onClose={() => {
-          if (isShare) return;
-          setShowShare(false);
-        }}
-        onShare={(platform) => {
-          setIsShare(true);
-          handleShare(platform);
-        }}
-        isCapturing={isCapturing}
-      /> */}
     </View>
   );
 }

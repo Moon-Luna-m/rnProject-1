@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import CryptoJS from "crypto-js";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import * as Clipboard from "expo-clipboard";
 import Constants from "expo-constants";
 import * as FileSystem from "expo-file-system";
 import { deleteItemAsync, getItemAsync, setItemAsync } from "expo-secure-store";
@@ -521,4 +522,51 @@ export const padZero = (
 export const getOptionLetter = (index: number): string => {
   if (index < 0 || index > 25) return "";
   return String.fromCharCode(65 + index); // 65 是 'A' 的 ASCII 码
+};
+
+/**
+ * 复制文本到剪贴板
+ * @param text 要复制的文本
+ * @returns Promise<boolean> 是否复制成功
+ */
+export const copyToClipboard = async (text: string): Promise<boolean> => {
+  try {
+    if (Platform.OS === "web") {
+      // 使用现代 Clipboard API
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+      
+      // 降级方案：使用 document.execCommand
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      
+      // 防止滚动到底部
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand("copy");
+        textArea.remove();
+        return true;
+      } catch (err) {
+        console.error("复制失败:", err);
+        textArea.remove();
+        return false;
+      }
+    } else {
+      await Clipboard.setStringAsync(text);
+      return true;
+    }
+  } catch (error) {
+    console.error("复制失败:", error);
+    return false;
+  }
 };

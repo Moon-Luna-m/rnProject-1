@@ -142,6 +142,7 @@ export default function PosterImage({
         {
           width,
           maxHeight: height,
+          overflow: "hidden",
         },
       ]}
     >
@@ -192,7 +193,7 @@ export default function PosterImage({
           </View>
         </View>
       </View>
-
+      <View style={styles.footerEmpty}></View>
       {/* 底部二维码区域 */}
       <LinearGradient colors={["#D2FEFF", "#FFFFFF"]} style={styles.footer}>
         <View style={styles.qrContainer}>
@@ -275,8 +276,16 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: "100%",
   },
-  footer: {
+  footerEmpty: {
     marginTop: -24,
+    width: "100%",
+    height: 170,
+  },
+  footer: {
+    position: "absolute",
+    width: "100%",
+    bottom: 0,
+    left: 0,
     paddingVertical: 12,
     paddingHorizontal: 16,
     alignItems: "center",
