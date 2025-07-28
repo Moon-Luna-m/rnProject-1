@@ -152,7 +152,35 @@
     "loginSuccess": "登录成功",
     "loginFailed": "登录失败",
     "registerSuccess": "注册成功",
-    "registerFailed": "注册失败"
+    "registerFailed": "注册失败",
+    "google": {
+      "errors": {
+        "cancelled": "登录已取消",
+        "inProgress": "登录操作正在进行中",
+        "playServicesNotAvailable": "Google Play 服务不可用",
+        "noIdToken": "Google 登录失败：未收到 ID 令牌",
+        "default": "无法完成 Google 登录",
+        "requestNotReady": "认证请求未准备就绪"
+      },
+      "alerts": {
+        "cancelled": {
+          "title": "登录取消",
+          "message": "用户取消了登录过程"
+        },
+        "inProgress": {
+          "title": "登录进行中",
+          "message": "登录操作正在进行中"
+        },
+        "playServices": {
+          "title": "服务不可用",
+          "message": "请确保 Google Play 服务已安装并且是最新版本"
+        },
+        "failed": {
+          "title": "登录失败",
+          "message": "无法完成 Google 登录"
+        }
+      }
+    }
   },
   "error": {
     "networkError": "网络错误",

@@ -1,3 +1,4 @@
+import { initializeFirebase } from "@/firebase.config";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -20,6 +21,15 @@ export function InitializationWrapper({
   const isLoading = useAppSelector(selectIsLoading);
   const error = useAppSelector(selectError);
   const {t} = useTranslation()
+
+  useEffect(() => {
+    // 初始化 Firebase
+    try {
+      initializeFirebase();
+    } catch (error) {
+      console.error("Firebase 初始化失败:", error);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isInitialized && !isLoading) {

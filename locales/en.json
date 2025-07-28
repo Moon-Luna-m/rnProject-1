@@ -152,7 +152,35 @@
     "loginSuccess": "Login Successful",
     "loginFailed": "Login Failed",
     "registerSuccess": "Registration Successful",
-    "registerFailed": "Registration Failed"
+    "registerFailed": "Registration Failed",
+    "google": {
+      "errors": {
+        "cancelled": "Login cancelled",
+        "inProgress": "Login is already in progress",
+        "playServicesNotAvailable": "Google Play Services not available",
+        "noIdToken": "Google Sign-In failed: No ID token received",
+        "default": "Unable to complete Google login",
+        "requestNotReady": "Authentication request not ready"
+      },
+      "alerts": {
+        "cancelled": {
+          "title": "Login Cancelled",
+          "message": "User cancelled the login process"
+        },
+        "inProgress": {
+          "title": "Login in Progress",
+          "message": "A login operation is already in progress"
+        },
+        "playServices": {
+          "title": "Service Unavailable",
+          "message": "Please ensure Google Play Services is installed and up to date"
+        },
+        "failed": {
+          "title": "Login Failed",
+          "message": "Unable to complete Google login"
+        }
+      }
+    }
   },
   "error": {
     "networkError": "Network Error",

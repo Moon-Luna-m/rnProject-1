@@ -152,7 +152,17 @@
     "loginSuccess": "Login realizado",
     "loginFailed": "Login falhou",
     "registerSuccess": "Cadastro realizado",
-    "registerFailed": "Cadastro falhou"
+    "registerFailed": "Cadastro falhou",
+    "google": {
+      "errors": {
+        "cancelled": "Login cancelado",
+        "inProgress": "Login já está em andamento",
+        "playServicesNotAvailable": "Serviços do Google Play não disponíveis",
+        "noIdToken": "Login no Google falhou: não recebido ID token",
+        "default": "Não foi possível completar o login no Google",
+        "requestNotReady": "Solicitação de autenticação não pronta"
+      }
+    }
   },
   "error": {
     "networkError": "Erro de rede",

@@ -70,10 +70,10 @@ export default function SocialLogin() {
     const res = async () => {
       if (!userInfo) return;
       const res = await userService.googleLogin({
-        avatar_url: userInfo?.picture,
+        avatar_url: userInfo?.photoURL,
         email: userInfo?.email,
-        google_id: userInfo?.id,
-        name: userInfo?.name,
+        google_id: userInfo?.uid,
+        name: userInfo?.displayName,
       });
       if (res.code === 200) {
         await setToken(res.data.token);
