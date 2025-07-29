@@ -1,6 +1,5 @@
 import { initializeFirebase } from "@/firebase.config";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import * as Google from "expo-auth-session/providers/google";
 import Constants from "expo-constants";
 import { maybeCompleteAuthSession } from "expo-web-browser";
 import {
@@ -8,9 +7,10 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithCredential,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, Platform } from "react-native";
 
@@ -28,14 +28,6 @@ export function useGoogleAuth() {
   const redirectUri = __DEV__
     ? "http://localhost:8081/oauth2/callback/google"
     : Constants.expoConfig?.extra?.google.authCallback;
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    webClientId: Constants.expoConfig?.extra?.google.webClientId,
-    androidClientId: Constants.expoConfig?.extra?.google.androidClientId,
-    scopes: ["profile", "email"],
-    redirectUri,
-    responseType: "id_token",
-    usePKCE: true,
-  });
 
   GoogleSignin.configure({
     webClientId: Constants.expoConfig?.extra?.google.webClientId,
@@ -47,10 +39,12 @@ export function useGoogleAuth() {
       setError(null);
 
       if (Platform.OS === "web") {
-        if (!request) {
-          throw new Error(t("auth.google.errors.requestNotReady"));
-        }
-        await promptAsync();
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            // const credential = GoogleAuthProvider.credentialFromResult(result);
+            setUserInfo(result.user);
+          })
       } else {
         await GoogleSignin.hasPlayServices();
         await GoogleSignin.signIn();
@@ -61,6 +55,7 @@ export function useGoogleAuth() {
         const credential = GoogleAuthProvider.credential(idToken, accessToken);
         const userCredential = await signInWithCredential(auth, credential);
         setUserInfo(userCredential.user);
+        GoogleSignin.signOut();
       }
     } catch (e) {
       Alert.alert(
@@ -74,23 +69,6 @@ export function useGoogleAuth() {
       setLoading(false);
     }
   };
-
-  const exchangeIdTokenForCredential = async (id_token: string) => {
-    try {
-      const credential = GoogleAuthProvider.credential(id_token);
-      const userCredential = await signInWithCredential(auth, credential);
-      setUserInfo(userCredential.user);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  useEffect(() => {
-    if (response?.type === "success") {
-      const { id_token } = response.params;
-      exchangeIdTokenForCredential(id_token);
-    }
-  }, [response]);
 
   const logout = async () => {
     try {
